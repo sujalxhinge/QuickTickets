@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.navbar
+{
+    background-color: black;
+    height: 8vh;
+    width: 100vh;
+}
+.elements
+{
+    font-family: sans-serif;
+    font: weight 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    align-items: center;
+    color: #ffff;
+}
+.elements a
+{
+    color: #ffff;
+}
