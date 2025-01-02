@@ -1,54 +1,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
-}
-body {
-  background-color: black;
-}
-.navbar {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  justify-content: space-between;
-  position: static;
-  background-color: #ffff;
-  height: 10vh;
-  width: 100%;
-}
-.Login button {
-  display: flex;
-  border-color: black;
-  padding: 2px;
-  border-radius: 10px;
-  color: #000000;
-  font-family: "Poppins", serif;
-  font-weight: 600;
-  font-style: normal;
-  border-radius: 7px;
-  justify-content: end;
-  transition: all 0.5s ease;
-  
-}
-.SignUp button {
-  display: flex;
-  /* background-color: black; */
-  border-color: black;
-  padding: 2px;
-  border-radius: 10px;
-  color: #000000;
-  font-family: "Poppins", serif;
-  font-weight: 600;
-  font-style: normal;
-  border-radius: 7px;
-  transition: all 0.5s ease;
+  box-sizing: border-box;
 }
 
+body {
+  background-color: black;
+  font-family: "Poppins", serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This ensures the logo is on the left and buttons are on the right */
+  background-color: #ffffff;
+  height: 10vh;
+  width: 100%;
+  padding: 0 20px; /* Add some horizontal padding */
+}
+
+.logo img {
+  height: 50px; /* Adjust height to fit navbar */
+  width: auto; /* Maintain aspect ratio */
+  max-height: 100%; /* Ensure it doesn't exceed the navbar's height */
+  object-fit: contain; /* Makes sure the image scales properly */
+}
+
+
+.navbar div {
+  display: flex;
+  gap: 15px; /* Add spacing between login and signup buttons */
+}
+
+.Login button,
+.SignUp button {
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 7px;
+  background-color: white; /* Ensure buttons have a consistent background */
+  color: black;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Login button:hover,
 .SignUp button:hover {
   background-color: black;
   color: white;
 }
-.Login button:hover {
-  background-color: black;
-  color: white;
+.tag1
+{
+  color: #ffffff;
+  padding-left: 25px;
+  padding-top: 25px;
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
+  
 }
+/*comment*/
+/* Image slider styles */
+
+/*image slider end */
