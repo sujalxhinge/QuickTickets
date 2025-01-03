@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuickTickets</title>
-    <link rel="stylesheet" href="splash.css">
-</head>
-<body>
+    <link rel="stylesheet" href="splash.css" />
+    <link
+      rel="shortcut icon"
+      href="images icons/favicon.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
     <header>
-        <nav class="navbar">
-          <div class="logo">
-            <img src="images icons/quickpng.png" alt="QuickTickets Logo">
-          </div>
-          <div>
-            <div class="Login">
-              <form action="loginpage.html" method="POST">
-                <button type="submit">Login</button>
-              </form>
-            </div>
-            <div class="SignUp">
-              <form action="signuppage.html" method="POST">
-                <button type="submit">Sign Up</button>
-              </form>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <main>
-        <div class="tag1"> Trending Movies</div>
-        <div class="image-slider">
-            <div class="slides">
-                <!-- Add your images here -->
-                
-            </div>
+      <nav class="navbar">
+        <div class="logo">
+          <img src="images icons/quickpng.png" alt="QuickTickets Logo" />
         </div>
+        <div>
+          <div class="Login">
+            <form action="loginpage.html" method="POST">
+              <button type="submit">Login</button>
+            </form>
+          </div>
+          <div class="SignUp">
+            <form action="signuppage.html" method="POST">
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="tag1">Trending Movies</div>
+      <section id="movie-slider">
+        <div class="container">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper" id="swiper-wrapper">
+              <!-- Slides will be injected here by Javascript -->
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
     </main>
-      
-    
-</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script src="script.js"></script>
+  </body>
 </html>
