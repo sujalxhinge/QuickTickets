@@ -72,12 +72,23 @@ body {
 
 .tag1 {
   color: #ffffff;
-  padding-left: 25px;
-  padding-top: 25px;
+  padding-left: 35px;
+  padding-top: 30px;
   font-family: "Poppins", serif;
-  font-weight: 800;
+  font-weight: 1000;
   font-style: normal;
+  font-size: 17px;
 }
+.tag2 {
+  color: #ffffff;
+  padding-left: 35px;
+  padding-top: 20px;
+  font-family: "Poppins", serif;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: 17px;
+}
+
 
 /* Adjust container to center content */
 .container {
