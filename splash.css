@@ -101,8 +101,8 @@ body {
 /* Expanded slide dimensions */
 .swiper-slide {
   width: 95%; /* Slightly wider slides */
-  height: 400px; /* Maintain height */
-  max-width: 850px; /* Increase maximum width for slides */
+  height: 350px; /* Maintain height */
+  max-width: 300px; /* Increase maximum width for slides */
   margin: 0 auto; /* Center slide content */
 }
 
