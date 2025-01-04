@@ -1,22 +1,17 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await fetch("images.json");
-    const data = await response.json();
-
-    // Filter data for Movies
-    const movies = data.filter((item) => item.category === "movies");
-
-    // Populate Movie Slider
-    const movieSwiperWrapper = document.getElementById("swiper-wrapper");
+    const movies = await response.json();
+    const swiperWrapper = document.getElementById("swiper-wrapper");
     movies.forEach((movie) => {
-      const slide = document.createElement("div");
-      slide.classList.add("swiper-slide");
-      slide.innerHTML = `<img src="${movie.url}" alt="${movie.title}" />`;
-      movieSwiperWrapper.appendChild(slide);
+      const Slide = document.createElement("div");
+      Slide.classList.add("swiper-slide");
+      Slide.innerHTML = `<img src="${movie.url}" alt="${movie.title}" />`;
+      swiperWrapper.appendChild(Slide);
     });
 
-    // Initialize Movie Slider
-    const movieSwiper = new Swiper(".mySwiper", {
+    // Initialize Swiper
+    const swiper = new Swiper(".mySwiper", {
       effect: "coverflow",
       grabCursor: true,
       slidesPerView: "auto",
@@ -33,22 +28,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
+        // dynamicBullets: true,
       },
     });
-
-    // Add Click Functionality for Movie Slides
-    movieSwiper.slides.forEach((slide) => {
+    // Add click functionality
+    swiper.slides.forEach((slide) => {
       slide.onclick = () => {
-        movieSwiper.slideToLoop(slide.dataset.swiperSlideIndex);
-        movieSwiper.update();
+        swiper.slideToLoop(slide.dataset.swiperSlideIndex);
+        swiper.update();
       };
     });
-
-    // Handle issue with the last slide click for Movies
-    movieSwiper.on("slideChangeTransitionEnd", () => {
-      if (movieSwiper.isEnd) {
-        movieSwiper.loopFix();
-        movieSwiper.update();
+    // Handle issue with the last slide click
+    swiper.on("slideChangeTransitionEnd", () => {
+      if (swiper.isEnd) {
+        swiper.loopFix();
+        swiper.update();
       }
     });
   } catch (error) {
