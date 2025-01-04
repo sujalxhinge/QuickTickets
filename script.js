@@ -1,17 +1,32 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await fetch("images.json");
-    const movies = await response.json();
-    const swiperWrapper = document.getElementById("swiper-wrapper");
+    const data = await response.json();
+
+    // Separate data for Movies and Events
+    const movies = data.filter((item) => item.category === "movies");
+    const eventsAndShows = data.filter((item) => item.category === "events_and_shows");
+
+    // Populate Movie Slider
+    const movieSwiperWrapper = document.getElementById("swiper-wrapper");
     movies.forEach((movie) => {
-      const Slide = document.createElement("div");
-      Slide.classList.add("swiper-slide");
-      Slide.innerHTML = `<img src="${movie.url}" alt="${movie.title}" />`;
-      swiperWrapper.appendChild(Slide);
+      const slide = document.createElement("div");
+      slide.classList.add("swiper-slide");
+      slide.innerHTML = `<img src="${movie.url}" alt="${movie.title}" />`;
+      movieSwiperWrapper.appendChild(slide);
     });
 
-    // Initialize Swiper
-    const swiper = new Swiper(".mySwiper", {
+    // Populate Events & Shows Slider
+    const eventsSwiperWrapper = document.getElementById("events-swiper-wrapper");
+    eventsAndShows.forEach((event) => {
+      const slide = document.createElement("div");
+      slide.classList.add("swiper-slide");
+      slide.innerHTML = `<img src="${event.url}" alt="${event.title}" />`;
+      eventsSwiperWrapper.appendChild(slide);
+    });
+
+    // Initialize Movie Slider
+    const movieSwiper = new Swiper(".mySwiper", {
       effect: "coverflow",
       grabCursor: true,
       slidesPerView: "auto",
@@ -28,21 +43,59 @@ document.addEventListener("DOMContentLoaded", async () => {
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
-        // dynamicBullets: true,
       },
     });
-    // Add click functionality
-    swiper.slides.forEach((slide) => {
+
+    // Initialize Events & Shows Slider
+    const eventsSwiper = new Swiper(".eventsSwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      slidesPerView: "auto",
+      loop: true,
+      centeredSlides: true,
+      centeredSlidesBounds: true,
+      updateOnWindowResize: true,
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2.79,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    // Add Click Functionality for Movie Slides
+    movieSwiper.slides.forEach((slide) => {
       slide.onclick = () => {
-        swiper.slideToLoop(slide.dataset.swiperSlideIndex);
-        swiper.update();
+        movieSwiper.slideToLoop(slide.dataset.swiperSlideIndex);
+        movieSwiper.update();
       };
     });
-    // Handle issue with the last slide click
-    swiper.on("slideChangeTransitionEnd", () => {
-      if (swiper.isEnd) {
-        swiper.loopFix();
-        swiper.update();
+
+    // Add Click Functionality for Event Slides
+    eventsSwiper.slides.forEach((slide) => {
+      slide.onclick = () => {
+        eventsSwiper.slideToLoop(slide.dataset.swiperSlideIndex);
+        eventsSwiper.update();
+      };
+    });
+
+    // Handle issue with the last slide click for Movies
+    movieSwiper.on("slideChangeTransitionEnd", () => {
+      if (movieSwiper.isEnd) {
+        movieSwiper.loopFix();
+        movieSwiper.update();
+      }
+    });
+
+    // Handle issue with the last slide click for Events
+    eventsSwiper.on("slideChangeTransitionEnd", () => {
+      if (eventsSwiper.isEnd) {
+        eventsSwiper.loopFix();
+        eventsSwiper.update();
       }
     });
   } catch (error) {
