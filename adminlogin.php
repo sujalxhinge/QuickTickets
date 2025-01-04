@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            background:rgb(8, 0, 0);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,33 +43,35 @@
         }
 
         .form-group input {
-            width: 100%;
+            width: 92%;
             padding: 10px;
             font-size: 14px;
-            border: 1px solid #ccc;
+            border: 1px solid green;
             border-radius: 4px;
             outline: none;
             transition: border-color 0.3s ease;
         }
 
         .form-group input:focus {
-            border-color: #007BFF;
+            border-color:rgb(0, 0, 0);
         }
 
         .form-group .submit-btn {
-            background: #007BFF;
+            background: #4B12E7;
             color: #fff;
-            border: none;
-            padding: 10px;
+            border: 1px solid black;
+            padding: 8px 12px;
             font-size: 16px;
-            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .form-group .submit-btn:hover {
-            background: #0056b3;
+            background:rgb(0, 2, 4);
         }
 
         @media (max-width: 500px) {
@@ -88,9 +90,6 @@
     </style>
 </head>
 <body>
-    <div class="bg">
-        <img src="images icons/adminlogin.jpg" alt="">
-    </div>
     <main>
         <div class="box">
             <h2>Admin Login</h2>
