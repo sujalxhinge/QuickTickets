@@ -72,23 +72,95 @@ body {
 
 .tag1 {
   color: #ffffff;
-  padding-left: 35px;
+  justify-content: center;
+  text-align: center;
   padding-top: 30px;
+  font-family: "Poppins", serif;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: 17px;
+
+}
+
+.tag2 {
+  color: #ffffff;
+  justify-content: center;
+  text-align: center;
+  padding-top: 40px;
+  font-family: "Poppins", serif;
+  font-weight: 1000;
+  font-style: normal;
+  font-size: 17px;
+}
+.tag3 {
+  color: #ffffff;
+  justify-content: center;
+  text-align: center;
+  padding-top: 40px;
   font-family: "Poppins", serif;
   font-weight: 1000;
   font-style: normal;
   font-size: 17px;
 }
 
-.tag2 {
-  color: #ffffff;
-  padding-left: 35px;
-  padding-top: 20px;
+/*
+this section is for concert and promotion
+*/
+#promosection
+{
+  margin: 30px;
+  margin-bottom: 2px;
+  padding: 75px;
+  background-color: aliceblue;
+  border-radius: 120px;
+}
+.promo :nth-child(1)
+{
   font-family: "Poppins", serif;
-  font-weight: 1000;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  text-align: center;
+  color: rgb(1, 10, 10);
+}
+.promo :nth-child(2)
+{
+  font-family: "Poppins", serif;
+  font-weight: 700;
   font-style: normal;
   font-size: 17px;
+  text-align: center;
+  color: #200b4c;
 }
+.listproduct button
+{
+  padding: 8px 12px;
+  border: 2px solid black;
+  border-radius: 7px;
+  background-color: white;
+  color: black;
+  font-weight: 800;
+  font-style: normal;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 450px;
+  margin-top: 15px;
+
+}
+.listproduct button:hover
+{
+  background-color: black;
+  color: white;
+}
+
+hr{
+  display: flex;
+  width: 40%;
+  margin-left: 390px;
+ margin-top: 20px;
+}
+
+
 
 /* Adjust container to center content */
 .container {
