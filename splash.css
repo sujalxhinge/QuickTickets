@@ -14,7 +14,6 @@
   --primary: #6e4bec;
   --border: #200b4c;
 }
-
 ::-webkit-scrollbar {
   width: 0;
 }
@@ -338,3 +337,5 @@ footer.copyright .footer-bottom {
     height: 350px;
   }
 }
+
+
