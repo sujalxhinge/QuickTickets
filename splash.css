@@ -79,7 +79,6 @@ body {
   font-weight: 1000;
   font-style: normal;
   font-size: 17px;
-
 }
 
 .tag2 {
@@ -98,24 +97,22 @@ body {
   text-align: center;
   padding-top: 40px;
   font-family: "Poppins", serif;
-  font-weight: 1000;
+  font-weight: 900;
   font-style: normal;
-  font-size: 17px;
+  font-size: 19px;
 }
 
 /*
 this section is for concert and promotion
 */
-#promosection
-{
+#promosection {
   margin: 30px;
   margin-bottom: 2px;
   padding: 75px;
   background-color: aliceblue;
   border-radius: 120px;
 }
-.promo :nth-child(1)
-{
+.promo :nth-child(1) {
   font-family: "Poppins", serif;
   font-weight: 700;
   font-style: normal;
@@ -123,8 +120,7 @@ this section is for concert and promotion
   text-align: center;
   color: rgb(1, 10, 10);
 }
-.promo :nth-child(2)
-{
+.promo :nth-child(2) {
   font-family: "Poppins", serif;
   font-weight: 700;
   font-style: normal;
@@ -132,8 +128,7 @@ this section is for concert and promotion
   text-align: center;
   color: #200b4c;
 }
-.listproduct button
-{
+.listproduct button {
   padding: 8px 12px;
   border: 2px solid black;
   border-radius: 7px;
@@ -145,22 +140,49 @@ this section is for concert and promotion
   transition: all 0.3s ease;
   margin-left: 450px;
   margin-top: 15px;
-
 }
-.listproduct button:hover
-{
+.listproduct button:hover {
   background-color: black;
   color: white;
 }
 
-hr{
+hr {
   display: flex;
   width: 40%;
   margin-left: 390px;
- margin-top: 20px;
+  margin-top: 20px;
+}
+/*Ticket booking reference*/
+#bookticket {
+  margin: 30px;
+  padding: 296px;
+  margin-left: 25px;
+  background-color: aliceblue;
+  border-radius: 120px; /* Rounded corners for the section */
+  text-align: center; /* Center-align the content */
+  position: relative; /* Ensure relative positioning for contained elements */
+  overflow: hidden; /* Prevent any overflow of child elements */
+  width: 96%; /* Ensure the section spans the full width */
+  height: auto; /* Automatically adapt height based on content */
 }
 
+.buybg {
+  position: absolute; /* Make it relative to #bookticket */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make the image span the entire width of the section */
+  height: 100%; /* Make the image span the entire height of the section */
+  overflow: hidden; /* Crop any overflowing content */
+  border-radius: inherit; /* Match the section's border radius */
+}
 
+.buybg img {
+  width: 100%; /* Make the image responsive to its container */
+  height: 100%; /* Stretch the image to fit the container height */
+  object-fit: cover; /* Ensure the image fills the section without distortion */
+  object-position: center; /* Center the image within the container */
+}
+/*Admin login*/
 
 /* Adjust container to center content */
 .container {
@@ -170,7 +192,97 @@ hr{
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
+  height: 80vh; /* Full viewport height */
+}
+/*admin  login link*/
+.adminlink {
+  text-align: center; /* Center the content */
+  margin: 20px 0; /* Add spacing around the content */
+}
+
+.login-link {
+  color: #ffffff; /* Link color */
+  font-size: 16px; /* Adjust font size */
+  font-weight: 100px; /* Make the link stand out */
+  text-decoration: none; /* Remove underline */
+}
+
+.login-link:hover {
+  color: #4914c7; /* Change color on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+/*copyright css*/
+footer.copyright {
+  background-color: #2f2f2f;
+  color: white;
+  padding: 15px 10px;
+  text-align: left;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  padding: 17px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+  color: #ccc;
+}
+
+.footer-section ul {
+  list-style-type: none;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+}
+
+.footer-section ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-section .socials a {
+  color: #775fef;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.footer-section .socials a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: #ccc;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+}
+
+footer.copyright .footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  margin-top: 20px;
 }
 
 /* Expanded slider dimensions */
