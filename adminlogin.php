@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background:rgb(8, 0, 0);
+            background:rgb(245, 169, 7);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,7 +20,7 @@
             background: #fff;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(206, 245, 14, 0.1);
             max-width: 400px;
             width: 100%;
         }
