@@ -24,7 +24,28 @@
           <input type="text" placeholder="Search..." />
         </div>
           <!-- Location Button -->
-          
+          <div class="dropdown">
+            <span class="dropdown-text" onclick="toggleDropdown()">Location</span>
+            <div class="dropdown-box" id="dropdown-box">
+              <div class="close-btn">
+                <span onclick="toggleDropdown()">Close</span>
+              </div>
+              <div class="grid">
+                <div class="city"><i class="fas fa-city"></i>Mumbai</div>
+                <div class="city"><i class="fas fa-landmark"></i>Pune</div>
+                <div class="city"><i class="fas fa-building"></i>Nagpur</div>
+                <div class="city"><i class="fas fa-tree"></i>Nashik</div>
+                <div class="city"><i class="fas fa-university"></i>Aurangabad</div>
+                <div class="city"><i class="fas fa-hotel"></i>Solapur</div>
+                <div class="city"><i class="fas fa-monument"></i>Kolhapur</div>
+                <div class="city"><i class="fas fa-water"></i>Thane</div>
+                <div class="city"><i class="fas fa-home"></i>Amravati</div>
+                <div class="city"><i class="fas fa-cogs"></i>Latur</div>
+              </div>
+            </div>
+          </div>
+        <div class="listproduct">
+          <a href="listproduct.php">List Product</a>
         </div>
         <!-- this code is for the user icon-->
         <div class="user-icon">
@@ -33,9 +54,6 @@
           </a>
         </div>
         
-        <div class="listproduct">
-          <a href="listproduct.php">List Product</a>
-        </div>
       </nav>
     </header>
     <main>
@@ -120,6 +138,27 @@
           }
         }
       });
+    </script>
+    <!--this is the another script tag for the location-->
+     <script>
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown-box");
+        if (dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        } else {
+          dropdown.style.display = "block";
+        }
+      }
+  
+      // Close the dropdown if clicked outside
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-text') && !event.target.matches('.city') && !event.target.matches('.close-btn span')) {
+          const dropdown = document.getElementById("dropdown-box");
+          if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+          }
+        }
+      }
     </script>
   </body>
 </html>
