@@ -52,50 +52,7 @@ body {
   gap: 15px;
 }
 
-.navbar .location {
-  position: relative;
-}
 
-.navbar .location button {
-  padding: 9px 12px;
-  border: 2px solid black;
-  border-radius: 7px;
-  background-color: white;
-  color: black;
-  font-weight: 600;
-  font-style: normal;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.navbar .location button:hover {
-  background-color: black;
-  color: rgb(0, 0, 0);
-}
-
-.navbar .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  min-width: 150px;
-}
-
-.navbar .dropdown-content a {
-  color: black;
-  padding: 8px 12px;
-  display: block;
-  text-decoration: none;
-}
-
-.navbar .dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.navbar .location:hover .dropdown-content {
-  display: block;
-}
 
 .search-bar {
   flex: 1;
@@ -110,52 +67,56 @@ body {
   border-radius: 7px;
 }
 
-.profile-icon {
-  position: relative;
-  cursor: pointer;
-}
-
-.profile-icon img {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.profile-icon:hover img {
-  transform: scale(1.2);
-}
-
-.profile-icon .dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  min-width: 150px;
-}
-
-.profile-icon .dropdown-content a {
-  color: black;
-  padding: 8px 12px;
-  display: block;
-  text-decoration: none;
-}
-
-.profile-icon .dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.profile-icon:hover .dropdown-content {
-  display: block;
-}
-
 hr {
   display: flex;
   width: 40%;
   margin-left: 390px;
   margin-top: 20px;
+}
+.categories {
+    display: flex; /* Aligns links horizontally */
+    gap: 7px; /* Space between the links */
+    justify-content: center; /* Centers the links horizontally */
+    padding: 10px; /* Adds padding around the entire category section */
+  }
+
+  .categories a {
+    font-size: 12px; /* Smaller font size */
+    color: #333; /* Default text color */
+    text-decoration: none; /* Removes underline */
+    padding: 5px 10px; /* Adds padding inside each link for better click area */
+    border: 1px solid #cccccc; /* Adds a light border around each link */
+    border-radius: 9px; /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+
+  .categories a:hover {
+    background-color: #fe0000; /* Blue background on hover */
+    color: #fff; /* White text color on hover */
+    border-color: #000408; /* Changes border color on hover */
+    transform: scale(1.1); /* Slightly enlarges the link */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
+  }
+  .listproduct a
+{
+color: #200b4c;
+padding-right: 80px;
+}
+  /* User Icon Styling */
+.user-icon {
+margin-left: auto; /* Align to the end of the navbar */
+padding-right: 10px; /* Add some space to the right */
+}
+
+.user-icon a {
+display: inline-block; /* Ensures the hover effect applies to the link */
+color: #000; /* Black color for the icon */
+transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+}
+
+.user-icon a:hover {
+color: #1c0404; /* Change color to red on hover */
+transform: scale(1.2); /* Slight zoom effect on hover */
 }
 
 /*main css*/

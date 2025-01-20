@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies Shows Events</title>
-    <link rel="stylesheet" href="dash.css" />
+    <link rel="stylesheet" href="dashboard.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -12,38 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <style>
-    .categories {
-      display: flex; /* Aligns links horizontally */
-      gap: 7px; /* Space between the links */
-      justify-content: center; /* Centers the links horizontally */
-      padding: 10px; /* Adds padding around the entire category section */
-    }
-
-    .categories a {
-      font-size: 12px; /* Smaller font size */
-      color: #333; /* Default text color */
-      text-decoration: none; /* Removes underline */
-      padding: 5px 10px; /* Adds padding inside each link for better click area */
-      border: 1px solid #cccccc; /* Adds a light border around each link */
-      border-radius: 9px; /* Rounded corners */
-      transition: all 0.3s ease; /* Smooth transition for hover effect */
-    }
-
-    .categories a:hover {
-      background-color: #fe0000; /* Blue background on hover */
-      color: #fff; /* White text color on hover */
-      border-color: #000408; /* Changes border color on hover */
-      transform: scale(1.1); /* Slightly enlarges the link */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
-    }
-    .listproduct a
-{
-  color: #200b4c;
-  padding-right: 80px;
-}
-    
-    </style>
+  
   </head>
   <body>
     <header>
@@ -55,33 +24,15 @@
           <input type="text" placeholder="Search..." />
         </div>
           <!-- Location Button -->
-          <div class="dropdown">
-            <span class="dropdown-text">Location</span>
-            <div class="dropdown-content">
-              <a href="#pune-subcity1">Pune Subcity 1</a>
-              <a href="#pune-subcity2">Pune Subcity 2</a>
-              <a href="#pune-subcity3">Pune Subcity 3</a>
-              <a href="#pune-subcity4">Pune Subcity 4</a>
-              <a href="#pune-subcity5">Pune Subcity 5</a>
-              <a href="#pune-subcity6">Pune Subcity 6</a>
-              <a href="#pune-subcity7">Pune Subcity 7</a>
-              <a href="#pune-subcity8">Pune Subcity 8</a>
-              <a href="#pune-subcity9">Pune Subcity 9</a>
-              <a href="#pune-subcity10">Pune Subcity 10</a>
-            </div>
-          </div>
-          <!-- User Icon -->
-          <div class="dropdown profile-menu">
-            <i class="fa-solid fa-circle-user fa-2x dropdown-button"></i>
-            <div class="dropdown-content">
-              <a href="userprofile.php">User Profile</a>
-              <a href="contactus.php">Contact Us</a>
-              <a href="aboutus.html">About Us</a>
-              <a href="#list-your-show">List Your Show</a>
-              <a href="splash.html">Exit</a>
-            </div>
-          </div>
+          
         </div>
+        <!-- this code is for the user icon-->
+        <div class="user-icon">
+          <a href="userprofile.php">
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+          </a>
+        </div>
+        
         <div class="listproduct">
           <a href="listproduct.php">List Product</a>
         </div>
