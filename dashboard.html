@@ -4,7 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies Shows Events</title>
-    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="dash.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+    .categories {
+      display: flex; /* Aligns links horizontally */
+      gap: 7px; /* Space between the links */
+      justify-content: center; /* Centers the links horizontally */
+      padding: 10px; /* Adds padding around the entire category section */
+    }
+
+    .categories a {
+      font-size: 12px; /* Smaller font size */
+      color: #333; /* Default text color */
+      text-decoration: none; /* Removes underline */
+      padding: 5px 10px; /* Adds padding inside each link for better click area */
+      border: 1px solid #cccccc; /* Adds a light border around each link */
+      border-radius: 9px; /* Rounded corners */
+      transition: all 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .categories a:hover {
+      background-color: #fe0000; /* Blue background on hover */
+      color: #fff; /* White text color on hover */
+      border-color: #000408; /* Changes border color on hover */
+      transform: scale(1.1); /* Slightly enlarges the link */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
+    }
+    .listproduct a
+{
+  color: #200b4c;
+  padding-right: 80px;
+}
+    
+    </style>
   </head>
   <body>
     <header>
@@ -15,22 +54,10 @@
         <div class="search-bar">
           <input type="text" placeholder="Search..." />
         </div>
-        <div class="menu-items">
+          <!-- Location Button -->
           <div class="dropdown">
-            <button class="dropdown-button">Category</button>
+            <span class="dropdown-text">Location</span>
             <div class="dropdown-content">
-              <a href="#movies">Movies</a>
-              <a href="#events">Events</a>
-              <a href="#shows">Shows</a>
-              <a href="#sports">Sports</a>
-              <a href="#standupcomedy">Stand-Up Comedy</a>
-              <a href="#concerts">Concerts</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropdown-button">Location</button>
-            <div class="dropdown-content">
-              <a href="#pune">Pune</a>
               <a href="#pune-subcity1">Pune Subcity 1</a>
               <a href="#pune-subcity2">Pune Subcity 2</a>
               <a href="#pune-subcity3">Pune Subcity 3</a>
@@ -43,30 +70,33 @@
               <a href="#pune-subcity10">Pune Subcity 10</a>
             </div>
           </div>
-          <div class="profile-menu">
-            <img src="images icons/usericon.png" alt="User Profile" class="profile-icon" />
+          <!-- User Icon -->
+          <div class="dropdown profile-menu">
+            <i class="fa-solid fa-circle-user fa-2x dropdown-button"></i>
             <div class="dropdown-content">
-              <a href="#user-profile">User Profile</a>
-              <a href="#contact-us">Contact Us</a>
-              <a href="#about-us">About Us</a>
+              <a href="userprofile.php">User Profile</a>
+              <a href="contactus.php">Contact Us</a>
+              <a href="aboutus.html">About Us</a>
               <a href="#list-your-show">List Your Show</a>
-              <a href="#exit">Exit</a>
+              <a href="splash.html">Exit</a>
             </div>
           </div>
+        </div>
+        <div class="listproduct">
+          <a href="listproduct.php">List Product</a>
         </div>
       </nav>
     </header>
     <main>
-        <h1 style="color: rgb(1, 4, 7);">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
-        <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ad.</h1>
+      <div class="categories">
+        <a href="#movies">Movies</a>
+        <a href="#events">Events</a>
+        <a href="#shows">Shows</a>
+        <a href="#sports">Sports</a>
+        <a href="#standupcomedy">Stand-Up Comedy</a>
+        <a href="#concerts">Concerts</a>
+      </div>
+      
     </main>
     <footer class="copyright">
       <div class="footer-content">
@@ -93,15 +123,20 @@
             <li><a href="/privacy-policy">Privacy Policy</a></li>
             <li><a href="/terms-of-service">Terms of Service</a></li>
             <li><a href="contactus.php">Contact Us</a></li>
+            <li><a href="aboutus.html"> About Us</a></li>
           </ul>
         </div>
 
         <div class="footer-section contact">
           <h4>Contact Us</h4>
-          <p>Email: sujalhinge@gmail.com</p>
-          <p>Phone: (123) 456-7890</p>
+          <p>Email: sujalhinge079@gmail.com</p>
+          <p>Phone: (+91) 8329583876</p>
           <div class="socials">
-            <a href="https://www.linkedin.com/in/sujal-hinge-08a500256" target="_blank">LinkedIn</a>
+            <a
+              href="https://www.linkedin.com/in/sujal-hinge-08a500256"
+              target="_blank"
+              >LinkedIn</a
+            >
             <a href="https://www.twitter.com" target="_blank">Twitter</a>
           </div>
         </div>
@@ -115,5 +150,25 @@
       </div>
     </footer>
 
+    <!-- JavaScript -->
+    <script>
+      document.addEventListener("click", function (event) {
+        // Close all dropdowns if clicking outside
+        document.querySelectorAll(".dropdown-content").forEach((dropdown) => {
+          if (!dropdown.parentElement.contains(event.target)) {
+            dropdown.style.display = "none";
+          }
+        });
+
+        // Toggle the clicked dropdown
+        if (event.target.classList.contains("dropdown-button")) {
+          const dropdownContent = event.target.nextElementSibling;
+          if (dropdownContent) {
+            dropdownContent.style.display =
+              dropdownContent.style.display === "block" ? "none" : "block";
+          }
+        }
+      });
+    </script>
   </body>
 </html>

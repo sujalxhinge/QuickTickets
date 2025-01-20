@@ -14,6 +14,7 @@
   --primary: #6e4bec;
   --border: #200b4c;
 }
+
 ::-webkit-scrollbar {
   width: 0;
 }
@@ -51,12 +52,10 @@ body {
   gap: 15px;
 }
 
-.navbar .category,
 .navbar .location {
   position: relative;
 }
 
-.navbar .category button,
 .navbar .location button {
   padding: 9px 12px;
   border: 2px solid black;
@@ -69,7 +68,6 @@ body {
   transition: all 0.3s ease;
 }
 
-.navbar .category button:hover,
 .navbar .location button:hover {
   background-color: black;
   color: rgb(0, 0, 0);
@@ -95,7 +93,6 @@ body {
   background-color: #ddd;
 }
 
-.navbar .category:hover .dropdown-content,
 .navbar .location:hover .dropdown-content {
   display: block;
 }
@@ -114,52 +111,55 @@ body {
 }
 
 .profile-icon {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .profile-icon img {
-    height: 30px; /* Smaller size for the profile icon */
-    width: 30px;  /* Smaller size for the profile icon */
-    border-radius: 50%;
-    transition: transform 0.3s ease; /* Smooth scaling effect on hover */
-  }
-  
-  .profile-icon:hover img {
-    transform: scale(1.2); /* Scales the image when hovered */
-  }
-  
-  .profile-icon .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: white;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    min-width: 150px;
-  }
-  
-  .profile-icon .dropdown-content a {
-    color: black;
-    padding: 8px 12px;
-    display: block;
-    text-decoration: none;
-  }
-  
-  .profile-icon .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .profile-icon:hover .dropdown-content {
-    display: block;
-  }
-  
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-icon img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.profile-icon:hover img {
+  transform: scale(1.2);
+}
+
+.profile-icon .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  min-width: 150px;
+}
+
+.profile-icon .dropdown-content a {
+  color: black;
+  padding: 8px 12px;
+  display: block;
+  text-decoration: none;
+}
+
+.profile-icon .dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.profile-icon:hover .dropdown-content {
+  display: block;
+}
+
 hr {
   display: flex;
   width: 40%;
   margin-left: 390px;
   margin-top: 20px;
 }
+
+/*main css*/
+
 
 /*copyright css*/
 footer.copyright {
@@ -233,4 +233,78 @@ footer.copyright .footer-bottom {
   border-top: 1px solid #444;
   padding-top: 20px;
   margin-top: 20px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbar .location {
+    margin-top: 10px;
+  }
+
+  .search-bar input {
+    width: 90%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    flex: 1 1 100%;
+    padding: 10px;
+  }
+}
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .search-bar input {
+    width: 80%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    flex: 1 1 45%;
+    padding: 15px;
+  }
+}
+
+/* For larger devices (laptops and desktops) */
+@media (min-width: 1024px) {
+  .navbar {
+    flex-direction: row;
+    height: 10vh;
+    padding: 0 20px;
+  }
+
+  .search-bar input {
+    width: 60%;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-section {
+    flex: 1 1 22%;
+    padding: 17px;
+  }
 }
