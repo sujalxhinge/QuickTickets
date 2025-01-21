@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies Shows Events</title>
-    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="dash.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -25,7 +25,7 @@
         </div>
           <!-- Location Button -->
           <div class="dropdown">
-            <span class="dropdown-text" onclick="toggleDropdown()">Location</span>
+            <div class="dropdown-text" onclick="toggleDropdown()">Location</div>
             <div class="dropdown-box" id="dropdown-box">
               <div class="close-btn">
                 <span onclick="toggleDropdown()">Close</span>
@@ -57,6 +57,7 @@
       </nav>
     </header>
     <main>
+      <!--This section is for categories-->
       <div class="categories">
         <a href="#movies">Movies</a>
         <a href="#events">Events</a>
@@ -64,6 +65,11 @@
         <a href="#sports">Sports</a>
         <a href="#standupcomedy">Stand-Up Comedy</a>
         <a href="#concerts">Concerts</a>
+      </div>
+
+      <!--This section is for banner-->
+      <div class="banner">
+        <img src="images icons/banner1.jpg." alt="Banner">
       </div>
       
     </main>
@@ -142,23 +148,24 @@
     <!--this is the another script tag for the location-->
      <script>
       function toggleDropdown() {
-        const dropdown = document.getElementById("dropdown-box");
-        if (dropdown.style.display === "block") {
-          dropdown.style.display = "none";
-        } else {
-          dropdown.style.display = "block";
-        }
-      }
-  
-      // Close the dropdown if clicked outside
-      window.onclick = function(event) {
-        if (!event.target.matches('.dropdown-text') && !event.target.matches('.city') && !event.target.matches('.close-btn span')) {
-          const dropdown = document.getElementById("dropdown-box");
-          if (dropdown.style.display === "block") {
-            dropdown.style.display = "none";
-          }
-        }
-      }
+  const dropdown = document.getElementById("dropdown-box");
+  // Toggle visibility
+  if (dropdown.style.display === "block") {
+    dropdown.style.display = "none";
+  } else {
+    dropdown.style.display = "block";
+  }
+}
+
+// Close the dropdown if clicked outside
+window.onclick = function(event) {
+  if (!event.target.matches('.dropdown-text') && !event.target.matches('.city') && !event.target.matches('.close-btn span')) {
+    const dropdown = document.getElementById("dropdown-box");
+    if (dropdown.style.display === "block") {
+      dropdown.style.display = "none";
+    }
+  }
+}
     </script>
   </body>
 </html>

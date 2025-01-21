@@ -1,0 +1,395 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+:root {
+  --bg: #ffffff;
+  --primary: #6e4bec;
+  --border: #200b4c;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  font-family: "Poppins", serif;
+  background: var(--bg);
+  
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  height: 10vh;
+  width: 100%;
+  padding: 0 20px;
+  border: 1px solid black;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.navbar div {
+  display: flex;
+  gap: 15px;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 7px;
+}
+
+hr {
+  display: flex;
+  width: 40%;
+  margin-left: 390px;
+  margin-top: 20px;
+}
+.categories {
+  display: flex; /* Aligns links horizontally */
+  gap: 7px; /* Space between the links */
+  justify-content: center; /* Centers the links horizontally */
+  padding: 10px; /* Adds padding around the entire category section */
+}
+
+.categories a {
+  font-size: 12px; /* Smaller font size */
+  color: #333; /* Default text color */
+  text-decoration: none; /* Removes underline */
+  padding: 5px 10px; /* Adds padding inside each link for better click area */
+  border: 1px solid #cccccc; /* Adds a light border around each link */
+  border-radius: 9px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.categories a:hover {
+  background-color: #fe0000; /* Blue background on hover */
+  color: #fff; /* White text color on hover */
+  border-color: #000408; /* Changes border color on hover */
+  transform: scale(1.1); /* Slightly enlarges the link */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for emphasis */
+}
+.listproduct a {
+  color: #200b4c;
+  padding-right: 80px;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 0px 12px;
+  text-decoration: none;
+  transition: 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  font-weight: 400;
+  color: rgb(51, 51, 51);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.listproduct a:hover {
+    color: rgb(127, 89, 167); /* Change text color on hover */
+    }
+/* User Icon Styling */
+.user-icon {
+  margin-left: auto; /* Align to the end of the navbar */
+  padding-right: 10px; /* Add some space to the right */
+}
+
+.user-icon a {
+  display: inline-block; /* Ensures the hover effect applies to the link */
+  color: #000; /* Black color for the icon */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+}
+
+.user-icon a:hover {
+  color: #1c0404; /* Change color to red on hover */
+  transform: scale(0.9); /* Slight zoom effect on hover */
+}
+
+
+/*location*/
+.dropdown-text {
+  padding: 15px 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 400;
+  color: rgb(51, 51, 51);
+  border: none;
+  position: relative;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.dropdown-text:hover {
+  color: rgb(127, 89, 167); /* Change text color on hover */
+  }
+.dropdown-box {
+  display: none;
+  position: fixed;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  border-radius: 20px;
+  padding: 20px;
+  width: 1000px; /* Increased the width to fit 10 items */
+  text-align: center;
+  overflow-x: auto;
+}
+
+.dropdown-box .grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10 columns */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dropdown-box .grid .city {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hover effect */
+.dropdown-box .grid .city i {
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.dropdown-box .grid .city:hover {
+  background-color: #fe0000;
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+.dropdown-box::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 10px);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+}
+
+.close-btn {
+  position: absolute;
+  top: 3px;
+  right: 22px;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.close-btn span {
+  cursor: pointer;
+  font-size: 15px;
+  color: #000;
+}
+
+.close-btn span:hover {
+  color: red;
+}
+
+
+/*main css*/
+.banner {
+    margin-top: 1vh;
+    margin-bottom: 20vh;
+    padding-left: 10px; /* Updated padding */
+    padding-right: 10px; /* Updated padding */
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center-align image horizontally */
+    align-items: center; /* Center-align image vertically */
+  }
+  
+  .banner img {
+    max-height: 40%;
+    max-width: 100%; /* Ensure image doesn't overflow */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; /* If needed, keep rounded corners for image */
+  }
+  
+
+/*copyright css*/
+footer.copyright {
+  background-color: #2f2f2f;
+  color: white;
+  padding: 15px 10px;
+  text-align: left;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+  padding: 17px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+  color: #ccc;
+}
+
+.footer-section ul {
+  list-style-type: none;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+}
+
+.footer-section ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-section .socials a {
+  color: #775fef;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.footer-section .socials a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: #ccc;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+}
+
+footer.copyright .footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbar .location {
+    margin-top: 10px;
+  }
+
+  .search-bar input {
+    width: 90%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    flex: 1 1 100%;
+    padding: 10px;
+  }
+}
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .search-bar input {
+    width: 80%;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    flex: 1 1 45%;
+    padding: 15px;
+  }
+}
+
+/* For larger devices (laptops and desktops) */
+@media (min-width: 1024px) {
+  .navbar {
+    flex-direction: row;
+    height: 10vh;
+    padding: 0 20px;
+  }
+
+  .search-bar input {
+    width: 60%;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-section {
+    flex: 1 1 22%;
+    padding: 17px;
+  }
+}
