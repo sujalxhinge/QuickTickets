@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickTickets - Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a6eaea;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            
+        }
+        /* Animated Title */
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(45deg, #007bff, #ff416c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInScale 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+          
+           
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            padding-right: 0px;
+        }
+        button {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px;
+            margin-left: 280px;
+            margin-right: 280px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        button:hover {
+            background-color: #e11616;
+        }
+        small {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Your Product</h1>
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
+            <label for="event-type">Type of Event</label>
+            <select id="event-type" name="event_type" required>
+                <option value="">Select Type</option>
+                <option value="movies">Movies</option>
+                <option value="events">Events</option>
+                <option value="shows">Shows</option>
+                <option value="concerts">Concerts</option>
+                <option value="standupcomedy">Standup Comedy</option>
+                <option value="sports">Sports</option>
+            </select>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Enter a brief description of the show" required></textarea>
+
+            <label for="duration">Duration (in minutes)</label>
+            <input type="number" id="duration" name="duration" placeholder="Enter duration in minutes" required>
+
+            <label for="language">Language</label>
+            <input type="text" id="language" name="language" placeholder="Enter the language(s) (e.g., English, Hindi)" required>
+
+            <label for="price">Price (per ticket in $)</label>
+            <input type="number" id="price" name="price" placeholder="Enter price" required>
+
+            <label for="rating">Rating</label>
+            <input type="text" id="rating" name="rating" placeholder="Enter rating (e.g., G, PG, 18+)" required>
+
+            <label for="location">Location</label>
+            <textarea id="location" name="location" placeholder="Enter Location details (comma-separated for movies or key people for other events)" required></textarea>
+
+            <label for="photo">Add Photo (Max size: 5 MB)</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+            <small>Ensure the photo size is less than 5 MB.</small>
+
+            <button type="submit">Save Details</button>
+        </form>
+    </div>
+</body>
+</html>
