@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background:rgb(245, 169, 7);
+            background:rgb(255, 255, 255);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,12 +23,14 @@
             box-shadow: 0 4px 8px rgba(206, 245, 14, 0.1);
             max-width: 400px;
             width: 100%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
         }
 
         .box h2 {
             text-align: center;
             margin-bottom: 20px;
             color: #333;
+            
         }
 
         .form-group {
