@@ -19,7 +19,6 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
             padding: 20px;
             text-align: center;
-            
         }
         /* Animated Title */
         h1 {
@@ -56,13 +55,10 @@
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-          
-           
         }
         textarea {
             resize: vertical;
             min-height: 80px;
-            padding-right: 0px;
         }
         button {
             background-color: #000000;
@@ -81,16 +77,12 @@
         button:hover {
             background-color: #e11616;
         }
-        small {
-            color: #666;
-            font-size: 0.9em;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Add Your Product</h1>
-        <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <form action="upload.php" method="POST">
             <label for="event-type">Type of Event</label>
             <select id="event-type" name="event_type" required>
                 <option value="">Select Type</option>
@@ -120,9 +112,13 @@
             <label for="location">Location</label>
             <textarea id="location" name="location" placeholder="Enter Location details (comma-separated for movies or key people for other events)" required></textarea>
 
-            <label for="photo">Add Photo (Max size: 5 MB)</label>
-            <input type="file" id="photo" name="photo" accept="image/*" required>
-            <small>Ensure the photo size is less than 5 MB.</small>
+            <!-- New Field: Theater Name -->
+            <label for="theater">Theater Name</label>
+            <input type="text" id="theater_name" name="theater_name" placeholder="Enter Theater Name" required>
+
+            <!-- New Field: Movie Time -->
+            <label for="movie-time">Movie Time</label>
+            <input type="text" id="movie-time" name="movie_time" placeholder="Enter Movie Time (e.g., 6:00 PM, 9:30 AM)" required>
 
             <button type="submit">Save Details</button>
         </form>

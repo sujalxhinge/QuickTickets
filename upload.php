@@ -12,61 +12,37 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// File size constraint
-define("MAX_FILE_SIZE", 5 * 1024 * 1024); // 5 MB
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $event_type = $_POST['event_type'];
-    $description = $_POST['description'];
-    $duration = $_POST['duration'];
-    $language = $_POST['language'];
-    $price = $_POST['price'];
-    $rating = $_POST['rating'];
-    $cast = $_POST['location'];
+    // Validate input fields
+    $event_type = isset($_POST['event_type']) ? trim($_POST['event_type']) : "";
+    $description = isset($_POST['description']) ? trim($_POST['description']) : "";
+    $duration = isset($_POST['duration']) ? (int)$_POST['duration'] : 0;
+    $language = isset($_POST['language']) ? trim($_POST['language']) : "";
+    $price = isset($_POST['price']) ? (float)$_POST['price'] : 0.0;
+    $rating = isset($_POST['rating']) ? trim($_POST['rating']) : "";
+    $location = isset($_POST['location']) ? trim($_POST['location']) : "";
+    $theater_name = isset($_POST['theater_name']) ? trim($_POST['theater_name']) : "";
+    $movie_time = isset($_POST['movie_time']) ? trim($_POST['movie_time']) : "";
 
-    // Handle file upload
-    if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-        $file_tmp = $_FILES['photo']['tmp_name'];
-        $file_size = $_FILES['photo']['size'];
-        $file_name = basename($_FILES['photo']['name']);
-        $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-
-        // Allowed file types
-        $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
-
-        if ($file_size > MAX_FILE_SIZE) {
-            die("File size exceeds the 5 MB limit.");
-        }
-
-        if (!in_array($file_ext, $allowed_types)) {
-            die("Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.");
-        }
-
-        $upload_dir = "uploads/";
-        if (!is_dir($upload_dir)) {
-            mkdir($upload_dir, 0777, true);
-        }
-
-        $file_path = $upload_dir . uniqid() . "." . $file_ext;
-
-        if (move_uploaded_file($file_tmp, $file_path)) {
-            echo "File uploaded successfully.<br>";
-        } else {
-            die("Failed to upload file.");
-        }
-    } else {
-        die("No file uploaded or an error occurred.");
+    // Check if required fields are empty
+    if (empty($event_type) || empty($description) || empty($language) || empty($price) || empty($rating) || empty($location) || empty($theater_name) || empty($movie_time)) {
+        die("All fields are required.");
     }
 
     // Insert data into the respective table
-    $sql = "INSERT INTO $event_type (event_type, description, duration, language, price, rating, location, photo_path)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO $event_type (event_type, description, duration, language, price, rating, location, theater_name, movie_time)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisdsss", $event_type, $description, $duration, $language, $price, $rating, $location, $file_path);
+    if (!$stmt) {
+        die("SQL Error: " . $conn->error);
+    }
+
+    $stmt->bind_param("ssisdssss", $event_type, $description, $duration, $language, $price, $rating, $location, $theater_name, $movie_time);
 
     if ($stmt->execute()) {
-        echo "Event details saved successfully.";
+        // After successful data insert, show the popup
+        echo "<script type='text/javascript'>alert('Your Data saved successfully. We will assist you in a shorter time.');</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
