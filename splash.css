@@ -90,17 +90,6 @@ body {
   font-style: normal;
   font-size: 17px;
 }
-.tag3 {
-  color: #ffffff;
-  justify-content: center;
-  text-align: center;
-  padding-top: 40px;
-  font-family: "Poppins", serif;
-  font-weight: 900;
-  font-style: normal;
-  font-size: 19px;
-}
-
 /*
 this section is for concert and promotion
 */
@@ -163,23 +152,6 @@ hr {
   overflow: hidden; /* Prevent any overflow of child elements */
   width: 96%; /* Ensure the section spans the full width */
   height: auto; /* Automatically adapt height based on content */
-}
-
-.buybg {
-  position: absolute; /* Make it relative to #bookticket */
-  top: 0;
-  left: 0;
-  width: 100%; /* Make the image span the entire width of the section */
-  height: 100%; /* Make the image span the entire height of the section */
-  overflow: hidden; /* Crop any overflowing content */
-  border-radius: inherit; /* Match the section's border radius */
-}
-
-.buybg img {
-  width: 100%; /* Make the image responsive to its container */
-  height: 100%; /* Stretch the image to fit the container height */
-  object-fit: cover; /* Ensure the image fills the section without distortion */
-  object-position: center; /* Center the image within the container */
 }
 /*Admin login*/
 
