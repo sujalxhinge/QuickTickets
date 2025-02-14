@@ -1,261 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMY - Portfolio</title>
+    <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Mono:wght@300;500&family=Poppins:wght@600&display=swap");
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AMY - Portfolio</title>
-  <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Mono:wght@300;500&family=Poppins:wght@600&display=swap');
+      /* variables */
+      :root {
+        --primary-color: #5924ed;
+        --secondary-black: #0d081a;
+        --secondary-gray: #48464b;
+        --body-bg: #efebfa;
+      }
 
-/* variables */
-:root {
-	--primary-color: #5924ed;
-	--secondary-black: #0d081a;
-	--secondary-gray: #48464b;
-	--body-bg: #efebfa;
+      /* global styles */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-family: "Roboto Mono";
+        font-size: 10px;
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: var(--body-bg);
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      a {
+        color: black;
+        text-decoration: none;
+      }
+
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 1000px;
+      }
+      p {
+        font-size: 1.6rem;
+        color: var(--secondary-black);
+      }
+      .section-heading {
+        font-size: clamp(2rem, 10vw, 8rem);
+        text-transform: uppercase;
+        font-family: "Montserrat";
+        letter-spacing: 0.2rem;
+        text-align: center;
+        position: relative;
+        margin-bottom: 3rem;
+      }
+      .section-heading::before {
+        content: attr(data-outline);
+        position: absolute;
+        left: 2%;
+        top: -20%;
+        width: 100%;
+
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Montserrat";
+        letter-spacing: 0.2rem;
+
+        color: transparent;
+        /* -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.103); */
+        -webkit-text-stroke: 1.5px #5a24ed2f;
+        z-index: -1;
+      }
+      .buttons {
+        margin-top: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+      }
+      .primary-btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 1.8rem;
+        padding: 0.6em 1.6em;
+        border-radius: 50px;
+      }
+      .buttons .primary-btn.outline {
+        background-color: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+      }
+      .buttons svg {
+        width: 50px;
+        color: var(--primary-color);
+      }
+
+      /* testimonial section */
+      #testimonial {
+        padding: 15rem 0;
+        overflow-x: hidden;
+      }
+      #testimonial .all-items {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+      }
+      #testimonial .item {
+        text-align: center;
+        position: relative;
+        padding: 20px;
+      }
+      #testimonial .item:nth-of-type(1),
+      #testimonial .item:nth-of-type(3) {
+        flex: 3;
+        transform: scale(0.8);
+      }
+      #testimonial .item:nth-of-type(2) {
+        flex: 4;
+      }
+
+      #testimonial .item::after {
+        content: "";
+        position: absolute;
+        height: 120%;
+        width: 100%;
+        /* border: 1px solid var(--primary-color); */
+        left: 0;
+        top: 45px;
+        z-index: -1;
+
+        /* border-radius: 20px 50px 100px 50px; */
+        box-shadow: 0px 0px 20px 0px #4705fc1f;
+      }
+      #testimonial .item:nth-of-type(2)::after {
+        transform: skew(350deg, 354deg);
+        border-radius: 26px 67px 35px 67px;
+        height: 100%;
+      }
+      #testimonial .item:nth-of-type(1)::after,
+      #testimonial .item:nth-of-type(3)::after {
+        transform: skew(2deg, 9deg);
+        height: 95%;
+        border-radius: 52px 30px 59px 60px;
+      }
+
+      #testimonial .img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+      }
+      #testimonial .img img {
+        object-fit: cover;
+      }
+      #testimonial .testimonial-heading {
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        font-family: "Montserrat";
+        margin-bottom: 0.5rem;
+      }
+      #testimonial .testimonial-sub-heading {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        color: var(--secondary-gray);
+      }
+      #testimonial .icon {
+        max-width: 25px;
+        margin: 1.5rem auto;
+        opacity: 0.5;
+        color: var(--primary-color);
+      }
+      #testimonial .testimonial-desc {
+        color: var(--secondary-gray);
+      }
+      @media only screen and (max-width: 950px) {
+        #testimonial .all-items {
+          flex-direction: column;
+          max-width: 400px;
+          margin: 0rem auto;
+          gap: 50px;
+        }
+      }
+	  .review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto 5rem;
 }
 
-/* global styles */
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-html {
-	font-family: 'Roboto Mono';
-	font-size: 10px;
-	scroll-behavior: smooth;
-}
-body {
-	background-color: var(--body-bg);
-}
-img {
-	width: 100%;
-	height: 100%;
-}
-a {
-	color: black;
-	text-decoration: none;
+/* Transparent Input Fields & Textarea */
+.review-form input,
+.review-form textarea {
+    font-size: 1.6rem;
+    padding: 10px;
+    border: 2px solid rgb(179, 224, 245);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent background */
+    color: #fff; /* Text color */
+    outline: none;
+    transition: all 0.3s ease-in-out;
 }
 
-section {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+/* Placeholder Styling */
+.review-form input::placeholder,
+.review-form textarea::placeholder {
+    color: rgba(0, 0, 0, 0.6);
 }
-.container {
-	width: 90%;
-	margin: 0 auto;
-	max-width: 1000px;
-}
-p {
-	font-size: 1.6rem;
-	color: var(--secondary-black);
-}
-.section-heading {
-	font-size: clamp(2rem, 10vw, 8rem);
-	text-transform: uppercase;
-	font-family: 'Montserrat';
-	letter-spacing: 0.2rem;
-	text-align: center;
-	position: relative;
-	margin-bottom: 10rem;
-}
-.section-heading::before {
-	content: attr(data-outline);
-	position: absolute;
-	left: 2%;
-	top: -20%;
-	width: 100%;
 
-	text-align: center;
-	text-transform: uppercase;
-	font-family: 'Montserrat';
-	letter-spacing: 0.2rem;
+/* Focus Effect */
+.review-form input:focus,
+.review-form textarea:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #f31717;
+    box-shadow: 0 0 10px rgba(243, 23, 23, 0.5);
+}
 
-	color: transparent;
-	/* -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.103); */
-	-webkit-text-stroke: 1.5px #5a24ed2f;
-	z-index: -1;
+/* Adjusted Textarea Height */
+.review-form textarea {
+    height: 50px;
+    resize: none;
 }
-.buttons {
-	margin-top: 3rem;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	gap: 2rem;
-}
+
+/* Small & Stylish Button */
 .primary-btn {
-	display: inline-block;
-	background-color: var(--primary-color);
-	color: white;
-	font-size: 1.8rem;
-	padding: 0.6em 1.6em;
-	border-radius: 50px;
-}
-.buttons .primary-btn.outline {
-	background-color: transparent;
-	border: 2px solid var(--primary-color);
-	color: var(--primary-color);
-}
-.buttons svg {
-	width: 50px;
-	color: var(--primary-color);
+    background-color: black;
+    color: white;
+    font-size: 1.4rem; /* Smaller Font */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 6px 12px; /* Smaller Padding */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 120px; /* Reduced Width */
+    align-self: center; /* Centering */
+    transition: all 0.3s ease-in-out;
 }
 
-/* testimonial section */
-#testimonial {
-	padding: 15rem 0;
-	overflow-x: hidden;
-}
-#testimonial .all-items {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 3rem;
-}
-#testimonial .item {
-	text-align: center;
-	position: relative;
-	padding: 20px;
-}
-#testimonial .item:nth-of-type(1),
-#testimonial .item:nth-of-type(3) {
-	flex: 3;
-	transform: scale(0.8);
-}
-#testimonial .item:nth-of-type(2) {
-	flex: 4;
+/* Animated Hover Effect */
+.primary-btn:hover {
+    background-color: #f31717;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 15px rgba(243, 23, 23, 0.4);
 }
 
-#testimonial .item::after {
-	content: '';
-	position: absolute;
-	height: 120%;
-	width: 100%;
-	/* border: 1px solid var(--primary-color); */
-	left: 0;
-	top: 45px;
-	z-index: -1;
+    </style>
+  </head>
 
-	/* border-radius: 20px 50px 100px 50px; */
-	box-shadow: 0px 0px 20px 0px #4705fc1f;
-}
-#testimonial .item:nth-of-type(2)::after {
-	transform: skew(350deg, 354deg);
-	border-radius: 26px 67px 35px 67px;
-	height: 100%;
-}
-#testimonial .item:nth-of-type(1)::after,
-#testimonial .item:nth-of-type(3)::after {
-	transform: skew(2deg, 9deg);
-	height: 95%;
-	border-radius: 52px 30px 59px 60px;
-}
-
-#testimonial .img {
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	overflow: hidden;
-	margin: 0 auto;
-	margin-bottom: 2rem;
-}
-#testimonial .img img {
-	object-fit: cover;
-}
-#testimonial .testimonial-heading {
-	font-size: 2.4rem;
-	text-transform: uppercase;
-	font-family: 'Montserrat';
-	margin-bottom: 0.5rem;
-}
-#testimonial .testimonial-sub-heading {
-	font-size: 1.6rem;
-	margin-bottom: 1rem;
-	color: var(--secondary-gray);
-}
-#testimonial .icon {
-	max-width: 25px;
-	margin: 1.5rem auto;
-	opacity: 0.5;
-	color: var(--primary-color);
-}
-#testimonial .testimonial-desc {
-	color: var(--secondary-gray);
-}
-@media only screen and (max-width: 950px) {
-	#testimonial .all-items {
-		flex-direction: column;
-		max-width: 400px;
-		margin: 0rem auto;
-		gap: 50px;
-	}
-}
-
-
-  </style>
-</head>
-
-<body>
-  <!-- Testimonial Section -->
-  <section id="testimonial">
+  <body>
     <div class="container">
-      <h1 class="section-heading" data-outline="Testimonial">Testimonial</h1>
-      <div class="all-items">
-        <div class="item">
-          <div class="img">
-            <img src="images icons/ovi.jpg" alt="">
+      <h2 class="section-heading" data-outline="Add Review">Add Review</h2>
+      <form action="submit_review.php" method="POST" class="review-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input
+          type="text"
+          name="role"
+          placeholder="Your Role (e.g., Customer)"
+          required
+        />
+        <textarea
+          name="review"
+          placeholder="Write your review here..."
+          required
+        ></textarea>
+        <button type="submit" class="primary-btn">Submit</button>
+      </form>
+    </div>
+    <!-- Testimonial Section -->
+    <section id="testimonial">
+      <div class="container">
+        <h1 class="section-heading" data-outline="Testimonial">Testimonial</h1>
+        <div class="all-items">
+          <div class="item">
+            <div class="img">
+              <img src="images icons/ovi.jpg" alt="" />
+            </div>
+            <h3 class="testimonial-heading">Ovi Barve</h3>
+            <p class="testimonial-sub-heading">Customer QuickTickets</p>
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                />
+              </svg>
+            </div>
+            <p class="testimonial-desc">
+              ⭐⭐⭐⭐⭐<br />
+              "QuickTickets made booking tickets for my favorite concert so
+              easy! The interface is clean, and everything is so intuitive. I
+              didn’t experience any lag while browsing the events. I love how it
+              allows for a variety of events like concerts, movies, and sports."
+            </p>
           </div>
-          <h3 class="testimonial-heading">Ovi Barve</h3>
-          <p class="testimonial-sub-heading">Customer QuickTickets</p>
-          <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-            </svg>
+          <div class="item">
+            <div class="img">
+              <img src="images icons/sujal.jpg" alt="" />
+            </div>
+            <h3 class="testimonial-heading">Sujal Hinge</h3>
+            <p class="testimonial-sub-heading">Owner QuickTickets</p>
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                />
+              </svg>
+            </div>
+            <p class="testimonial-desc">
+              ⭐⭐⭐⭐⭐<br />
+              "I recently used QuickTickets, and the process was smooth. The
+              website has a great selection of events, and the user experience
+              is pretty seamless. I appreciate how quickly I was able to
+              complete my purchase."
+            </p>
           </div>
-          <p class="testimonial-desc">⭐⭐⭐⭐⭐<br>
-            "QuickTickets made booking tickets for my favorite concert so easy! The interface is clean, and everything is so intuitive. I didn’t experience any lag while browsing the events. I love how it allows for a variety of events like concerts, movies, and sports."
-            
-             </p>
-        </div>
-        <div class="item">
-          <div class="img">
-            <img src="images icons/sujal.jpg" alt="">
+          <div class="item">
+            <div class="img">
+              <img src="images icons/sanket.jpg" alt="" />
+            </div>
+            <h3 class="testimonial-heading">Sanket shinde</h3>
+            <p class="testimonial-sub-heading">Customer QuickTickets</p>
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                />
+              </svg>
+            </div>
+            <p class="testimonial-desc">
+              ⭐⭐⭐⭐⭐<br />
+              "QuickTickets is a game-changer for anyone who loves attending
+              events. From stand-up comedy shows to sports events, this platform
+              has it all! I love how easy it is to find events by category and
+              purchase tickets without any hassle."
+            </p>
           </div>
-          <h3 class="testimonial-heading">Sujal Hinge</h3>
-          <p class="testimonial-sub-heading">Owner QuickTickets</p>
-          <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-            </svg>
-          </div>
-          <p class="testimonial-desc">⭐⭐⭐⭐⭐<br>
-            "I recently used QuickTickets, and the process was smooth. The website has a great selection of events, and the user experience is pretty seamless. I appreciate how quickly I was able to complete my purchase."</p>
-        </div>
-        <div class="item">
-          <div class="img">
-            <img src="images icons/sanket.jpg" alt="">
-          </div>
-          <h3 class="testimonial-heading">Sanket shinde</h3>
-          <p class="testimonial-sub-heading">Customer QuickTickets</p>
-          <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-            </svg>
-          </div>
-          <p class="testimonial-desc">⭐⭐⭐⭐⭐<br>
-            "QuickTickets is a game-changer for anyone who loves attending events. From stand-up comedy shows to sports events, this platform has it all! I love how easy it is to find events by category and purchase tickets without any hassle."
-          </p>
         </div>
       </div>
-    </div>
-  </section>
-</body>
-
+    </section>
+  </body>
 </html>
