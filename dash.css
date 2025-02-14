@@ -230,7 +230,7 @@ hr {
 /*main css*/
 .banner {
     margin-top: 1vh;
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
     padding-left: 10px; /* Updated padding */
     padding-right: 10px; /* Updated padding */
     display: flex; /* Enable flexbox */
@@ -244,6 +244,7 @@ hr {
     height: auto; /* Maintain aspect ratio */
     border-radius: 15px; /* If needed, keep rounded corners for image */
   }
+  /*movie section*/
   .container {
     background-color: #151515;
     min-height: calc(100vh - 50px);
@@ -252,7 +253,7 @@ hr {
   }
   
   .content-container {
-    margin-left: 50px;
+    margin-left: 1px;
   }
   
   .featured-content {
@@ -281,7 +282,7 @@ hr {
   }
   
   .movie-list-container {
-    padding: 0 20px;
+    padding: 0 15px;
   }
   
   .movie-list-wrapper {
@@ -298,7 +299,7 @@ hr {
   }
   
   .movie-list-item {
-    margin-right: 30px;
+    margin-right: 45px;
     position: relative;
   }
   
@@ -340,7 +341,7 @@ hr {
     font-size: 14px;
     position: absolute;
     top: 30%;
-    left: 50px;
+    left: 40px;
     width: 230px;
     opacity: 0;
     transition: 1s all ease-in-out;
@@ -362,7 +363,7 @@ hr {
   }
   
   .arrow {
-    font-size: 120px;
+    font-size: 90px;
     position: absolute;
     top: 90px;
     right: 0;
@@ -407,6 +408,173 @@ hr {
           display: none;
       }
   }
+  /*movie content ends here*/
+
+  /*Event content starts from here*/
+  .container {
+    background-color: #151515;
+    min-height: calc(100vh - 50px);
+    color: white;
+    transition: 1s ease all;
+  }
+  
+  .content-container {
+    margin-left: 1px;
+  }
+  
+  .featured-content {
+    height: 50vh;
+    padding: 50px;
+  }
+  
+  .featured-title {
+    width: 200px;
+  }
+  
+  .featured-desc {
+    width: 500px;
+    color: lightgray;
+    margin: 30px 0;
+  }
+  
+  .featured-button {
+    background-color: #4dbf00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+  }
+  
+  .event-list-container {
+    padding: 0 15px;
+  }
+  
+  .event-list-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .event-list {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+  }
+  
+  .event-list-item {
+    margin-right: 45px;
+    position: relative;
+  }
+  
+  .event-list-item:hover .event-list-item-img {
+    transform: scale(1.2);
+    margin: 0 30px;
+    opacity: 0.5;
+  }
+  
+  .event-list-item:hover .event-list-item-title,
+  .event-list-item:hover .event-list-item-desc,
+  .event-list-item:hover .event-list-item-button {
+    opacity: 1;
+  }
+  
+  .event-list-item-img {
+    transition: all 1s ease-in-out;
+    width: 270px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  .event-list-item-title {
+    background-color: #333;
+    padding: 0 10px;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  .event-list-item-desc {
+    background-color: #333;
+    padding: 10px;
+    font-size: 14px;
+    position: absolute;
+    top: 30%;
+    left: 40px;
+    width: 230px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  .event-list-item-button {
+    padding: 10px;
+    background-color: #4dbf00;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  .arro {
+    font-size: 90px;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    color: lightgray;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  
+  .container.active {
+    background-color: white;
+  }
+  
+  .event-list-title.active {
+    color: black;
+  }
+  
+  .navbar-container.active {
+    background-color: white;
+  
+    color: black;
+  }
+  
+  .sidebar.active{
+      background-color: white;
+  }
+  
+  .left-menu-icon.active{
+      color: black;
+  }
+  
+  .toggle.active{
+      background-color: black;
+  }
+  
+  .toggle-ball.active{
+      background-color: white;
+      transform: translateX(-20px);
+  }
+  
+  @media only screen and (max-width: 940px){
+      .menu-container{
+          display: none;
+      }
+  }
+  /*Event content close here*/
   /*main content end here*/
 
 /*copyright css*/

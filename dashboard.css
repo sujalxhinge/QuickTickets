@@ -281,16 +281,16 @@ hr {
     font-weight: bold;
   }
   
-  .movie-list-container {
+  .event-list-container {
     padding: 0 15px;
   }
   
-  .movie-list-wrapper {
+  .event-list-wrapper {
     position: relative;
     overflow: hidden;
   }
   
-  .movie-list {
+  .event-list {
     display: flex;
     align-items: center;
     height: 300px;
@@ -298,24 +298,24 @@ hr {
     transition: all 1s ease-in-out;
   }
   
-  .movie-list-item {
+  .event-list-item {
     margin-right: 45px;
     position: relative;
   }
   
-  .movie-list-item:hover .movie-list-item-img {
+  .event-list-item:hover .event-list-item-img {
     transform: scale(1.2);
     margin: 0 30px;
     opacity: 0.5;
   }
   
-  .movie-list-item:hover .movie-list-item-title,
-  .movie-list-item:hover .movie-list-item-desc,
-  .movie-list-item:hover .movie-list-item-button {
+  .event-list-item:hover .event-list-item-title,
+  .event-list-item:hover .event-list-item-desc,
+  .event-list-item:hover .event-list-item-button {
     opacity: 1;
   }
   
-  .movie-list-item-img {
+  .event-list-item-img {
     transition: all 1s ease-in-out;
     width: 270px;
     height: 200px;
@@ -323,7 +323,7 @@ hr {
     border-radius: 20px;
   }
   
-  .movie-list-item-title {
+  .event-list-item-title {
     background-color: #333;
     padding: 0 10px;
     font-size: 32px;
@@ -335,7 +335,7 @@ hr {
     transition: 1s all ease-in-out;
   }
   
-  .movie-list-item-desc {
+  .event-list-item-desc {
     background-color: #333;
     padding: 10px;
     font-size: 14px;
@@ -347,7 +347,7 @@ hr {
     transition: 1s all ease-in-out;
   }
   
-  .movie-list-item-button {
+  .event-list-item-button {
     padding: 10px;
     background-color: #4dbf00;
     color: white;
@@ -376,7 +376,7 @@ hr {
     background-color: white;
   }
   
-  .movie-list-title.active {
+  .event-list-title.active {
     color: black;
   }
   
@@ -411,7 +411,6 @@ hr {
   /*movie content ends here*/
 
   /*Event content starts from here*/
-  
   /*Event content close here*/
   /*main content end here*/
 

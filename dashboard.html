@@ -13,10 +13,13 @@
       referrerpolicy="no-referrer"
     />
     <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-  
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
   </head>
   <body>
     <header>
@@ -27,27 +30,29 @@
         <div class="search-bar">
           <input type="text" placeholder="Search..." />
         </div>
-          <!-- Location Button -->
-          <div class="dropdown">
-            <div class="dropdown-text" onclick="toggleDropdown()">Location</div>
-            <div class="dropdown-box" id="dropdown-box">
-              <div class="close-btn">
-                <span onclick="toggleDropdown()">Close</span>
+        <!-- Location Button -->
+        <div class="dropdown">
+          <div class="dropdown-text" onclick="toggleDropdown()">Location</div>
+          <div class="dropdown-box" id="dropdown-box">
+            <div class="close-btn">
+              <span onclick="toggleDropdown()">Close</span>
+            </div>
+            <div class="grid">
+              <div class="city"><i class="fas fa-city"></i>Mumbai</div>
+              <div class="city"><i class="fas fa-landmark"></i>Pune</div>
+              <div class="city"><i class="fas fa-building"></i>Nagpur</div>
+              <div class="city"><i class="fas fa-tree"></i>Nashik</div>
+              <div class="city">
+                <i class="fas fa-university"></i>Aurangabad
               </div>
-              <div class="grid">
-                <div class="city"><i class="fas fa-city"></i>Mumbai</div>
-                <div class="city"><i class="fas fa-landmark"></i>Pune</div>
-                <div class="city"><i class="fas fa-building"></i>Nagpur</div>
-                <div class="city"><i class="fas fa-tree"></i>Nashik</div>
-                <div class="city"><i class="fas fa-university"></i>Aurangabad</div>
-                <div class="city"><i class="fas fa-hotel"></i>Solapur</div>
-                <div class="city"><i class="fas fa-monument"></i>Kolhapur</div>
-                <div class="city"><i class="fas fa-water"></i>Thane</div>
-                <div class="city"><i class="fas fa-home"></i>Amravati</div>
-                <div class="city"><i class="fas fa-cogs"></i>Latur</div>
-              </div>
+              <div class="city"><i class="fas fa-hotel"></i>Solapur</div>
+              <div class="city"><i class="fas fa-monument"></i>Kolhapur</div>
+              <div class="city"><i class="fas fa-water"></i>Thane</div>
+              <div class="city"><i class="fas fa-home"></i>Amravati</div>
+              <div class="city"><i class="fas fa-cogs"></i>Latur</div>
             </div>
           </div>
+        </div>
         <div class="listproduct">
           <a href="contactus.php">List Product</a>
         </div>
@@ -57,7 +62,6 @@
             <i class="fa-solid fa-circle-user fa-2x"></i>
           </a>
         </div>
-        
       </nav>
     </header>
     <main>
@@ -73,80 +77,598 @@
 
       <!--This section is for banner-->
       <div class="banner">
-        <img src="images icons/banner1.jpg." alt="Banner">
+        <img src="images icons/banner1.jpg." alt="Banner" />
       </div>
       <!--banner section is end here-->
       <!--this section is for movies-->
       <div class="container">
         <div class="content-container">
-            <div class="featured-content"
-                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('movie\ img/f-2.jpg');">
-                <img class="featured-title" src="img/f-t-1.png" alt="">
-                <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-                    deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-                    minima voluptatibus incidunt. Accusamus, provident.</p>
-                <button class="featured-button">WATCH</button>
-            </div>
-            <div class="movie-list-container">
-                <h1 id="movies" class="movie-list-title">Movies</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="movie img/upper.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/2.jpeg" alt="">
-                            <span class="movie-list-item-title">Star Wars</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                            <span class="movie-list-item-title">Storm</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/4.jpg" alt="">
-                            <span class="movie-list-item-title">1917</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Avengers</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/6.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/7.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
+          <div
+            class="featured-content"
+            style="
+              background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+                url('movie\ img/f-2.jpg');
+            "
+          >
+            <img class="featured-title" src="img/f-t-1.png" alt="" />
+            <p class="featured-desc">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
+              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
+              incidunt. Accusamus, provident.
+            </p>
+            <button class="featured-button">WATCH</button>
+          </div>
+          <div class="event-list-container">
+            <h1 id="movies" class="event-list-title">Movies</h1>
+            <div class="event-list-wrapper">
+              <div class="event-list">
+                <div class="event-list-item">
+                  <img
+                    class="event-list-item-img"
+                    src="movie img/upper.jpg"
+                    alt=""
+                  />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
                 </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/2.jpeg" alt="" />
+                  <span class="event-list-item-title">Star Wars</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/3.jpg" alt="" />
+                  <span class="event-list-item-title">Storm</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/4.jpg" alt="" />
+                  <span class="event-list-item-title">1917</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/5.jpg" alt="" />
+                  <span class="event-list-item-title">Avengers</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/6.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/7.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
                 </div>
               </div>
+              <i class="fas fa-chevron-right arrow"></i>
             </div>
-    <!--this section is for Events-->
+          </div>
+        </div>
+      </div>
+      <!--this section of movies ends here -->
+
+       <!--this section is for events-->
+       <div class="container">
+        <div class="content-container">
+          <div
+            class="featured-content"
+            style="
+              background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+                url('movie\ img/f-2.jpg');
+            "
+          >
+            <img class="featured-title" src="img/f-t-1.png" alt="" />
+            <p class="featured-desc">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
+              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
+              incidunt. Accusamus, provident.
+            </p>
+            <button class="featured-button">WATCH</button>
+          </div>
+          <div class="event-list-container">
+            <h1 id="events" class="event-list-title">Events</h1>
+            <div class="event-list-wrapper">
+              <div class="event-list">
+                <div class="event-list-item">
+                  <img
+                    class="event-list-item-img"
+                    src="movie img/upper.jpg"
+                    alt=""
+                  />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/2.jpeg" alt="" />
+                  <span class="event-list-item-title">Star Wars</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/3.jpg" alt="" />
+                  <span class="event-list-item-title">Storm</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/4.jpg" alt="" />
+                  <span class="event-list-item-title">1917</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/5.jpg" alt="" />
+                  <span class="event-list-item-title">Avengers</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/6.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/7.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--this section of events ends here -->
+
+       <!--this section is for shows-->
+       <div class="container">
+        <div class="content-container">
+          <div
+            class="featured-content"
+            style="
+              background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+                url('movie\ img/f-2.jpg');
+            "
+          >
+            <img class="featured-title" src="img/f-t-1.png" alt="" />
+            <p class="featured-desc">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
+              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
+              incidunt. Accusamus, provident.
+            </p>
+            <button class="featured-button">WATCH</button>
+          </div>
+          <div class="event-list-container">
+            <h1 id="shows" class="event-list-title">Shows</h1>
+            <div class="event-list-wrapper">
+              <div class="event-list">
+                <div class="event-list-item">
+                  <img
+                    class="event-list-item-img"
+                    src="movie img/upper.jpg"
+                    alt=""
+                  />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/2.jpeg" alt="" />
+                  <span class="event-list-item-title">Star Wars</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/3.jpg" alt="" />
+                  <span class="event-list-item-title">Storm</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/4.jpg" alt="" />
+                  <span class="event-list-item-title">1917</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/5.jpg" alt="" />
+                  <span class="event-list-item-title">Avengers</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/6.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/7.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--this section of shows ends here -->
+
+
+       <!--this section is for sports-->
+       <div class="container">
+        <div class="content-container">
+          <div
+            class="featured-content"
+            style="
+              background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+                url('movie\ img/f-2.jpg');
+            "
+          >
+            <img class="featured-title" src="img/f-t-1.png" alt="" />
+            <p class="featured-desc">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
+              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
+              incidunt. Accusamus, provident.
+            </p>
+            <button class="featured-button">WATCH</button>
+          </div>
+          <div class="event-list-container">
+            <h1 id="sports" class="event-list-title">Sports</h1>
+            <div class="event-list-wrapper">
+              <div class="event-list">
+                <div class="event-list-item">
+                  <img
+                    class="event-list-item-img"
+                    src="movie img/upper.jpg"
+                    alt=""
+                  />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/2.jpeg" alt="" />
+                  <span class="event-list-item-title">Star Wars</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/3.jpg" alt="" />
+                  <span class="event-list-item-title">Storm</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/4.jpg" alt="" />
+                  <span class="event-list-item-title">1917</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/5.jpg" alt="" />
+                  <span class="event-list-item-title">Avengers</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/6.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/7.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--this section of sports ends here -->
+     
+       <!--this section is for Stand up Comedy-->
+       <div class="container">
+        <div class="content-container">
+          <div
+            class="featured-content"
+            style="
+              background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+                url('movie\ img/f-2.jpg');
+            "
+          >
+            <img class="featured-title" src="img/f-t-1.png" alt="" />
+            <p class="featured-desc">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
+              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
+              incidunt. Accusamus, provident.
+            </p>
+            <button class="featured-button">WATCH</button>
+          </div>
+          <div class="event-list-container">
+            <h1 id="standupcomedy" class="event-list-title">Stand Up Comedy</h1>
+            <div class="event-list-wrapper">
+              <div class="event-list">
+                <div class="event-list-item">
+                  <img
+                    class="event-list-item-img"
+                    src="movie img/upper.jpg"
+                    alt=""
+                  />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/2.jpeg" alt="" />
+                  <span class="event-list-item-title">Star Wars</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/3.jpg" alt="" />
+                  <span class="event-list-item-title">Storm</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/4.jpg" alt="" />
+                  <span class="event-list-item-title">1917</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/5.jpg" alt="" />
+                  <span class="event-list-item-title">Avengers</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/6.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/7.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--this section of standupcomedy ends here -->
+
+
+       <!--this section is for Concerts-->
+       <div class="container">
+        <div class="content-container">
+          <div
+            class="featured-content"
+            style="
+              background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+                url('movie\ img/f-2.jpg');
+            "
+          >
+            <img class="featured-title" src="img/f-t-1.png" alt="" />
+            <p class="featured-desc">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
+              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
+              incidunt. Accusamus, provident.
+            </p>
+            <button class="featured-button">WATCH</button>
+          </div>
+          <div class="event-list-container">
+            <h1 id="concerts" class="event-list-title">Concerts</h1>
+            <div class="event-list-wrapper">
+              <div class="event-list">
+                <div class="event-list-item">
+                  <img
+                    class="event-list-item-img"
+                    src="movie img/upper.jpg"
+                    alt=""
+                  />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/2.jpeg" alt="" />
+                  <span class="event-list-item-title">Star Wars</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/3.jpg" alt="" />
+                  <span class="event-list-item-title">Storm</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/4.jpg" alt="" />
+                  <span class="event-list-item-title">1917</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/5.jpg" alt="" />
+                  <span class="event-list-item-title">Avengers</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/6.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+                <div class="event-list-item">
+                  <img class="event-list-item-img" src="img/7.jpg" alt="" />
+                  <span class="event-list-item-title">Her</span>
+                  <p class="event-list-item-desc">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                    hic fugit similique accusantium.
+                  </p>
+                  <button class="event-list-item-button">Watch</button>
+                </div>
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--this section of Concerts ends here -->
     </main>
     <footer class="copyright">
       <div class="footer-content">
@@ -174,7 +696,9 @@
             <li><a href="/terms-of-service">Terms of Service</a></li>
             <li><a href="contactus.php">Contact Us</a></li>
             <li><a href="aboutus.html"> About Us</a></li>
-            <a href="adminlogin.php" class="login-link" style="color: white;">Admin Login</a>
+            <a href="adminlogin.php" class="login-link" style="color: white"
+              >Admin Login</a
+            >
           </ul>
         </div>
 
@@ -222,28 +746,33 @@
       });
     </script>
     <!--this is the another script tag for the location-->
-     <script>
+    <script>
       function toggleDropdown() {
-  const dropdown = document.getElementById("dropdown-box");
-  // Toggle visibility
-  if (dropdown.style.display === "block") {
-    dropdown.style.display = "none";
-  } else {
-    dropdown.style.display = "block";
-  }
-}
+        const dropdown = document.getElementById("dropdown-box");
+        // Toggle visibility
+        if (dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        } else {
+          dropdown.style.display = "block";
+        }
+      }
 
-// Close the dropdown if clicked outside
-window.onclick = function(event) {
-  if (!event.target.matches('.dropdown-text') && !event.target.matches('.city') && !event.target.matches('.close-btn span')) {
-    const dropdown = document.getElementById("dropdown-box");
-    if (dropdown.style.display === "block") {
-      dropdown.style.display = "none";
-    }
-  }
-}
+      // Close the dropdown if clicked outside
+      window.onclick = function (event) {
+        if (
+          !event.target.matches(".dropdown-text") &&
+          !event.target.matches(".city") &&
+          !event.target.matches(".close-btn span")
+        ) {
+          const dropdown = document.getElementById("dropdown-box");
+          if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+          }
+        }
+      };
     </script>
-      <script src="app.js"></script>
+    <script src="app.js"></script>
+    <script src="eventarrow.js"></script>
   </body>
 </html>
 <?php
