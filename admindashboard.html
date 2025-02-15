@@ -181,11 +181,53 @@
          <a href="#">Show All</a>
       </div>
       <!--this section is for adding and deletion of categories like movies and events etc-->
-      <div class="add_categories">
+      <div class="category-form">
         <h2>Add Categories</h2>
+        <form action="adddata.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Category:</label>
+                <select name="category" required>
+                    <option value="Movie">Movie</option>
+                    <option value="Event">Event</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Concerts">Concerts</option>
+                    <option value="Shows">Shows</option>
+                    <option value="Standup-Comedy">Standup Comedy</option>
+                </select>
+                <input type="text" name="title" placeholder="Enter Title" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" name="duration" placeholder="Duration (e.g., 2h 30m)" required>
+                <input type="text" name="language" placeholder="Language" required>
+            </div>
 
+            <div class="form-group">
+                <input type="number" name="price" placeholder="Price" required>
+                <input type="text" name="rating" placeholder="Rating (e.g., 4.5)" required>
+            </div>
 
-     </div>
+            <div class="form-group">
+                <input type="text" name="location" placeholder="Location" required>
+                <input type="text" name="theater" placeholder="Theater Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="time" placeholder="Time (e.g., 7:30 PM)" required>
+                <input type="file" name="image" accept="image/*" required>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="id" placeholder="Enter ID (for update/delete)">
+            </div>
+
+            <div class="buttons">
+                <button type="submit" name="add" class="add-btn">Add</button>
+                <button type="submit" name="update" class="update-btn">Update</button>
+                <button type="submit" name="delete" class="delete-btn">Delete</button>
+            </div>
+        </form>
+    </div>
       </main>
       <!------------------
          end main

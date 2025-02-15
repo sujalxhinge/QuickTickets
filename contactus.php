@@ -63,15 +63,19 @@ $conn->close();
       
     }
     .contact-form {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      width: 380px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-    }
+    border-radius: 10px;
+    padding: 20px;
+    width: 380px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+    position: relative;
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+}
+
     .contact-form h2 {
       text-align: center;
-      color:rgb(153, 45, 6);
+      color:rgb(16, 12, 10);
     }
     .form-group {
       margin-bottom: 8px;
@@ -82,13 +86,25 @@ $conn->close();
       margin-bottom: 5px;
       color: #333;
     }
-    .form-group input, .form-group textarea {
-      width: 94%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-    }
+    .form-group input, 
+.form-group textarea {
+    width: 94%;
+    padding: 10px;
+    border: 1px solid rgba(18, 4, 4, 0.5); /* Light transparent border */
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    color: white; /* Ensure text is visible */
+    outline: none;
+}
+
+.form-group input::placeholder, 
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Light placeholder color for visibility */
+}
+
     .form-group textarea {
       height: 100px;
       resize: none;

@@ -58,13 +58,15 @@ body {
 }
 
 /* Center Navigation Links */
-.nav-links {
+.nav-links
+ {
   list-style: none;
   display: flex;
   gap: 50px;
   margin: 0 auto;
   position: relative;
     left: 100px;
+    
 }
 
 .nav-links li a {
@@ -72,6 +74,12 @@ body {
   text-decoration: none;
   font-weight: 500;
 }
+
+.nav-links li :hover{
+  color: rgb(235, 114, 27);
+ background-color: transparent;
+}
+
 
 /* Right Side: Search -> Location -> Profile */
 .nav-right {
@@ -95,7 +103,7 @@ body {
 }
 
 .search button[type="submit"] {
-  background-color: #4e99e9;
+  background-color: #000000;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -156,13 +164,14 @@ hr {
 
 .categories a {
   font-size: 12px; /* Smaller font size */
-  color: #333; /* Default text color */
+  color: #f7f1f1; /* Default text color */
   text-decoration: none; /* Removes underline */
   padding: 5px 10px; /* Adds padding inside each link for better click area */
   border: 1px solid #cccccc; /* Adds a light border around each link */
   border-radius: 9px; /* Rounded corners */
   transition: all 0.3s ease; /* Smooth transition for hover effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  background-color: #222323;
 }
 
 .categories a:hover {
@@ -345,7 +354,7 @@ hr {
   }
   
   .featured-desc {
-    width: 1150px;
+    width: 1200px;
     color: lightgray;
     margin: 150px 0;
   }

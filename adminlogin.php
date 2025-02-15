@@ -20,14 +20,17 @@
         }
 
         .box {
-            background: #fff;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 4px 8px rgba(206, 245, 14, 0.1);
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-        }
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(12px); /* Blurred background effect */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Subtle border for better visibility */
+}
+
 
         .box h2 {
             text-align: center;
@@ -62,21 +65,23 @@
         }
 
         .form-group .submit-btn {
-            background: #4B12E7;
+            background:rgb(0, 0, 0);
             color: #fff;
             border: 1px solid black;
             padding: 8px 12px;
+            margin-left:60px;
+            margin-top:15px;
             font-size: 16px;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             border-radius: 6px;
             cursor: pointer;
-            width: 100%;
+            width: 50%;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .form-group .submit-btn:hover {
-            background:rgb(0, 2, 4);
+            background:rgb(255, 115, 0);
         }
 
         @media (max-width: 500px) {
