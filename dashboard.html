@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies Shows Events</title>
-    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="dash.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -22,51 +22,68 @@
     />
   </head>
   <body>
-    <header>
+    <header
+      style="
+        position: sticky;
+        top: 0px;
+        background-color: rgba(255, 255, 255, 0.559);
+        z-index: 9999;
+      "
+    >
       <nav class="navbar">
         <div class="logo">
-          <img src="images icons/quickpng.png" alt="QuickTickets Logo" />
+          <img src="images icons/quickpng.png" alt="Logo" />
         </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Search..." />
-        </div>
-        <!-- Location Button -->
-        <div class="dropdown">
-          <div class="dropdown-text" onclick="toggleDropdown()">Location</div>
-          <div class="dropdown-box" id="dropdown-box">
-            <div class="close-btn">
-              <span onclick="toggleDropdown()">Close</span>
-            </div>
-            <div class="grid">
-              <div class="city"><i class="fas fa-city"></i>Mumbai</div>
-              <div class="city"><i class="fas fa-landmark"></i>Pune</div>
-              <div class="city"><i class="fas fa-building"></i>Nagpur</div>
-              <div class="city"><i class="fas fa-tree"></i>Nashik</div>
-              <div class="city">
-                <i class="fas fa-university"></i>Aurangabad
-              </div>
-              <div class="city"><i class="fas fa-hotel"></i>Solapur</div>
-              <div class="city"><i class="fas fa-monument"></i>Kolhapur</div>
-              <div class="city"><i class="fas fa-water"></i>Thane</div>
-              <div class="city"><i class="fas fa-home"></i>Amravati</div>
-              <div class="city"><i class="fas fa-cogs"></i>Latur</div>
-            </div>
+        <ul class="nav-links">
+          <li onclick="location.href='#home'"><a href="#home">Home</a></li>
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="contactus.php">Contact</a></li>
+          <li><a href="testomonials.html">Feedback</a></li>
+        </ul>
+        <div class="nav-right">
+          <!-- From Uiverse.io by Bodyhc -->
+          <div class="search">
+            <input placeholder="Search..." type="text" />
+            <button type="submit">Go</button>
           </div>
-        </div>
-        <div class="listproduct">
-          <a href="contactus.php">List Product</a>
-        </div>
-        <!-- this code is for the user icon-->
-        <div class="user-icon">
-          <a href="userprofile.php">
-            <i class="fa-solid fa-circle-user fa-2x"></i>
-          </a>
+
+          <div class="dropdown-text" onclick="toggleDropdown()">Location</div>
+          <div class="profile">
+            <img src="images icons/usericon (2).png" alt="Profile" />
+          </div>
         </div>
       </nav>
     </header>
+
+    <!-- Location Dropdown -->
+    <div class="dropdown-box" id="dropdown-box" style="display: none">
+      <div class="close-btn">
+        <span onclick="toggleDropdown()">Close</span>
+      </div>
+      <div class="grid">
+        <div class="city"><i class="fas fa-city"></i>Mumbai</div>
+        <div class="city"><i class="fas fa-landmark"></i>Pune</div>
+        <div class="city"><i class="fas fa-building"></i>Nagpur</div>
+        <div class="city"><i class="fas fa-tree"></i>Nashik</div>
+        <div class="city"><i class="fas fa-university"></i>Aurangabad</div>
+        <div class="city"><i class="fas fa-hotel"></i>Solapur</div>
+        <div class="city"><i class="fas fa-monument"></i>Kolhapur</div>
+        <div class="city"><i class="fas fa-water"></i>Thane</div>
+        <div class="city"><i class="fas fa-home"></i>Amravati</div>
+        <div class="city"><i class="fas fa-cogs"></i>Latur</div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown-box");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      }
+    </script>
     <main>
       <!--This section is for categories-->
-      <div class="categories">
+      <div class="categories" id="home">
         <a href="#movies">Movies</a>
         <a href="#events">Events</a>
         <a href="#shows">Shows</a>
@@ -74,12 +91,6 @@
         <a href="#standupcomedy">Stand-Up Comedy</a>
         <a href="#concerts">Concerts</a>
       </div>
-
-      <!--This section is for banner-->
-      <div class="banner">
-        <img src="images icons/banner1.jpg." alt="Banner" />
-      </div>
-      <!--banner section is end here-->
       <!--this section is for movies-->
       <div class="container">
         <div class="content-container">
@@ -87,17 +98,21 @@
             class="featured-content"
             style="
               background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-                url('movie\ img/f-2.jpg');
+                url('movie\ img/imgtop4');
+              background-position: center;
+              background-size: cover;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
             "
           >
             <img class="featured-title" src="img/f-t-1.png" alt="" />
             <p class="featured-desc">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
-              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
-              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
-              incidunt. Accusamus, provident.
+              Blade is a 1998 American superhero horror film directed by Stephen
+              Norrington and written by David S. Goyer. It is based on the
+              Marvel Comics character Blade, a half-vampire, half-human
+              "Daywalker" who hunts down vampires. The film stars Wesley Snipes
+              as Blade, alongside Stephen Dorff, Kris Kristofferson, and N'Bushe
+              Wright.
             </p>
-            <button class="featured-button">WATCH</button>
           </div>
           <div class="event-list-container">
             <h1 id="movies" class="event-list-title">Movies</h1>
@@ -114,7 +129,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/2.jpeg" alt="" />
@@ -123,16 +138,16 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
-                  <img class="event-list-item-img" src="img/3.jpg" alt="" />
+                  <img class="event-list-item-img" src="img/5.jpg" alt="" />
                   <span class="event-list-item-title">Storm</span>
                   <p class="event-list-item-desc">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/4.jpg" alt="" />
@@ -141,7 +156,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/5.jpg" alt="" />
@@ -150,7 +165,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/6.jpg" alt="" />
@@ -159,7 +174,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/7.jpg" alt="" />
@@ -168,7 +183,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
               </div>
               <i class="fas fa-chevron-right arrow"></i>
@@ -178,24 +193,26 @@
       </div>
       <!--this section of movies ends here -->
 
-       <!--this section is for events-->
-       <div class="container">
+      <!--this section is for events-->
+      <div class="container">
         <div class="content-container">
           <div
             class="featured-content"
             style="
               background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-                url('movie\ img/f-2.jpg');
+                url('movie\ img/imgtop1');
+              background-position: center;
+              background-size: cover;
+              box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
             "
           >
             <img class="featured-title" src="img/f-t-1.png" alt="" />
             <p class="featured-desc">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
-              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
-              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
-              incidunt. Accusamus, provident.
+              Avengers: Endgame is a 2019 American superhero film directed by
+              Anthony and Joe Russo and written by Christopher Markus and
+              Stephen McFeely. It is the direct sequel to Avengers: Infinity War
+              (2018) and the 22nd film in the Marvel Cinematic Universe
             </p>
-            <button class="featured-button">WATCH</button>
           </div>
           <div class="event-list-container">
             <h1 id="events" class="event-list-title">Events</h1>
@@ -212,7 +229,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/2.jpeg" alt="" />
@@ -221,7 +238,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/3.jpg" alt="" />
@@ -230,7 +247,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/4.jpg" alt="" />
@@ -239,7 +256,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/5.jpg" alt="" />
@@ -248,7 +265,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/6.jpg" alt="" />
@@ -257,7 +274,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/7.jpg" alt="" />
@@ -266,7 +283,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
               </div>
               <i class="fas fa-chevron-right arrow"></i>
@@ -276,24 +293,26 @@
       </div>
       <!--this section of events ends here -->
 
-       <!--this section is for shows-->
-       <div class="container">
+      <!--this section is for shows-->
+      <div class="container">
         <div class="content-container">
           <div
             class="featured-content"
             style="
               background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-                url('movie\ img/f-2.jpg');
+                url('movie\ img/imgtop2');
+              background-position: center;
+              background-size: cover;
+              box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
             "
           >
             <img class="featured-title" src="img/f-t-1.png" alt="" />
             <p class="featured-desc">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
-              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
-              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
-              incidunt. Accusamus, provident.
+              Eternals is a 2021 American superhero film directed by Chloé Zhao
+              and written by Zhao, Patrick Burleigh, Ryan Firpo, and Kaz Firpo.
+              It is the 26th film in the Marvel Cinematic Universe (MCU) and is
+              based on the Marvel Comics race of the same name.
             </p>
-            <button class="featured-button">WATCH</button>
           </div>
           <div class="event-list-container">
             <h1 id="shows" class="event-list-title">Shows</h1>
@@ -310,7 +329,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/2.jpeg" alt="" />
@@ -319,7 +338,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/3.jpg" alt="" />
@@ -328,7 +347,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/4.jpg" alt="" />
@@ -337,7 +356,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/5.jpg" alt="" />
@@ -346,7 +365,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/6.jpg" alt="" />
@@ -355,7 +374,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/7.jpg" alt="" />
@@ -364,7 +383,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
               </div>
               <i class="fas fa-chevron-right arrow"></i>
@@ -374,25 +393,27 @@
       </div>
       <!--this section of shows ends here -->
 
-
-       <!--this section is for sports-->
-       <div class="container">
+      <!--this section is for sports-->
+      <div class="container">
         <div class="content-container">
           <div
             class="featured-content"
             style="
               background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-                url('movie\ img/f-2.jpg');
+                url('movie\ img/imgtop3');
+              background-position: center;
+              background-size: cover;
+              box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
             "
           >
             <img class="featured-title" src="img/f-t-1.png" alt="" />
             <p class="featured-desc">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
-              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
-              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
-              incidunt. Accusamus, provident.
+              The story revolves around the battle between the Jedi and the
+              Sith, centered on characters like Luke Skywalker, Darth Vader,
+              Princess Leia, Han Solo, and Yoda. The franchise explores themes
+              of the Force, an energy field that gives Jedi and Sith their
+              powers.
             </p>
-            <button class="featured-button">WATCH</button>
           </div>
           <div class="event-list-container">
             <h1 id="sports" class="event-list-title">Sports</h1>
@@ -409,7 +430,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/2.jpeg" alt="" />
@@ -418,7 +439,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/3.jpg" alt="" />
@@ -427,7 +448,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/4.jpg" alt="" />
@@ -436,7 +457,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/5.jpg" alt="" />
@@ -445,7 +466,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/6.jpg" alt="" />
@@ -454,7 +475,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/7.jpg" alt="" />
@@ -463,7 +484,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
               </div>
               <i class="fas fa-chevron-right arrow"></i>
@@ -472,25 +493,28 @@
         </div>
       </div>
       <!--this section of sports ends here -->
-     
-       <!--this section is for Stand up Comedy-->
-       <div class="container">
+
+      <!--this section is for Stand up Comedy-->
+      <div class="container">
         <div class="content-container">
           <div
             class="featured-content"
             style="
               background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-                url('movie\ img/f-2.jpg');
+                url('movie\ img/imgtop5');
+              background-position: center;
+              background-size: cover;
+              box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
             "
           >
             <img class="featured-title" src="img/f-t-1.png" alt="" />
             <p class="featured-desc">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
-              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
-              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
-              incidunt. Accusamus, provident.
+              War is a Hollywood action-thriller directed by Philip G. Atwell
+              and starring Jet Li and Jason Statham. The film follows FBI agent
+              Jack Crawford (Statham) as he seeks revenge against a mysterious
+              and ruthless assassin named Rogue (Jet Li), who is responsible for
+              his partner’s death.
             </p>
-            <button class="featured-button">WATCH</button>
           </div>
           <div class="event-list-container">
             <h1 id="standupcomedy" class="event-list-title">Stand Up Comedy</h1>
@@ -507,7 +531,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/2.jpeg" alt="" />
@@ -516,7 +540,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/3.jpg" alt="" />
@@ -525,7 +549,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/4.jpg" alt="" />
@@ -534,7 +558,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/5.jpg" alt="" />
@@ -543,7 +567,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/6.jpg" alt="" />
@@ -552,7 +576,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/7.jpg" alt="" />
@@ -561,7 +585,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
               </div>
               <i class="fas fa-chevron-right arrow"></i>
@@ -571,25 +595,27 @@
       </div>
       <!--this section of standupcomedy ends here -->
 
-
-       <!--this section is for Concerts-->
-       <div class="container">
+      <!--this section is for Concerts-->
+      <div class="container">
         <div class="content-container">
           <div
             class="featured-content"
             style="
               background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-                url('movie\ img/f-2.jpg');
+                url('movie\ img/upper.jpg');
+              background-position: center;
+              background-size: cover;
+              box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
             "
           >
             <img class="featured-title" src="img/f-t-1.png" alt="" />
             <p class="featured-desc">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
-              illo dolor deserunt nam assumenda ipsa eligendi dolore, ipsum id
-              fugiat quo enim impedit, laboriosam omnis minima voluptatibus
-              incidunt. Accusamus, provident.
+              The original 1933 film directed by Merian C. Cooper and Ernest B.
+              Schoedsack became a cinematic milestone. The franchise has seen
+              several remakes, including Peter Jackson’s King Kong (2005) and
+              the MonsterVerse reboot Kong: Skull Island (2017), which later led
+              to Godzilla vs. Kong (2021).
             </p>
-            <button class="featured-button">WATCH</button>
           </div>
           <div class="event-list-container">
             <h1 id="concerts" class="event-list-title">Concerts</h1>
@@ -606,7 +632,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/2.jpeg" alt="" />
@@ -615,7 +641,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/3.jpg" alt="" />
@@ -624,7 +650,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/4.jpg" alt="" />
@@ -633,7 +659,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/5.jpg" alt="" />
@@ -642,7 +668,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/6.jpg" alt="" />
@@ -651,7 +677,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
                 <div class="event-list-item">
                   <img class="event-list-item-img" src="img/7.jpg" alt="" />
@@ -660,7 +686,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                     hic fugit similique accusantium.
                   </p>
-                  <button class="event-list-item-button">Watch</button>
+                  <button class="event-list-item-button">Book Ticket</button>
                 </div>
               </div>
               <i class="fas fa-chevron-right arrow"></i>
@@ -668,7 +694,30 @@
           </div>
         </div>
       </div>
+      <!--This section is for banner-->
+      <div class="banner">
+        <img src="images icons/banner1.jpg." alt="Banner" />
+      </div>
+      <!--banner section is end here-->
       <!--this section of Concerts ends here -->
+      <!-- From Uiverse.io by Yaya12085 -->
+      <form class="form" action="subscribe.php" method="POST">
+        <span class="title">Subscribe to our newsletter</span>
+        <p class="description">
+          Subscribe to QuickTickets and never miss out on the hottest events!
+          Get exclusive early access & discounts.
+        </p>
+        <div>
+          <input
+            placeholder="Enter your email"
+            type="email"
+            name="email"
+            id="email-address"
+            required
+          />
+          <button type="submit">Subscribe</button>
+        </div>
+      </form>
     </main>
     <footer class="copyright">
       <div class="footer-content">
@@ -775,5 +824,3 @@
     <script src="eventarrow.js"></script>
   </body>
 </html>
-<?php
-?>

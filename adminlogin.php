@@ -9,7 +9,10 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background:rgb(255, 255, 255);
+            background: url('images icons/gredient-2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            -webkit-backdrop-filter: blur(91px);
+            backdrop-filter: blur(91px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,7 +22,7 @@
         .box {
             background: #fff;
             padding: 30px;
-            border-radius: 8px;
+            border-radius: 14px;
             box-shadow: 0 4px 8px rgba(206, 245, 14, 0.1);
             max-width: 400px;
             width: 100%;

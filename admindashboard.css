@@ -383,7 +383,20 @@ main .recent_order a{
   display: block;
   margin: 1rem;
 }
+/*
+categories adding sections starts from here
+*/
+main .add_categories{
+  margin-top: 2rem;
+}
 
+main .add_categories h2{
+   color: var(--clr-dark);
+}
+
+main .add_categories h2{
+ margin-bottom: 0.8rem;
+}
 
 /*********************
 Right Side

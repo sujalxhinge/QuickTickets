@@ -49,7 +49,10 @@ $conn->close();
   <title>Contact Us</title>
   <style>
     body {
-      background: linear-gradient(to bottom right, yellow, orange);
+      background: url('images icons/gredient-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      -webkit-backdrop-filter: blur(19px);
+      backdrop-filter: blur(19px);
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -57,6 +60,7 @@ $conn->close();
       justify-content: center;
       align-items: center;
       height: 100vh;
+      
     }
     .contact-form {
       background: white;
@@ -112,7 +116,7 @@ $conn->close();
     }
   </style>
 </head>
-<body>
+<body >
   <div class="contact-form">
     <h2>Contact Us</h2>
 

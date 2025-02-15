@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 *,
 *::after {
   margin: 0;
@@ -27,43 +27,115 @@ body {
   background-color: rgb(255, 255, 255);
   font-family: "Poppins", serif;
   background: var(--bg);
-  
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+
+/* Navbar Styling */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
-  height: 10vh;
-  width: 100%;
-  padding: 0 20px;
-  border: 1px solid black;
+  padding: 15px 20px;
+  color: white;
+  margin-bottom: 15px;
+  position: sticky;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  top:0px;
+  -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
 }
 
+
+/* Align Logo Left */
 .logo img {
   height: 50px;
-  width: auto;
-  max-height: 100%;
-  object-fit: contain;
 }
 
-.navbar div {
+/* Center Navigation Links */
+.nav-links {
+  list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 50px;
+  margin: 0 auto;
+  position: relative;
+    left: 100px;
 }
 
-.search-bar {
-  flex: 1;
+.nav-links li a {
+  color: rgb(33, 33, 33);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Right Side: Search -> Location -> Profile */
+.nav-right {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-.search-bar input {
-  width: 70%;
-  padding: 8px;
-  border: 1px solid black;
-  border-radius: 7px;
+/* From Uiverse.io by Bodyhc */ 
+.search {
+  display: inline-block;
+  position: relative;
+}
+
+.search input[type="text"] {
+  width: 200px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.search button[type="submit"] {
+  background-color: #4e99e9;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: .9s ease;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: rgb(255, 255, 255);
+  background-color: rgb(244, 102, 13);
+}
+
+
+.dropdown-text {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+  }
+  .nav-links {
+      flex-direction: column;
+      text-align: center;
+  }
 }
 
 hr {
@@ -77,6 +149,9 @@ hr {
   gap: 7px; /* Space between the links */
   justify-content: center; /* Centers the links horizontally */
   padding: 10px; /* Adds padding around the entire category section */
+  margin-top: 10px;
+  margin-bottom: 13px;
+  
 }
 
 .categories a {
@@ -87,6 +162,7 @@ hr {
   border: 1px solid #cccccc; /* Adds a light border around each link */
   border-radius: 9px; /* Rounded corners */
   transition: all 0.3s ease; /* Smooth transition for hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .categories a:hover {
@@ -132,7 +208,6 @@ hr {
 /*location*/
 .dropdown-text {
   padding: 15px 4px;
-  background-color: #ffffff;
   cursor: pointer;
   border-radius: 5px;
   font-size: 17px;
@@ -141,6 +216,7 @@ hr {
   border: none;
   position: relative;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
 }
 .dropdown-text:hover {
   color: rgb(127, 89, 167); /* Change text color on hover */
@@ -229,8 +305,8 @@ hr {
 
 /*main css*/
 .banner {
-    margin-top: 1vh;
-    margin-bottom: 10vh;
+    margin-top: 3vh;
+    margin-bottom: 4vh;
     padding-left: 10px; /* Updated padding */
     padding-right: 10px; /* Updated padding */
     display: flex; /* Enable flexbox */
@@ -243,6 +319,7 @@ hr {
     max-width: 100%; /* Ensure image doesn't overflow */
     height: auto; /* Maintain aspect ratio */
     border-radius: 15px; /* If needed, keep rounded corners for image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   }
   /*movie section*/
   .container {
@@ -250,6 +327,7 @@ hr {
     min-height: calc(100vh - 50px);
     color: white;
     transition: 1s ease all;
+    
   }
   
   .content-container {
@@ -259,6 +337,7 @@ hr {
   .featured-content {
     height: 50vh;
     padding: 50px;
+  
   }
   
   .featured-title {
@@ -266,175 +345,9 @@ hr {
   }
   
   .featured-desc {
-    width: 500px;
+    width: 1150px;
     color: lightgray;
-    margin: 30px 0;
-  }
-  
-  .featured-button {
-    background-color: #4dbf00;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-weight: bold;
-  }
-  
-  .movie-list-container {
-    padding: 0 15px;
-  }
-  
-  .movie-list-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .movie-list {
-    display: flex;
-    align-items: center;
-    height: 300px;
-    transform: translateX(0);
-    transition: all 1s ease-in-out;
-  }
-  
-  .movie-list-item {
-    margin-right: 45px;
-    position: relative;
-  }
-  
-  .movie-list-item:hover .movie-list-item-img {
-    transform: scale(1.2);
-    margin: 0 30px;
-    opacity: 0.5;
-  }
-  
-  .movie-list-item:hover .movie-list-item-title,
-  .movie-list-item:hover .movie-list-item-desc,
-  .movie-list-item:hover .movie-list-item-button {
-    opacity: 1;
-  }
-  
-  .movie-list-item-img {
-    transition: all 1s ease-in-out;
-    width: 270px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 20px;
-  }
-  
-  .movie-list-item-title {
-    background-color: #333;
-    padding: 0 10px;
-    font-size: 32px;
-    font-weight: bold;
-    position: absolute;
-    top: 10%;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .movie-list-item-desc {
-    background-color: #333;
-    padding: 10px;
-    font-size: 14px;
-    position: absolute;
-    top: 30%;
-    left: 40px;
-    width: 230px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .movie-list-item-button {
-    padding: 10px;
-    background-color: #4dbf00;
-    color: white;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .arrow {
-    font-size: 90px;
-    position: absolute;
-    top: 90px;
-    right: 0;
-    color: lightgray;
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  
-  .container.active {
-    background-color: white;
-  }
-  
-  .movie-list-title.active {
-    color: black;
-  }
-  
-  .navbar-container.active {
-    background-color: white;
-  
-    color: black;
-  }
-  
-  .sidebar.active{
-      background-color: white;
-  }
-  
-  .left-menu-icon.active{
-      color: black;
-  }
-  
-  .toggle.active{
-      background-color: black;
-  }
-  
-  .toggle-ball.active{
-      background-color: white;
-      transform: translateX(-20px);
-  }
-  
-  @media only screen and (max-width: 940px){
-      .menu-container{
-          display: none;
-      }
-  }
-  /*movie content ends here*/
-
-  /*Event content starts from here*/
-  .container {
-    background-color: #151515;
-    min-height: calc(100vh - 50px);
-    color: white;
-    transition: 1s ease all;
-  }
-  
-  .content-container {
-    margin-left: 1px;
-  }
-  
-  .featured-content {
-    height: 50vh;
-    padding: 50px;
-  }
-  
-  .featured-title {
-    width: 200px;
-  }
-  
-  .featured-desc {
-    width: 500px;
-    color: lightgray;
-    margin: 30px 0;
+    margin: 150px 0;
   }
   
   .featured-button {
@@ -499,6 +412,7 @@ hr {
     left: 50px;
     opacity: 0;
     transition: 1s all ease-in-out;
+    
   }
   
   .event-list-item-desc {
@@ -528,7 +442,7 @@ hr {
     transition: 1s all ease-in-out;
   }
   
-  .arro {
+  .arrow {
     font-size: 90px;
     position: absolute;
     top: 90px;
@@ -574,7 +488,77 @@ hr {
           display: none;
       }
   }
-  /*Event content close here*/
+  /*movie content ends here*/
+
+  /* From Uiverse.io by Yaya12085 */ 
+.form {
+  display: flex;
+  flex-direction: column;
+  background: #606c88;
+  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 350px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 35%;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.description {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: rgb(209 213 219);
+}
+
+.form div {
+  display: flex;
+  max-width: 28rem;
+  margin-top: 1rem;
+  column-gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.form div input {
+  outline: none;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 );
+  padding: 0.5rem 0.875rem;
+  background-color: rgb(255 255 255 / 0.05);
+  border: 1px solid rgba(253, 253, 253, 0.363);
+  border-radius: 0.375rem;
+  flex: 1 1 auto;
+}
+
+.form div input::placeholder {
+  color: rgb(216, 212, 212);
+}
+
+.form div input:focus {
+  border: 1px solid rgb(99 102 241);
+}
+
+.form div button {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.625rem 0.875rem;
+  background-color: rgb(99 102 241);
+  border-radius: 0.375rem;
+  border: none;
+  outline: none;
+}
   /*main content end here*/
 
 /*copyright css*/
