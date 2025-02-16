@@ -145,6 +145,7 @@ $conn->close();
       }
     }
   </script>
+  <link rel="icon" href="images icons/link.png" type="image/icon type">
 </head>
 <body>
   <div class="contact-form">
