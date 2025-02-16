@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 *,
 *::after {
   margin: 0;
@@ -27,62 +27,112 @@ body {
   background-color: rgb(255, 255, 255);
   font-family: "Poppins", serif;
   background: var(--bg);
-  
 }
-
-.nav {
-  display: flex;
-  align-items: center;
-  min-height: 8vh;
-  font-size: 1rem;
-  font-weight: bold;
-  padding-top: 10px;
-  position: sticky;
-  animation: slide-down 1.5s ease;
-}
-
-@keyframes slide-down{
-  0%{
-      transform: translateY(-100%);
-  }
-  100%{
-      transform: translateY(0);
-  }
-}
-
-.links {
-  display: flex;
-  justify-content: center; 
-  flex-grow: 1; 
-  gap: 10vh;
-  list-style: none;
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.links li {
-  list-style: none;
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.links a:hover{
-  color: hsl(42, 100%, 50%);
-}
-
-.links a {
-  color: hsl(0, 0%, 100%);
-  text-decoration: none;
-  transition: all 0.3s ease 0s;
-}
-
-.nav-buttons {
+/* Navbar Styling */
+.navbar {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-right: 10px;
-  gap:10px;
+  justify-content: space-between;
+  padding: 15px 20px;
+  color: white;
+  margin-bottom: 15px;
+  position: sticky;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  top: 0px;
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+}
+
+/* Center Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  margin: 0 auto;
+  position: relative;
+  left: 130px; /* for left margine of navbar li elements last commited */
+}
+
+.nav-links li a {
+  color: rgb(33, 33, 33);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links li :hover {
+  color: rgb(235, 114, 27);
+  background-color: transparent;
+}
+
+/* Right Side: Search -> Location -> Profile */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* From Uiverse.io by Bodyhc */
+.search {
+  display: inline-block;
+  position: relative;
+}
+
+.search input[type="text"] {
+  width: 200px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.search button[type="submit"] {
+  background-color: #000000;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: 0.9s ease;
+}
+
+.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: rgb(255, 255, 255);
+  background-color: rgb(244, 102, 13);
+}
+
+.dropdown-text {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 hr {
@@ -96,16 +146,20 @@ hr {
   gap: 7px; /* Space between the links */
   justify-content: center; /* Centers the links horizontally */
   padding: 10px; /* Adds padding around the entire category section */
+  margin-top: 10px;
+  margin-bottom: 13px;
 }
 
 .categories a {
   font-size: 12px; /* Smaller font size */
-  color: #333; /* Default text color */
+  color: #f7f1f1; /* Default text color */
   text-decoration: none; /* Removes underline */
   padding: 5px 10px; /* Adds padding inside each link for better click area */
   border: 1px solid #cccccc; /* Adds a light border around each link */
   border-radius: 9px; /* Rounded corners */
   transition: all 0.3s ease; /* Smooth transition for hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  background-color: #222323;
 }
 
 .categories a:hover {
@@ -128,8 +182,8 @@ hr {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .listproduct a:hover {
-    color: rgb(127, 89, 167); /* Change text color on hover */
-    }
+  color: rgb(127, 89, 167); /* Change text color on hover */
+}
 /* User Icon Styling */
 .user-icon {
   margin-left: auto; /* Align to the end of the navbar */
@@ -147,11 +201,9 @@ hr {
   transform: scale(0.9); /* Slight zoom effect on hover */
 }
 
-
 /*location*/
 .dropdown-text {
   padding: 15px 4px;
-  background-color: #ffffff;
   cursor: pointer;
   border-radius: 5px;
   font-size: 17px;
@@ -163,7 +215,7 @@ hr {
 }
 .dropdown-text:hover {
   color: rgb(127, 89, 167); /* Change text color on hover */
-  }
+}
 .dropdown-box {
   display: none;
   position: fixed;
@@ -216,7 +268,7 @@ hr {
 }
 
 .dropdown-box::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -10px;
   left: calc(50% - 10px);
@@ -245,254 +297,260 @@ hr {
   color: red;
 }
 
-
 /*main css*/
 .banner {
-    margin-top: 1vh;
-    margin-bottom: 10vh;
-    padding-left: 10px; /* Updated padding */
-    padding-right: 10px; /* Updated padding */
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Center-align image horizontally */
-    align-items: center; /* Center-align image vertically */
-  }
-  
-  .banner img {
-    max-height: 40%;
-    max-width: 100%; /* Ensure image doesn't overflow */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 15px; /* If needed, keep rounded corners for image */
-  }
-  /*movie section*/
-  .container {
-    background-color: #151515;
-    min-height: calc(100vh - 50px);
-    color: white;
-    transition: 1s ease all;
-  }
-  
-  .content-container {
-    margin-left: 1px;
-  }
-  
-  .featured-content {
-    height: 50vh;
-    padding: 50px;
-  }
-  
-  .featured-title {
-    width: 200px;
-  }
-  
-  .featured-desc {
-    width: 500px;
-    color: lightgray;
-    margin: 30px 0;
-  }
-  
-  .featured-button {
-    background-color: #4dbf00;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-weight: bold;
-  }
-  
-  .event-list-container {
-    padding: 0 15px;
-  }
-  
-  .event-list-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .event-list {
-    display: flex;
-    align-items: center;
-    height: 300px;
-    transform: translateX(0);
-    transition: all 1s ease-in-out;
-  }
-  
-  .event-list-item {
-    margin-right: 45px;
-    position: relative;
-  }
-  
-  .event-list-item:hover .event-list-item-img {
-    transform: scale(1.2);
-    margin: 0 30px;
-    opacity: 0.5;
-  }
-  
-  .event-list-item:hover .event-list-item-title,
-  .event-list-item:hover .event-list-item-desc,
-  .event-list-item:hover .event-list-item-button {
-    opacity: 1;
-  }
-  
-  .event-list-item-img {
-    transition: all 1s ease-in-out;
-    width: 270px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 20px;
-  }
-  
-  .event-list-item-title {
-    background-color: #333;
-    padding: 0 10px;
-    font-size: 32px;
-    font-weight: bold;
-    position: absolute;
-    top: 10%;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .event-list-item-desc {
-    background-color: #333;
-    padding: 10px;
-    font-size: 14px;
-    position: absolute;
-    top: 30%;
-    left: 40px;
-    width: 230px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .event-list-item-button {
-    padding: 10px;
-    background-color: #4dbf00;
-    color: white;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .arrow {
-    font-size: 90px;
-    position: absolute;
-    top: 90px;
-    right: 0;
-    color: lightgray;
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  
-  .container.active {
-    background-color: white;
-  }
-  
-  .event-list-title.active {
-    color: black;
-  }
-  
-  .navbar-container.active {
-    background-color: white;
-  
-    color: black;
-  }
-  
-  .sidebar.active{
-      background-color: white;
-  }
-  
-  .left-menu-icon.active{
-      color: black;
-  }
-  
-  .toggle.active{
-      background-color: black;
-  }
-  
-  .toggle-ball.active{
-      background-color: white;
-      transform: translateX(-20px);
-  }
-  
-  @media only screen and (max-width: 940px){
-      .menu-container{
-          display: none;
-      }
-  }
-  /*movie content ends here*/
-
-  /*Event content starts from here*/
-  /*Event content close here*/
-  /*main content end here*/
-
-/* From Uiverse.io by satyamchaudharydev */ 
-.card {
-  width: 240px;
-  height: 254px;
-  padding: 0 15px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  background: #fff;
-  border-radius: 20px;
+  margin-top: 3vh;
+  margin-bottom: 4vh;
+  padding-left: 10px; /* Updated padding */
+  padding-right: 10px; /* Updated padding */
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center-align image horizontally */
+  align-items: center; /* Center-align image vertically */
 }
 
-.card > * {
-  margin: 0;
+.banner img {
+  max-height: 40%;
+  max-width: 100%; /* Ensure image doesn't overflow */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 15px; /* If needed, keep rounded corners for image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+/*movie section*/
+.container {
+  background-color: #151515;
+  min-height: calc(100vh - 50px);
+  color: white;
+  transition: 1s ease all;
 }
 
-.card__title {
-  font-size: 23px;
-  font-weight: 900;
-  color: #333;
+.content-container {
+  margin-left: 1px;
 }
 
-.card__content {
-  font-size: 13px;
-  line-height: 18px;
-  color: #333;
+.featured-content {
+  height: 50vh;
+  padding: 50px;
 }
 
-.card__form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.featured-title {
+  width: 200px;
 }
 
-.card__form input {
-  margin-top: 10px;
-  outline: 0;
-  background: rgb(255, 255, 255);
-  box-shadow: transparent 0px 0px 0px 1px inset;
-  padding: 0.6em;
-  border-radius: 14px;
-  border: 1px solid #333;
-  color: black;
+.featured-desc {
+  width: 1200px;
+  color: lightgray;
+  margin: 150px 0;
 }
 
-.card__form button {
-  border: 0;
-  background: #111;
-  color: #fff;
-  padding: 0.68em;
-  border-radius: 14px;
+.featured-button {
+  background-color: #4dbf00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
   font-weight: bold;
 }
 
-.sign-up:hover {
-  opacity: 0.8;
-} 
+.event-list-container {
+  padding: 0 15px;
+}
+
+.event-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+.event-list-item {
+  margin-right: 45px;
+  position: relative;
+}
+
+.event-list-item:hover .event-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.event-list-item:hover .event-list-item-title,
+.event-list-item:hover .event-list-item-desc,
+.event-list-item:hover .event-list-item-button {
+  opacity: 1;
+}
+
+.event-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.event-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.event-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 30%;
+  left: 40px;
+  width: 230px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.event-list-item-button {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.arrow {
+  font-size: 90px;
+  position: absolute;
+  top: 90px;
+  right: 0;
+  color: lightgray;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.container.active {
+  background-color: white;
+}
+
+.event-list-title.active {
+  color: black;
+}
+
+.navbar-container.active {
+  background-color: white;
+
+  color: black;
+}
+
+.sidebar.active {
+  background-color: white;
+}
+
+.left-menu-icon.active {
+  color: black;
+}
+
+.toggle.active {
+  background-color: black;
+}
+
+.toggle-ball.active {
+  background-color: white;
+  transform: translateX(-20px);
+}
+
+@media only screen and (max-width: 940px) {
+  .menu-container {
+    display: none;
+  }
+}
+/*movie content ends here*/
+
+/* From Uiverse.io by Yaya12085 */
+.form {
+  display: flex;
+  flex-direction: column;
+  background: #606c88;
+  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+  background: linear-gradient(to right, #3f4c6b, #606c88);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 350px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 35%;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.description {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: rgb(209 213 219);
+}
+
+.form div {
+  display: flex;
+  max-width: 28rem;
+  margin-top: 1rem;
+  column-gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.form div input {
+  outline: none;
+  line-height: 1.5rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255);
+  padding: 0.5rem 0.875rem;
+  background-color: rgb(255 255 255 / 0.05);
+  border: 1px solid rgba(253, 253, 253, 0.363);
+  border-radius: 0.375rem;
+  flex: 1 1 auto;
+}
+
+.form div input::placeholder {
+  color: rgb(216, 212, 212);
+}
+
+.form div input:focus {
+  border: 1px solid rgb(99 102 241);
+}
+
+.form div button {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 0.625rem 0.875rem;
+  background-color: rgb(99 102 241);
+  border-radius: 0.375rem;
+  border: none;
+  outline: none;
+}
+/*main content end here*/
 
 /*copyright css*/
 footer.copyright {

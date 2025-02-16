@@ -1,3 +1,56 @@
+<?php
+session_start(); // Start session to store user data
+
+$servername = "localhost";
+$username = "root"; // Change if needed
+$password = ""; // Change if needed
+$database = "quicktickets"; // Change to your actual database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email_or_username = $_POST['email_or_username'];
+    $password = $_POST['password'];
+
+    // Query to check user in database
+    $sql = "SELECT * FROM users WHERE email = ? OR username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $email_or_username, $email_or_username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // If user exists
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        // Verify password
+        if (password_verify($password, $row['password'])) {
+            // Store user data in session
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+
+            // Redirect to dashboard
+            header("Location: dashboard.html");
+            exit();
+        } else {
+            echo "<script>alert('Incorrect password!'); window.history.back();</script>";
+        }
+    } else {
+        echo "<script>alert('User not found! Please sign up first.'); window.history.back();</script>";
+    }
+    
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,19 +186,19 @@
 <body>
  <div class="form-container">
     <p class="title">Login</p>
-    <form class="form">
-      <input type="email" class="input" placeholder="Username/Email">
-      <input type="password" class="input" placeholder="Password">
-      <p class="page-link">
-        <span class="page-link-label">Forgot Password?</span>
-      </p>
-      <button class="form-btn">Login</button>
-      <p class="sign-up-label">
-        Don't have an account? 
-        <a href="signup.html" class="sign-up-link">Sign up</a>
+    <form class="form" action="login.php" method="POST">
+    <input type="text" class="input" name="email_or_username" placeholder="Username/Email" required>
+    <input type="password" class="input" name="password" placeholder="Password" required>
+    <p class="page-link">
+    <a href="forgot_password.php" class="page-link-label">Forgot Password?</a>
     </p>
-    
-    </form>
+    <button type="submit" class="form-btn">Login</button>
+    <p class="sign-up-label">
+        Don't have an account? 
+        <a href="signup.php" class="sign-up-link">Sign up</a>
+    </p>
+</form>
+
   </div>
 </body>
 </html>

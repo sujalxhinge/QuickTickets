@@ -34,7 +34,6 @@ body {
   box-sizing: border-box;
 }
 
-
 /* Navbar Styling */
 .navbar {
   display: flex;
@@ -46,22 +45,19 @@ body {
   position: sticky;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
-  top:0px;
+  top: 0px;
   -webkit-backdrop-filter: blur(13px);
-    backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
 }
 
-
 /* Center Navigation Links */
-.nav-links
- {
+.nav-links {
   list-style: none;
   display: flex;
   gap: 50px;
   margin: 0 auto;
   position: relative;
-    left: 100px;
-    
+  left: 130px; /* for left margine of navbar li elements last commited */
 }
 
 .nav-links li a {
@@ -70,11 +66,10 @@ body {
   font-weight: 500;
 }
 
-.nav-links li :hover{
+.nav-links li :hover {
   color: rgb(235, 114, 27);
- background-color: transparent;
+  background-color: transparent;
 }
-
 
 /* Right Side: Search -> Location -> Profile */
 .nav-right {
@@ -83,7 +78,7 @@ body {
   gap: 20px;
 }
 
-/* From Uiverse.io by Bodyhc */ 
+/* From Uiverse.io by Bodyhc */
 .search {
   display: inline-block;
   position: relative;
@@ -108,7 +103,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  transition: .9s ease;
+  transition: 0.9s ease;
 }
 
 .search button[type="submit"]:hover {
@@ -116,7 +111,6 @@ body {
   color: rgb(255, 255, 255);
   background-color: rgb(244, 102, 13);
 }
-
 
 .dropdown-text {
   cursor: pointer;
@@ -133,11 +127,11 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
-      flex-direction: column;
+    flex-direction: column;
   }
   .nav-links {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 }
 
@@ -154,7 +148,6 @@ hr {
   padding: 10px; /* Adds padding around the entire category section */
   margin-top: 10px;
   margin-bottom: 13px;
-  
 }
 
 .categories a {
@@ -189,8 +182,8 @@ hr {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .listproduct a:hover {
-    color: rgb(127, 89, 167); /* Change text color on hover */
-    }
+  color: rgb(127, 89, 167); /* Change text color on hover */
+}
 /* User Icon Styling */
 .user-icon {
   margin-left: auto; /* Align to the end of the navbar */
@@ -208,7 +201,6 @@ hr {
   transform: scale(0.9); /* Slight zoom effect on hover */
 }
 
-
 /*location*/
 .dropdown-text {
   padding: 15px 4px;
@@ -220,11 +212,10 @@ hr {
   border: none;
   position: relative;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-
 }
 .dropdown-text:hover {
   color: rgb(127, 89, 167); /* Change text color on hover */
-  }
+}
 .dropdown-box {
   display: none;
   position: fixed;
@@ -277,7 +268,7 @@ hr {
 }
 
 .dropdown-box::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -10px;
   left: calc(50% - 10px);
@@ -306,195 +297,191 @@ hr {
   color: red;
 }
 
-
 /*main css*/
 .banner {
-    margin-top: 3vh;
-    margin-bottom: 4vh;
-    padding-left: 10px; /* Updated padding */
-    padding-right: 10px; /* Updated padding */
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Center-align image horizontally */
-    align-items: center; /* Center-align image vertically */
-  }
-  
-  .banner img {
-    max-height: 40%;
-    max-width: 100%; /* Ensure image doesn't overflow */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 15px; /* If needed, keep rounded corners for image */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-  }
-  /*movie section*/
-  .container {
-    background-color: #151515;
-    min-height: calc(100vh - 50px);
-    color: white;
-    transition: 1s ease all;
-    
-  }
-  
-  .content-container {
-    margin-left: 1px;
-  }
-  
-  .featured-content {
-    height: 50vh;
-    padding: 50px;
-  
-  }
-  
-  .featured-title {
-    width: 200px;
-  }
-  
-  .featured-desc {
-    width: 1200px;
-    color: lightgray;
-    margin: 150px 0;
-  }
-  
-  .featured-button {
-    background-color: #4dbf00;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-weight: bold;
-  }
-  
-  .event-list-container {
-    padding: 0 15px;
-  }
-  
-  .event-list-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .event-list {
-    display: flex;
-    align-items: center;
-    height: 300px;
-    transform: translateX(0);
-    transition: all 1s ease-in-out;
-  }
-  
-  .event-list-item {
-    margin-right: 45px;
-    position: relative;
-  }
-  
-  .event-list-item:hover .event-list-item-img {
-    transform: scale(1.2);
-    margin: 0 30px;
-    opacity: 0.5;
-  }
-  
-  .event-list-item:hover .event-list-item-title,
-  .event-list-item:hover .event-list-item-desc,
-  .event-list-item:hover .event-list-item-button {
-    opacity: 1;
-  }
-  
-  .event-list-item-img {
-    transition: all 1s ease-in-out;
-    width: 270px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 20px;
-  }
-  
-  .event-list-item-title {
-    background-color: #333;
-    padding: 0 10px;
-    font-size: 32px;
-    font-weight: bold;
-    position: absolute;
-    top: 10%;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-    
-  }
-  
-  .event-list-item-desc {
-    background-color: #333;
-    padding: 10px;
-    font-size: 14px;
-    position: absolute;
-    top: 30%;
-    left: 40px;
-    width: 230px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .event-list-item-button {
-    padding: 10px;
-    background-color: #4dbf00;
-    color: white;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-  }
-  
-  .arrow {
-    font-size: 90px;
-    position: absolute;
-    top: 90px;
-    right: 0;
-    color: lightgray;
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  
-  .container.active {
-    background-color: white;
-  }
-  
-  .event-list-title.active {
-    color: black;
-  }
-  
-  .navbar-container.active {
-    background-color: white;
-  
-    color: black;
-  }
-  
-  .sidebar.active{
-      background-color: white;
-  }
-  
-  .left-menu-icon.active{
-      color: black;
-  }
-  
-  .toggle.active{
-      background-color: black;
-  }
-  
-  .toggle-ball.active{
-      background-color: white;
-      transform: translateX(-20px);
-  }
-  
-  @media only screen and (max-width: 940px){
-      .menu-container{
-          display: none;
-      }
-  }
-  /*movie content ends here*/
+  margin-top: 3vh;
+  margin-bottom: 4vh;
+  padding-left: 10px; /* Updated padding */
+  padding-right: 10px; /* Updated padding */
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center-align image horizontally */
+  align-items: center; /* Center-align image vertically */
+}
 
-  /* From Uiverse.io by Yaya12085 */ 
+.banner img {
+  max-height: 40%;
+  max-width: 100%; /* Ensure image doesn't overflow */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 15px; /* If needed, keep rounded corners for image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+/*movie section*/
+.container {
+  background-color: #151515;
+  min-height: calc(100vh - 50px);
+  color: white;
+  transition: 1s ease all;
+}
+
+.content-container {
+  margin-left: 1px;
+}
+
+.featured-content {
+  height: 50vh;
+  padding: 50px;
+}
+
+.featured-title {
+  width: 200px;
+}
+
+.featured-desc {
+  width: 1200px;
+  color: lightgray;
+  margin: 150px 0;
+}
+
+.featured-button {
+  background-color: #4dbf00;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+
+.event-list-container {
+  padding: 0 15px;
+}
+
+.event-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+.event-list-item {
+  margin-right: 45px;
+  position: relative;
+}
+
+.event-list-item:hover .event-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.event-list-item:hover .event-list-item-title,
+.event-list-item:hover .event-list-item-desc,
+.event-list-item:hover .event-list-item-button {
+  opacity: 1;
+}
+
+.event-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.event-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.event-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 30%;
+  left: 40px;
+  width: 230px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.event-list-item-button {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.arrow {
+  font-size: 90px;
+  position: absolute;
+  top: 90px;
+  right: 0;
+  color: lightgray;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.container.active {
+  background-color: white;
+}
+
+.event-list-title.active {
+  color: black;
+}
+
+.navbar-container.active {
+  background-color: white;
+
+  color: black;
+}
+
+.sidebar.active {
+  background-color: white;
+}
+
+.left-menu-icon.active {
+  color: black;
+}
+
+.toggle.active {
+  background-color: black;
+}
+
+.toggle-ball.active {
+  background-color: white;
+  transform: translateX(-20px);
+}
+
+@media only screen and (max-width: 940px) {
+  .menu-container {
+    display: none;
+  }
+}
+/*movie content ends here*/
+
+/* From Uiverse.io by Yaya12085 */
 .form {
   display: flex;
   flex-direction: column;
@@ -536,7 +523,7 @@ hr {
   outline: none;
   line-height: 1.5rem;
   font-size: 0.875rem;
-  color: rgb(255 255 255 );
+  color: rgb(255 255 255);
   padding: 0.5rem 0.875rem;
   background-color: rgb(255 255 255 / 0.05);
   border: 1px solid rgba(253, 253, 253, 0.363);
@@ -563,7 +550,7 @@ hr {
   border: none;
   outline: none;
 }
-  /*main content end here*/
+/*main content end here*/
 
 /*copyright css*/
 footer.copyright {
