@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="admindashboard.css">
+  <link rel="stylesheet" href="admindash.css">
 </head>
 <body>
    <div class="container">
@@ -42,10 +42,11 @@
               <h3>Reports</h3>
            </a>
           
-           <a href="#" >
+           <a href="#cat"  >
               <span class="material-symbols-sharp">add </span>
               <h3 id="recent">Add Product</h3>
            </a>
+        
            <a href="dashboard.html">
               <span class="material-symbols-sharp">logout </span>
               <h3>logout</h3>
@@ -181,11 +182,10 @@
          <a href="#">Show All</a>
       </div>
       <!--this section is for adding and deletion of categories like movies and events etc-->
+      <h2 id="cat">Add Categories</h2>
       <div class="category-form">
-        <h2>Add Categories</h2>
         <form action="adddata.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label>Category:</label>
                 <select name="category" required>
                     <option value="Movie">Movie</option>
                     <option value="Event">Event</option>

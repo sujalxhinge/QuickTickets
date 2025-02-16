@@ -158,7 +158,7 @@ b{
   background: var(--clr-white);
   display: flex;
   flex-direction: column;
-  height: 117vh;
+  height: 240vh;
   position: relative;
   top: 1rem;
   border-radius:20px;
@@ -389,27 +389,30 @@ categories adding sections starts from here
 /* General Form Styling */
 
 main .category-form {
-  margin-top: 2rem;
-  background: var(--clr-white);
-  width: 100%;
-  max-width: 900px; /* Increased form width */
-  border-radius: var(--card-border-radius);
-  padding: 2rem; /* Increased padding */
-  text-align: center;
-  box-shadow: var(--box-shadow);
-  transition: all 0.3s ease;
-  color: var(--clr-dark);
-  margin: auto; /* Center align */
-}
+    margin-top: 2rem;
+    background: var(--clr-white);
+    width: calc(200% + 100px); /* Increased width on the right side */
+    max-width: 960px; /* Adjusted max width */
+    border-radius: var(--card-border-radius);
+    padding: 2rem;
+    padding-right: 4rem; /* Increased padding on the right side */
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    color: var(--clr-dark);
+    margin: auto; /* Center align */
+    margin-left: -4px; /* Shift the form slightly to the left */
+  }
+  
 
 main .category-form:hover {
   box-shadow: none;
 }
 
 /* Form Heading */
-main .category-form h2 {
+main h2 {
   color: var(--clr-dark);
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   font-size: 1.8rem; /* Increased heading size */
 }
 
@@ -419,7 +422,7 @@ main .category-form h2 {
   margin: auto;
   background: white;
   padding: 30px; /* Increased padding */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Better shadow */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Better shadow */
   border-radius: 10px;
 }
 
@@ -438,7 +441,7 @@ label {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  gap: 15px; /* Space between elements */
+  gap: 20px; /* Space between elements */
 }
 
 /* Input Fields */
@@ -453,7 +456,7 @@ label {
 
 /* Full-width input for fields needing more space */
 .full-width {
-  width: 100%;
+  width: 180%;
 }
 
 /* Button Styling */
@@ -476,28 +479,31 @@ button {
 .add-btn {
   background: green;
   color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .add-btn:hover {
-  background: darkgreen;
+  background: rgb(0, 0, 0);
 }
 
 .update-btn {
   background: blue;
   color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .update-btn:hover {
-  background: darkblue;
+  background: rgb(0, 0, 0);
 }
 
 .delete-btn {
   background: red;
   color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .delete-btn:hover {
-  background: darkred;
+  background: rgb(0, 0, 0);
 }
 
 /* Responsive Design */

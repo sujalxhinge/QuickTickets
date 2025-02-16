@@ -24,17 +24,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact = $_POST['contact'];
     $query = $_POST['query'];
 
-    // Insert data into the database
-    $sql = "INSERT INTO contactusTB (full_name, email, contact, query) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $full_name, $email, $contact, $query);
-
-    if ($stmt->execute()) {
-        $message = "Your query has been submitted successfully!";
+    // Server-side validation for phone number (exactly 10 digits)
+    if (!preg_match("/^\d{10}$/", $contact)) {
+        $message = "Error: Phone number must be exactly 10 digits.";
     } else {
-        $message = "Error: " . $stmt->error;
+        // Insert data into the database
+        $sql = "INSERT INTO contactusTB (full_name, email, contact, query) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $full_name, $email, $contact, $query);
+
+        if ($stmt->execute()) {
+            $message = "Your query has been submitted successfully!";
+        } else {
+            $message = "Error: " . $stmt->error;
+        }
+        $stmt->close();
     }
-    $stmt->close();
 }
 
 // Close connection
@@ -49,10 +54,10 @@ $conn->close();
   <title>Contact Us</title>
   <style>
     body {
-      background: url('images icons/gredient-1.jpg') no-repeat center center fixed;
+      background: url('images icons/gredient-2.jpg') no-repeat center center fixed;
       background-size: cover;
       -webkit-backdrop-filter: blur(19px);
-      backdrop-filter: blur(19px);
+      backdrop-filter: blur(19px);
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -60,22 +65,20 @@ $conn->close();
       justify-content: center;
       align-items: center;
       height: 100vh;
-      
     }
     .contact-form {
-    border-radius: 10px;
-    padding: 20px;
-    width: 380px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
-    position: relative;
-    backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(13px);
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-}
-
+      border-radius: 10px;
+      padding: 20px;
+      width: 380px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+      position: relative;
+      backdrop-filter: blur(13px);
+      -webkit-backdrop-filter: blur(13px);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
     .contact-form h2 {
       text-align: center;
-      color:rgb(16, 12, 10);
+      color: rgb(16, 12, 10);
     }
     .form-group {
       margin-bottom: 8px;
@@ -87,24 +90,22 @@ $conn->close();
       color: #333;
     }
     .form-group input, 
-.form-group textarea {
-    width: 94%;
-    padding: 10px;
-    border: 1px solid rgba(18, 4, 4, 0.5); /* Light transparent border */
-    border-radius: 5px;
-    font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.3); /* Slight transparency */
-    backdrop-filter: blur(10px); /* Blur effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    color: white; /* Ensure text is visible */
-    outline: none;
-}
-
-.form-group input::placeholder, 
-.form-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.6); /* Light placeholder color for visibility */
-}
-
+    .form-group textarea {
+      width: 94%;
+      padding: 10px;
+      border: 1px solid rgba(18, 4, 4, 0.5);
+      border-radius: 5px;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: black;
+      outline: none;
+    }
+    .form-group input::placeholder, 
+    .form-group textarea::placeholder {
+      color: rgba(15, 10, 10, 0.6);
+    }
     .form-group textarea {
       height: 100px;
       resize: none;
@@ -112,17 +113,17 @@ $conn->close();
     .form-group button {
       width: 100%;
       padding: 8px;
-      background:rgb(0, 0, 0);
+      background: rgb(0, 0, 0);
       color: white;
       font-size: 20px;
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      margin: 10 10px; 
+      margin: 10px 10px; 
       font-weight: bold;
     }
     .form-group button:hover {
-      background:rgb(255, 174, 0);
+      background: rgb(255, 174, 0);
     }
     .message {
       text-align: center;
@@ -131,8 +132,21 @@ $conn->close();
       color: green;
     }
   </style>
+  <script>
+    function validatePhoneNumber() {
+      let contactInput = document.getElementById("contact");
+      let contactValue = contactInput.value;
+      let phoneRegex = /^\d{10}$/;
+
+      if (!phoneRegex.test(contactValue)) {
+        contactInput.setCustomValidity("Phone number must be exactly 10 digits.");
+      } else {
+        contactInput.setCustomValidity("");
+      }
+    }
+  </script>
 </head>
-<body >
+<body>
   <div class="contact-form">
     <h2>Contact Us</h2>
 
@@ -151,7 +165,7 @@ $conn->close();
       </div>
       <div class="form-group">
         <label for="contact">Contact:</label>
-        <input type="text" id="contact" name="contact" required>
+        <input type="text" id="contact" name="contact" required oninput="validatePhoneNumber()" maxlength="10">
       </div>
       <div class="form-group">
         <label for="query">Query:</label>
