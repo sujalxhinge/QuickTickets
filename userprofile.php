@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+$username = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="userprofile.css" />
+    <link rel="icon" href="images icons/link.png" type="image/icon type">
 </head>
 <body> 
 <button class="cta" onclick="window.location.href='dashboard.html';">
@@ -41,7 +50,7 @@
     <form action="" method="post" id="form">
       <div id="form-body">
         <div id="welcome-lines">
-          <div id="welcome-line-2">Welcome Back, <?php echo htmlspecialchars($full_name);?></div>
+          <div id="welcome-line-2"><span>Welcome Back <?php echo htmlspecialchars($username); ?>!</span></div>
         </div>
         <div id="input-area">
           <div class="form-inp">
