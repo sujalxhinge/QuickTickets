@@ -116,95 +116,53 @@
         <a href="#standupcomedy">Stand-Up Comedy</a>
         <a href="#concerts">Concerts</a>
       </div>
-      <!--this section is for movies-->
-      <div class="container">
-        <div class="content-container">
-          <div
-            class="featured-content"
-            style="
-              background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-                url('movie\ img/imgtop4');
-              background-position: center;
-              background-size: cover;
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
-            "
-          >
-            <img class="featured-title" src="img/f-t-1.png" alt="" />
-          </div>
-          <div class="event-list-container">
-            <h1 id="movies" class="event-list-title">Movies</h1>
-            <div class="event-list-wrapper">
-              
-              <div class="event-list">
-                
-                <div class="event-list-item">
-                  <img
-                    class="event-list-item-img"
-                    src=""
-                    alt=""
-                  />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                    
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                 
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-              </div>
+     <!-- Movies Section -->
+<div class="container">
+    <div class="featured-content" style="
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+            url('movie\ img/imgtop4');
+          background-position: center;
+          background-size: cover;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        ">
+        <img class="featured-title" src="img/f-t-1.png" alt="" />
+    </div>
+    
+    <?php
+    // Database connection
+    $conn = new mysqli("localhost", "root", "", "quicktickets");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch movies
+    $sql = "SELECT * FROM movies";
+    $result = $conn->query($sql);
+    ?>
+
+    <h1 id="movies" class="event-list-title">Movies</h1>
+    <div class="event-list-wrapper">
+        <div class="event-list">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="event-list-item">';
+                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No movies available.</p>";
             }
-              ?>
-              <i class="fas fa-chevron-right arrow"></i>
-            </div>
-          </div>
+            $conn->close();
+            ?>
         </div>
-      </div>
-      <!--this section of movies ends here -->
+        <i class="fas fa-chevron-right arrow"></i>
+    </div>
+</div>
+<!-- Movies Section Ends -->
+
 
       <!--this section is for events-->
       <div class="container">

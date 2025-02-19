@@ -16,7 +16,7 @@ $username = $_SESSION['username'];
     <link rel="icon" href="images icons/link.png" type="image/icon type">
 </head>
 <body> 
-<button class="cta" onclick="window.location.href='dashboard.html';">
+<button class="cta" onclick="window.location.href='dashboard.php';">
   <span class="hover-underline-animation">Home</span>
   <svg
     id="arrow-horizontal"
