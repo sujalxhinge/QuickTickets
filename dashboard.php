@@ -185,74 +185,39 @@
               (2018) and the 22nd film in the Marvel Cinematic Universe
             </p>
           </div>
-          <div class="event-list-container">
-            <h1 id="events" class="event-list-title">Events</h1>
-            <div class="event-list-wrapper">
-              <div class="event-list">
-                <div class="event-list-item">
-                  <img
-                    class="event-list-item-img"
-                    src=""
-                    alt=""
-                  />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-              </div>
-              <i class="fas fa-chevron-right arrow"></i>
-            </div>
-          </div>
+          <?php
+    // Database connection
+    $conn = new mysqli("localhost", "root", "", "quicktickets");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch movies
+    $sql = "SELECT * FROM events";
+    $result = $conn->query($sql);
+    ?>
+
+    <h1 id="events" class="event-list-title">Events</h1>
+    <div class="event-list-wrapper">
+        <div class="event-list">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="event-list-item">';
+                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No movies available.</p>";
+            }
+            $conn->close();
+            ?>
+        </div>
+        <i class="fas fa-chevron-right arrow"></i>
+    </div>
+</div>
         </div>
       </div>
       <!--this section of events ends here -->
@@ -278,74 +243,39 @@
               based on the Marvel Comics race of the same name.
             </p>
           </div>
-          <div class="event-list-container">
-            <h1 id="shows" class="event-list-title">Shows</h1>
-            <div class="event-list-wrapper">
-              <div class="event-list">
-                <div class="event-list-item">
-                  <img
-                    class="event-list-item-img"
-                    src=""
-                    alt=""
-                  />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-              </div>
-              <i class="fas fa-chevron-right arrow"></i>
-            </div>
-          </div>
+          <?php
+    // Database connection
+    $conn = new mysqli("localhost", "root", "", "quicktickets");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch movies
+    $sql = "SELECT * FROM shows";
+    $result = $conn->query($sql);
+    ?>
+
+    <h1 id="shows" class="event-list-title">Shows</h1>
+    <div class="event-list-wrapper">
+        <div class="event-list">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="event-list-item">';
+                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No movies available.</p>";
+            }
+            $conn->close();
+            ?>
+        </div>
+        <i class="fas fa-chevron-right arrow"></i>
+    </div>
+</div>
         </div>
       </div>
       <!--this section of shows ends here -->
@@ -372,74 +302,39 @@
               powers.
             </p>
           </div>
-          <div class="event-list-container">
-            <h1 id="sports" class="event-list-title">Sports</h1>
-            <div class="event-list-wrapper">
-              <div class="event-list">
-                <div class="event-list-item">
-                  <img
-                    class="event-list-item-img"
-                    src=""
-                    alt=""
-                  />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                    
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-              </div>
-              <i class="fas fa-chevron-right arrow"></i>
-            </div>
-          </div>
+          <?php
+    // Database connection
+    $conn = new mysqli("localhost", "root", "", "quicktickets");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch movies
+    $sql = "SELECT * FROM sports";
+    $result = $conn->query($sql);
+    ?>
+
+    <h1 id="sports" class="event-list-title">Sports</h1>
+    <div class="event-list-wrapper">
+        <div class="event-list">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="event-list-item">';
+                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No movies available.</p>";
+            }
+            $conn->close();
+            ?>
+        </div>
+        <i class="fas fa-chevron-right arrow"></i>
+    </div>
+</div>
         </div>
       </div>
       <!--this section of sports ends here -->
@@ -466,74 +361,39 @@
               his partner’s death.
             </p>
           </div>
-          <div class="event-list-container">
-            <h1 id="standupcomedy" class="event-list-title">Stand Up Comedy</h1>
-            <div class="event-list-wrapper">
-              <div class="event-list">
-                <div class="event-list-item">
-                  <img
-                    class="event-list-item-img"
-                    src=""
-                    alt=""
-                  />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                    
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-              </div>
-              <i class="fas fa-chevron-right arrow"></i>
-            </div>
-          </div>
+          <?php
+    // Database connection
+    $conn = new mysqli("localhost", "root", "", "quicktickets");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch movies
+    $sql = "SELECT * FROM standup_comedy";
+    $result = $conn->query($sql);
+    ?>
+
+    <h1 id="standupcomedy" class="event-list-title">Stand Up Comedy</h1>
+    <div class="event-list-wrapper">
+        <div class="event-list">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="event-list-item">';
+                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No movies available.</p>";
+            }
+            $conn->close();
+            ?>
+        </div>
+        <i class="fas fa-chevron-right arrow"></i>
+    </div>
+</div>
         </div>
       </div>
       <!--this section of standupcomedy ends here -->
@@ -560,74 +420,39 @@
               to Godzilla vs. Kong (2021).
             </p>
           </div>
-          <div class="event-list-container">
-            <h1 id="concerts" class="event-list-title">Concerts</h1>
-            <div class="event-list-wrapper">
-              <div class="event-list">
-                <div class="event-list-item">
-                  <img
-                    class="event-list-item-img"
-                    src=""
-                    alt=""
-                  />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                  
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="i" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-                <div class="event-list-item">
-                  <img class="event-list-item-img" src="" alt="" />
-                  <span class="event-list-item-title"></span>
-                  <p class="event-list-item-desc">
-                   
-                  </p>
-                  <button class="event-list-item-button">Book Ticket</button>
-                </div>
-              </div>
-              <i class="fas fa-chevron-right arrow"></i>
-            </div>
-          </div>
+          <?php
+    // Database connection
+    $conn = new mysqli("localhost", "root", "", "quicktickets");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch movies
+    $sql = "SELECT * FROM concerts";
+    $result = $conn->query($sql);
+    ?>
+
+    <h1 id="concerts" class="event-list-title">Concerts</h1>
+    <div class="event-list-wrapper">
+        <div class="event-list">
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<div class="event-list-item">';
+                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>No movies available.</p>";
+            }
+            $conn->close();
+            ?>
+        </div>
+        <i class="fas fa-chevron-right arrow"></i>
+    </div>
+</div>
         </div>
       </div>
       <!--This section is for banner-->
