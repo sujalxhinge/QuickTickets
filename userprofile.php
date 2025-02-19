@@ -47,36 +47,55 @@ $username = $_SESSION['username'];
 
 
   <div id="form-ui">
-    <form action="" method="post" id="form">
-      <div id="form-body">
+  <form action="update_profile.php" method="post" id="form">
+    <div id="form-body">
         <div id="welcome-lines">
-          <div id="welcome-line-2"><span>Welcome Back <?php echo htmlspecialchars($username); ?>!</span></div>
+            <div id="welcome-line-2"><span>Welcome Back <?php echo htmlspecialchars($username); ?>!</span></div>
         </div>
         <div id="input-area">
-          <div class="form-inp">
-            <input placeholder="First Name" type="text">
-          </div>
-          <div class="form-inp">
-            <input placeholder="Last Name" type="text">
-          </div>
-          <div class="form-inp">
-            <input placeholder="Address" type="text">
-          </div>
-          <div class="form-inp">
-            <input placeholder="Phone Number" type="number">
-          </div>
-          <div class="form-inp">
-            <input placeholder="Email Address" type="email">
-          </div>
+            <div class="form-inp">
+                <input name="first_name" placeholder="First Name" type="text" required>
+            </div>
+            <div class="form-inp">
+                <input name="last_name" placeholder="Last Name" type="text" required>
+            </div>
+            <div class="form-inp">
+                <input name="address" placeholder="Address" type="text" required>
+            </div>
+            <div class="form-inp">
+                <input name="phone_number" placeholder="Phone Number" type="number" required>
+            </div>
+            <div class="form-inp">
+                <input name="email" placeholder="Email Address" type="email" required>
+            </div>
         </div>
         <div id="submit-button-cvr">
-          <button id="submit-button" type="submit">Save Changes</button>
+            <button id="submit-button" type="submit">Save Changes</button>
         </div>
-        
-      </div>
-    </form>
     </div>
-  
+</form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    $("#form").on("submit", function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: "update_profile.php",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function (response) {
+                alert(response.message);
+            },
+            error: function () {
+                alert("Something went wrong. Please try again.");
+            }
+        });
+    });
+});
+</script>
 
 </body>
 </html>
