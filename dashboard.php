@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies Shows Events</title>
-    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="dash.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -140,7 +140,7 @@
     $result = $conn->query($sql);
     ?>
 
-    <h1 id="movies" class="event-list-title">Movies</h1>
+    <h1 id="movies" class="event-list-title" style="margin-left:20px;margin-top:5px;">Movies</h1>
     <div class="event-list-wrapper">
         <div class="event-list">
             <?php
@@ -197,7 +197,7 @@
     $result = $conn->query($sql);
     ?>
 
-    <h1 id="events" class="event-list-title">Events</h1>
+    <h1 id="events" class="event-list-title" style="margin-left:20px;margin-top:5px;">Events</h1>
     <div class="event-list-wrapper">
         <div class="event-list">
             <?php
@@ -255,7 +255,7 @@
     $result = $conn->query($sql);
     ?>
 
-    <h1 id="shows" class="event-list-title">Shows</h1>
+    <h1 id="shows" class="event-list-title" style="margin-left:20px;margin-top:5px;">Shows</h1>
     <div class="event-list-wrapper">
         <div class="event-list">
             <?php
@@ -314,7 +314,7 @@
     $result = $conn->query($sql);
     ?>
 
-    <h1 id="sports" class="event-list-title">Sports</h1>
+    <h1 id="sports" class="event-list-title" style="margin-left:20px;margin-top:5px;">Sports</h1>
     <div class="event-list-wrapper">
         <div class="event-list">
             <?php
@@ -373,7 +373,7 @@
     $result = $conn->query($sql);
     ?>
 
-    <h1 id="standupcomedy" class="event-list-title">Stand Up Comedy</h1>
+    <h1 id="standupcomedy" class="event-list-title" style="margin-left:20px;margin-top:5px;">Stand Up Comedy</h1>
     <div class="event-list-wrapper">
         <div class="event-list">
             <?php
@@ -432,7 +432,7 @@
     $result = $conn->query($sql);
     ?>
 
-    <h1 id="concerts" class="event-list-title">Concerts</h1>
+    <h1 id="concerts" class="event-list-title" style="margin-left:20px;margin-top:5px;">Concerts</h1>
     <div class="event-list-wrapper">
         <div class="event-list">
             <?php
