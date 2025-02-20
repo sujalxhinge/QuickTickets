@@ -151,36 +151,42 @@
     </div>
     
     <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM movies";
+// Tables to fetch data from
+$categories = ["movies", "shows", "concerts", "events", "sports", "standup_comedy"];
+
+foreach ($categories as $category) {
+    echo "<h1 id='$category' class='event-list-title' style='margin-left:20px;margin-top:5px;'>". ucfirst($category) ."</h1>";
+    echo "<div class='event-list-wrapper'>";
+    echo "<div class='event-list'>";
+
+    $sql = "SELECT * FROM $category";
     $result = $conn->query($sql);
-    ?>
 
-    <h1 id="movies" class="event-list-title" style="margin-left:20px;margin-top:5px;">Movies</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="event-list-item">';
+            echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+            echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+            echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "&category=" . urlencode($category) . "'>
                     <button class='event-list-item-button'>Book Ticket</button>
-                    </a>";
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
-            }
-            $conn->close();
-            ?>
+                  </a>";
+            echo '</div>';
+        }
+    } else {
+        echo "<p>No " . ucfirst($category) . " available.</p>";
+    }
+    echo "</div></div>";
+}
+
+$conn->close();
+?>
+
         </div>
         <i class="fas fa-chevron-right arrow"></i>
     </div>
@@ -210,37 +216,42 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM events";
+// Tables to fetch data from
+$categories = ["movies", "shows", "concerts", "events", "sports", "standup_comedy"];
+
+foreach ($categories as $category) {
+    echo "<h1 id='$category' class='event-list-title' style='margin-left:20px;margin-top:5px;'>". ucfirst($category) ."</h1>";
+    echo "<div class='event-list-wrapper'>";
+    echo "<div class='event-list'>";
+
+    $sql = "SELECT * FROM $category";
     $result = $conn->query($sql);
-    ?>
 
-    <h1 id="events" class="event-list-title" style="margin-left:20px;margin-top:5px;">Events</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-        <button class='event-list-item-button'>Book Ticket</button>
-      </a>";
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="event-list-item">';
+            echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+            echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+            echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "&category=" . urlencode($category) . "'>
+                    <button class='event-list-item-button'>Book Ticket</button>
+                  </a>";
+            echo '</div>';
+        }
+    } else {
+        echo "<p>No " . ucfirst($category) . " available.</p>";
+    }
+    echo "</div></div>";
+}
 
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
-            }
-            $conn->close();
-            ?>
+$conn->close();
+?>
+
         </div>
         <i class="fas fa-chevron-right arrow"></i>
     </div>
@@ -271,37 +282,41 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM shows";
+// Tables to fetch data from
+$categories = ["movies", "shows", "concerts", "events", "sports", "standup_comedy"];
+
+foreach ($categories as $category) {
+    echo "<h1 id='$category' class='event-list-title' style='margin-left:20px;margin-top:5px;'>". ucfirst($category) ."</h1>";
+    echo "<div class='event-list-wrapper'>";
+    echo "<div class='event-list'>";
+
+    $sql = "SELECT * FROM $category";
     $result = $conn->query($sql);
-    ?>
 
-    <h1 id="shows" class="event-list-title" style="margin-left:20px;margin-top:5px;">Shows</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="event-list-item">';
+            echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+            echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+            echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "&category=" . urlencode($category) . "'>
                     <button class='event-list-item-button'>Book Ticket</button>
                   </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
-            }
-            $conn->close();
-            ?>
+            echo '</div>';
+        }
+    } else {
+        echo "<p>No " . ucfirst($category) . " available.</p>";
+    }
+    echo "</div></div>";
+}
+
+$conn->close();
+?>
         </div>
         <i class="fas fa-chevron-right arrow"></i>
     </div>
@@ -333,37 +348,41 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM sports";
+// Tables to fetch data from
+$categories = ["movies", "shows", "concerts", "events", "sports", "standup_comedy"];
+
+foreach ($categories as $category) {
+    echo "<h1 id='$category' class='event-list-title' style='margin-left:20px;margin-top:5px;'>". ucfirst($category) ."</h1>";
+    echo "<div class='event-list-wrapper'>";
+    echo "<div class='event-list'>";
+
+    $sql = "SELECT * FROM $category";
     $result = $conn->query($sql);
-    ?>
 
-    <h1 id="sports" class="event-list-title" style="margin-left:20px;margin-top:5px;">Sports</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="event-list-item">';
+            echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+            echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+            echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "&category=" . urlencode($category) . "'>
                     <button class='event-list-item-button'>Book Ticket</button>
                   </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
-            }
-            $conn->close();
-            ?>
+            echo '</div>';
+        }
+    } else {
+        echo "<p>No " . ucfirst($category) . " available.</p>";
+    }
+    echo "</div></div>";
+}
+
+$conn->close();
+?>
         </div>
         <i class="fas fa-chevron-right arrow"></i>
     </div>
@@ -395,37 +414,41 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM standup_comedy";
+// Tables to fetch data from
+$categories = ["movies", "shows", "concerts", "events", "sports", "standup_comedy"];
+
+foreach ($categories as $category) {
+    echo "<h1 id='$category' class='event-list-title' style='margin-left:20px;margin-top:5px;'>". ucfirst($category) ."</h1>";
+    echo "<div class='event-list-wrapper'>";
+    echo "<div class='event-list'>";
+
+    $sql = "SELECT * FROM $category";
     $result = $conn->query($sql);
-    ?>
 
-    <h1 id="standupcomedy" class="event-list-title" style="margin-left:20px;margin-top:5px;">Stand Up Comedy</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="event-list-item">';
+            echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+            echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+            echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "&category=" . urlencode($category) . "'>
                     <button class='event-list-item-button'>Book Ticket</button>
                   </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
-            }
-            $conn->close();
-            ?>
+            echo '</div>';
+        }
+    } else {
+        echo "<p>No " . ucfirst($category) . " available.</p>";
+    }
+    echo "</div></div>";
+}
+
+$conn->close();
+?>
         </div>
         <i class="fas fa-chevron-right arrow"></i>
     </div>
@@ -453,41 +476,45 @@
               Schoedsack became a cinematic milestone. The franchise has seen
               several remakes, including Peter Jackson’s King Kong (2005) and
               the MonsterVerse reboot Kong: Skull Island (2017), which later led
-              to Godzilla vs. Kong (2021).
+              to Godzilla vs Kong (2021).
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM concerts";
+// Tables to fetch data from
+$categories = ["movies", "shows", "concerts", "events", "sports", "standup_comedy"];
+
+foreach ($categories as $category) {
+    echo "<h1 id='$category' class='event-list-title' style='margin-left:20px;margin-top:5px;'>". ucfirst($category) ."</h1>";
+    echo "<div class='event-list-wrapper'>";
+    echo "<div class='event-list'>";
+
+    $sql = "SELECT * FROM $category";
     $result = $conn->query($sql);
-    ?>
 
-    <h1 id="concerts" class="event-list-title" style="margin-left:20px;margin-top:5px;">Concerts</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="event-list-item">';
+            echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+            echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+            echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "&category=" . urlencode($category) . "'>
                     <button class='event-list-item-button'>Book Ticket</button>
                   </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
-            }
-            $conn->close();
-            ?>
+            echo '</div>';
+        }
+    } else {
+        echo "<p>No " . ucfirst($category) . " available.</p>";
+    }
+    echo "</div></div>";
+}
+
+$conn->close();
+?>
         </div>
         <i class="fas fa-chevron-right arrow"></i>
     </div>

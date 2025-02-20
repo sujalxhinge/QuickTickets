@@ -1,58 +1,74 @@
 <?php
+session_start(); // Start the session to track user data
+
 // Database connection
 $conn = new mysqli("localhost", "root", "", "quicktickets");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get user input
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $movie_title = $_POST['movie_title'];
-    $theater_name = $_POST['theater_name'];
-    $language = $_POST['language'];
-    $show_time = $_POST['show_time'];
-    $duration = $_POST['duration'];
-    $price = floatval($_POST['price']);
-    $location = $_POST['location'];
-    $booked_seats = intval($_POST['seats']);
-    $total_price = $booked_seats * $price;
+// Ensure user is logged in
+if (!isset($_SESSION["username"]) || !isset($_SESSION["user_id"])) {
+    die("You must be logged in to confirm a booking.");
+}
 
-    // Fetch available seats
-    $sql = "SELECT total_seats FROM movies WHERE title = ?";
+$user_id = $_SESSION["user_id"];
+$username = $_SESSION["username"];
+
+// Validate booking data
+if (isset($_POST['title'], $_POST['category'], $_POST['seats'], $_POST['total_price'])) {
+    $title = $_POST['title'];
+    $category = $_POST['category'];
+    $seats_requested = intval($_POST['seats']);
+    $total_price = floatval($_POST['total_price']);
+
+    // Validate category
+    $valid_categories = ["movies", "shows", "concerts", "events", "sports", "standup_comedy"];
+    if (!in_array($category, $valid_categories)) {
+        die("Invalid category selected.");
+    }
+
+    // Fetch event details to verify seat availability
+    $sql = "SELECT total_seats, theater, language, time AS show_time, duration, location, date 
+            FROM $category WHERE title = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $movie_title);
+    $stmt->bind_param("s", $title);
     $stmt->execute();
     $result = $stmt->get_result();
+    $event = $result->fetch_assoc();
 
-    if ($result->num_rows === 0) {
-        die("Error: Movie not found.");
+    if (!$event) {
+        die("Event not found.");
     }
 
-    $row = $result->fetch_assoc();
-    $current_seats = $row['total_seats'];
+    if ($seats_requested > 0 && $seats_requested <= $event["total_seats"]) {
+        $remaining_seats = $event["total_seats"] - $seats_requested;
 
-    if ($booked_seats > $current_seats) {
-        die("Error: Not enough seats available.");
+        // Update remaining seats in the correct table
+        $update_sql = "UPDATE $category SET total_seats = ? WHERE title = ?";
+        $update_stmt = $conn->prepare($update_sql);
+        $update_stmt->bind_param("is", $remaining_seats, $title);
+        $update_stmt->execute();
+
+        // Insert booking details into `booked_data` table
+        $insert_sql = "INSERT INTO booked_data (user_id, username, event_name, theater, language, show_time, selected_seats, total_price, duration, location, category, booking_date) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+
+        $insert_stmt = $conn->prepare($insert_sql);
+        $insert_stmt->bind_param("issssiissss", $user_id, $username, $title, $event["theater"], $event["language"], $event["show_time"], $seats_requested, $total_price, $event["duration"], $event["location"], $category);
+
+        if ($insert_stmt->execute()) {
+            echo "<p style='color:green;'>Booking confirmed successfully!</p>";
+            echo "<p><a href='dashboard.php'>Go back to Dashboard</a></p>";
+        } else {
+            echo "<p style='color:red;'>Booking failed: " . $conn->error . "</p>";
+        }
+    } else {
+        echo "<p style='color:red;'>Invalid number of seats.</p>";
     }
-
-    // Deduct booked seats
-    $new_seat_count = $current_seats - $booked_seats;
-    $update_sql = "UPDATE movies SET total_seats = ? WHERE title = ?";
-    $update_stmt = $conn->prepare($update_sql);
-    $update_stmt->bind_param("is", $new_seat_count, $movie_title);
-    $update_stmt->execute();
-
-    // Insert into `booked_data` table
-    $insert_sql = "INSERT INTO booked_data (event_name, theater_name, language, show_time, selected_seats, total_price, booking_date, duration, location) 
-                   VALUES (?, ?, ?, ?, ?, ?, NOW(), ?, ?)";
-    $insert_stmt = $conn->prepare($insert_sql);
-    $insert_stmt->bind_param("ssssidis", $movie_title, $theater_name, $language, $show_time, $booked_seats, $total_price, $duration, $location);
-    $insert_stmt->execute();
-
-    echo "Booking successful! Remaining seats: " . $new_seat_count . "<br>";
-    echo "Total Price: ₹" . $total_price;
+} else {
+    echo "<p style='color:red;'>Incomplete booking details.</p>";
 }
 
 $conn->close();
 ?>
-  
