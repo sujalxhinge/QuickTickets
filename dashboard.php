@@ -21,6 +21,26 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     />
+    <script>
+        function searchTitles() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let items = document.getElementsByClassName("event-list-item-title");
+            
+            for (let i = 0; i < items.length; i++) {
+                let title = items[i].textContent.toLowerCase();
+                if (title.includes(input)) {
+                    items[i].scrollIntoView({ behavior: "smooth", block: "center" });
+                    items[i].style.backgroundColor = "black";
+                } else {
+                    items[i].style.backgroundColor = "";
+                }
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("searchButton").addEventListener("click", searchTitles);
+        });
+    </script>
   </head>
   <body>
     <header
@@ -63,11 +83,13 @@
           <li><a href="testomonials.html">Feedback</a></li>
         </ul>
         <div class="nav-right">
-          <!-- From Uiverse.io by Bodyhc -->
-          <div class="search">
-            <input placeholder="Search..." type="text" />
-            <button type="submit">Go</button>
-          </div>
+         
+        <div class="search">
+    <input id="searchInput" placeholder="Search..." type="text" />
+    <button type="submit" id="searchButton">Go</button>
+</div>
+
+          
 
           <div class="dropdown-text" onclick="toggleDropdown()">Location</div>
           <div class="profile">
@@ -149,7 +171,9 @@
                     echo '<div class="event-list-item">';
                     echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
                     echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+                    <button class='event-list-item-button'>Book Ticket</button>
+                    </a>";
                     echo '</div>';
                 }
             } else {
@@ -206,7 +230,10 @@
                     echo '<div class="event-list-item">';
                     echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
                     echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+        <button class='event-list-item-button'>Book Ticket</button>
+      </a>";
+
                     echo '</div>';
                 }
             } else {
@@ -264,7 +291,10 @@
                     echo '<div class="event-list-item">';
                     echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
                     echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+                    <button class='event-list-item-button'>Book Ticket</button>
+                  </a>";
+            
                     echo '</div>';
                 }
             } else {
@@ -323,7 +353,10 @@
                     echo '<div class="event-list-item">';
                     echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
                     echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+                    <button class='event-list-item-button'>Book Ticket</button>
+                  </a>";
+            
                     echo '</div>';
                 }
             } else {
@@ -382,7 +415,10 @@
                     echo '<div class="event-list-item">';
                     echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
                     echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+                    <button class='event-list-item-button'>Book Ticket</button>
+                  </a>";
+            
                     echo '</div>';
                 }
             } else {
@@ -441,7 +477,10 @@
                     echo '<div class="event-list-item">';
                     echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
                     echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo '<button class="event-list-item-button">Book Ticket</button>';
+                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+                    <button class='event-list-item-button'>Book Ticket</button>
+                  </a>";
+            
                     echo '</div>';
                 }
             } else {
@@ -461,7 +500,7 @@
       </div>
       <!--banner section is end here-->
       <!--this section of Concerts ends here -->
-      <!-- From Uiverse.io by Yaya12085 -->
+     
       <form class="form" action="subscribe.php" method="POST">
         <span class="title">Subscribe to our newsletter</span>
         <p class="description">

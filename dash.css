@@ -111,6 +111,11 @@ body {
   color: rgb(255, 255, 255);
   background-color: rgb(244, 102, 13);
 }
+.highlight {
+  background-color: yellow;
+  transition: background-color 0.5s ease-in-out;
+}
+
 
 .dropdown-text {
   cursor: pointer;

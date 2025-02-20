@@ -26,6 +26,11 @@ if ($result->num_rows > 0) {
         echo "<tr>";
         echo "<td><img src='" . htmlspecialchars($row["image"]) . "' height='100' width='100'></td>";
         echo "<td>" . htmlspecialchars($row["title"]) . "</td>";
+        echo "<td>
+                <a href='checkout.php?title=" . urlencode($row["title"]) . "'>
+                    <button>Book Ticket</button>
+                </a>
+              </td>";
         echo "</tr>";
     }
     echo "</table>";
