@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies Shows Events</title>
-    <link rel="stylesheet" href="dash.css" />
+    <link rel="stylesheet" href="dashboard.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -151,41 +151,56 @@
     </div>
     
     <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM movies";
-    $result = $conn->query($sql);
-    ?>
+// Fetch movies
+$sql = "SELECT * FROM movies";
+$result = $conn->query($sql);
+?>
 
-    <h1 id="movies" class="event-list-title" style="margin-left:20px;margin-top:5px;">Movies</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                    <button class='event-list-item-button'>Book Ticket</button>
-                    </a>";
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
+<h1 id="movies" class="event-list-title" style="margin-left:20px;margin-top:5px;">Movies</h1>
+<div class="event-list-wrapper">
+    <div class="event-list">
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="event-list-item">';
+                echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                
+                // Create a query string with all movie details
+                $query_string = http_build_query([
+                    "title" => $row["title"],
+                    "duration" => $row["duration"],
+                    "language" => $row["language"],
+                    "price" => $row["price"],
+                    "rating" => $row["rating"],
+                    "location" => $row["location"],
+                    "theater" => $row["theater"],
+                    "time" => $row["time"],
+                    "image" => $row["image"],
+                    "date" => $row["date"],
+                    "total_seats" => $row["total_seats"]
+                ]);
+
+                echo "<a href='checkout.php?$query_string'>
+                        <button class='event-list-item-button'>Book Ticket</button>
+                      </a>";
+                echo '</div>';
             }
-            $conn->close();
-            ?>
-        </div>
-        <i class="fas fa-chevron-right arrow"></i>
+        } else {
+            echo "<p>No movies available.</p>";
+        }
+        $conn->close();
+        ?>
     </div>
+    <i class="fas fa-chevron-right arrow"></i>
 </div>
-<!-- Movies Section Ends -->
+
 
 
       <!--this section is for events-->
@@ -209,44 +224,58 @@
               (2018) and the 22nd film in the Marvel Cinematic Universe
             </p>
           </div>
-          <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+      
+    <?php
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM events";
-    $result = $conn->query($sql);
-    ?>
+// Fetch movies
+$sql = "SELECT * FROM events";
+$result = $conn->query($sql);
+?>
 
-    <h1 id="events" class="event-list-title" style="margin-left:20px;margin-top:5px;">Events</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-        <button class='event-list-item-button'>Book Ticket</button>
-      </a>";
+<h1 id="events" class="event-list-title" style="margin-left:20px;margin-top:5px;">Events</h1>
+<div class="event-list-wrapper">
+    <div class="event-list">
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="event-list-item">';
+                echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                
+                // Create a query string with all movie details
+                $query_string = http_build_query([
+                    "title" => $row["title"],
+                    "duration" => $row["duration"],
+                    "language" => $row["language"],
+                    "price" => $row["price"],
+                    "rating" => $row["rating"],
+                    "location" => $row["location"],
+                    "theater" => $row["theater"],
+                    "time" => $row["time"],
+                    "image" => $row["image"],
+                    "date" => $row["date"],
+                    "total_seats" => $row["total_seats"]
+                ]);
 
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
+                echo "<a href='checkout.php?$query_string'>
+                        <button class='event-list-item-button'>Book Ticket</button>
+                      </a>";
+                echo '</div>';
             }
-            $conn->close();
-            ?>
-        </div>
-        <i class="fas fa-chevron-right arrow"></i>
+        } else {
+            echo "<p>No Events available.</p>";
+        }
+        $conn->close();
+        ?>
     </div>
+    <i class="fas fa-chevron-right arrow"></i>
 </div>
-        </div>
-      </div>
+       
       <!--this section of events ends here -->
 
       <!--this section is for shows-->
@@ -271,44 +300,57 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM shows";
-    $result = $conn->query($sql);
-    ?>
+// Fetch movies
+$sql = "SELECT * FROM shows";
+$result = $conn->query($sql);
+?>
 
-    <h1 id="shows" class="event-list-title" style="margin-left:20px;margin-top:5px;">Shows</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                    <button class='event-list-item-button'>Book Ticket</button>
-                  </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
+<h1 id="shows" class="event-list-title" style="margin-left:20px;margin-top:5px;">Shows</h1>
+<div class="event-list-wrapper">
+    <div class="event-list">
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="event-list-item">';
+                echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                
+                // Create a query string with all movie details
+                $query_string = http_build_query([
+                    "title" => $row["title"],
+                    "duration" => $row["duration"],
+                    "language" => $row["language"],
+                    "price" => $row["price"],
+                    "rating" => $row["rating"],
+                    "location" => $row["location"],
+                    "theater" => $row["theater"],
+                    "time" => $row["time"],
+                    "image" => $row["image"],
+                    "date" => $row["date"],
+                    "total_seats" => $row["total_seats"]
+                ]);
+
+                echo "<a href='checkout.php?$query_string'>
+                        <button class='event-list-item-button'>Book Ticket</button>
+                      </a>";
+                echo '</div>';
             }
-            $conn->close();
-            ?>
-        </div>
-        <i class="fas fa-chevron-right arrow"></i>
+        } else {
+            echo "<p>No Events available.</p>";
+        }
+        $conn->close();
+        ?>
     </div>
+    <i class="fas fa-chevron-right arrow"></i>
 </div>
-        </div>
-      </div>
-      <!--this section of shows ends here -->
+       
+      <!--this section of events ends here -->
 
       <!--this section is for sports-->
       <div class="container">
@@ -333,43 +375,56 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM sports";
-    $result = $conn->query($sql);
-    ?>
+//fetch sports
+$sql = "SELECT * FROM sports";
+$result = $conn->query($sql);
+?>
 
-    <h1 id="sports" class="event-list-title" style="margin-left:20px;margin-top:5px;">Sports</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                    <button class='event-list-item-button'>Book Ticket</button>
-                  </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
+<h1 id="sports" class="event-list-title" style="margin-left:20px;margin-top:5px;">Sports</h1>
+<div class="event-list-wrapper">
+    <div class="event-list">
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="event-list-item">';
+                echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                
+                // Create a query string with all movie details
+                $query_string = http_build_query([
+                    "title" => $row["title"],
+                    "duration" => $row["duration"],
+                    "language" => $row["language"],
+                    "price" => $row["price"],
+                    "rating" => $row["rating"],
+                    "location" => $row["location"],
+                    "theater" => $row["theater"],
+                    "time" => $row["time"],
+                    "image" => $row["image"],
+                    "date" => $row["date"],
+                    "total_seats" => $row["total_seats"]
+                ]);
+
+                echo "<a href='checkout.php?$query_string'>
+                        <button class='event-list-item-button'>Book Ticket</button>
+                      </a>";
+                echo '</div>';
             }
-            $conn->close();
-            ?>
-        </div>
-        <i class="fas fa-chevron-right arrow"></i>
+        } else {
+            echo "<p>No Events available.</p>";
+        }
+        $conn->close();
+        ?>
     </div>
+    <i class="fas fa-chevron-right arrow"></i>
 </div>
-        </div>
-      </div>
+       
       <!--this section of sports ends here -->
 
       <!--this section is for Stand up Comedy-->
@@ -395,44 +450,57 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM standup_comedy";
-    $result = $conn->query($sql);
-    ?>
+// Fetch movies
+$sql = "SELECT * FROM standup_comedy";
+$result = $conn->query($sql);
+?>
 
-    <h1 id="standupcomedy" class="event-list-title" style="margin-left:20px;margin-top:5px;">Stand Up Comedy</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                    <button class='event-list-item-button'>Book Ticket</button>
-                  </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
+<h1 id="standupcomedy" class="event-list-title" style="margin-left:20px;margin-top:5px;">Stand Up Comedy</h1>
+<div class="event-list-wrapper">
+    <div class="event-list">
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="event-list-item">';
+                echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                
+                // Create a query string with all movie details
+                $query_string = http_build_query([
+                    "title" => $row["title"],
+                    "duration" => $row["duration"],
+                    "language" => $row["language"],
+                    "price" => $row["price"],
+                    "rating" => $row["rating"],
+                    "location" => $row["location"],
+                    "theater" => $row["theater"],
+                    "time" => $row["time"],
+                    "image" => $row["image"],
+                    "date" => $row["date"],
+                    "total_seats" => $row["total_seats"]
+                ]);
+
+                echo "<a href='checkout.php?$query_string'>
+                        <button class='event-list-item-button'>Book Ticket</button>
+                      </a>";
+                echo '</div>';
             }
-            $conn->close();
-            ?>
-        </div>
-        <i class="fas fa-chevron-right arrow"></i>
+        } else {
+            echo "<p>No Events available.</p>";
+        }
+        $conn->close();
+        ?>
     </div>
+    <i class="fas fa-chevron-right arrow"></i>
 </div>
-        </div>
-      </div>
-      <!--this section of standupcomedy ends here -->
+       
+      <!--this section of Standup comedy ends here -->
 
       <!--this section is for Concerts-->
       <div class="container">
@@ -457,44 +525,63 @@
             </p>
           </div>
           <?php
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "quicktickets");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Fetch movies
-    $sql = "SELECT * FROM concerts";
-    $result = $conn->query($sql);
-    ?>
+// Fetch movies
+$sql = "SELECT * FROM concerts";
+$result = $conn->query($sql);
+?>
 
-    <h1 id="concerts" class="event-list-title" style="margin-left:20px;margin-top:5px;">Concerts</h1>
-    <div class="event-list-wrapper">
-        <div class="event-list">
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event-list-item">';
-                    echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                    echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                    echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                    <button class='event-list-item-button'>Book Ticket</button>
-                  </a>";
-            
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No movies available.</p>";
+<h1 id="concerts" class="event-list-title" style="margin-left:20px;margin-top:5px;">Concerts</h1>
+<div class="event-list-wrapper">
+    <div class="event-list">
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="event-list-item">';
+                echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+                echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+                
+                // Create a query string with all movie details
+                $query_string = http_build_query([
+                    "title" => $row["title"],
+                    "duration" => $row["duration"],
+                    "language" => $row["language"],
+                    "price" => $row["price"],
+                    "rating" => $row["rating"],
+                    "location" => $row["location"],
+                    "theater" => $row["theater"],
+                    "time" => $row["time"],
+                    "image" => $row["image"],
+                    "date" => $row["date"],
+                    "total_seats" => $row["total_seats"]
+                ]);
+
+                echo "<a href='checkout.php?$query_string'>
+                        <button class='event-list-item-button'>Book Ticket</button>
+                      </a>";
+                echo '</div>';
             }
-            $conn->close();
-            ?>
-        </div>
-        <i class="fas fa-chevron-right arrow"></i>
+        } else {
+            echo "<p>No Events available.</p>";
+        }
+        $conn->close();
+        ?>
     </div>
+    <i class="fas fa-chevron-right arrow"></i>
 </div>
-        </div>
-      </div>
+       
+      <!--this section of Concertss ends here -->
+      
       <!--This section is for banner-->
+      <div class="container">
+      <div class="content-container bg-content">
+
+            <!--This section is for banner-->
       <div class="banner">
         <img src="images icons/banner1.jpg." alt="Banner" />
       </div>
@@ -518,6 +605,9 @@
           <button type="submit">Subscribe</button>
         </div>
       </form>
+    </main>
+      </div>
+      </div>
     </main>
     <footer class="copyright">
       <div class="footer-content">

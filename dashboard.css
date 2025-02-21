@@ -111,6 +111,11 @@ body {
   color: rgb(255, 255, 255);
   background-color: rgb(244, 102, 13);
 }
+.highlight {
+  background-color: yellow;
+  transition: background-color 0.5s ease-in-out;
+}
+
 
 .dropdown-text {
   cursor: pointer;
@@ -313,6 +318,7 @@ hr {
   max-width: 100%; /* Ensure image doesn't overflow */
   height: auto; /* Maintain aspect ratio */
   border-radius: 15px; /* If needed, keep rounded corners for image */
+  margin-top: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 /*movie section*/
@@ -325,6 +331,12 @@ hr {
 
 .content-container {
   margin-left: 1px;
+ 
+}
+
+.bg-content{
+  background-color: white;
+  padding-bottom: 25px;
 }
 
 .featured-content {
@@ -388,7 +400,7 @@ hr {
 
 .event-list-item-img {
   transition: all 1s ease-in-out;
-  width: 270px;
+  width: 250px;
   height: 240px;
   object-fit: cover;
   border-radius: 20px;
@@ -400,7 +412,7 @@ hr {
   font-size: 21px;
   font-weight: bold;
   position: absolute;
-  top: 60%;
+  top: 45%;
   left: 45px;
   opacity: 0;
   transition: 1s all ease-in-out;
@@ -409,7 +421,7 @@ hr {
 .event-list-item-desc {
   background-color: #333;
   padding: 10px;
-  font-size: 14px;
+  font-size: 13px;
   position: absolute;
   top: 30%;
   left: 40px;
