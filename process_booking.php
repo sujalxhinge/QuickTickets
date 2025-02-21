@@ -50,7 +50,7 @@ if (isset($_POST['title'], $_POST['category'], $_POST['seats'], $_POST['total_pr
         $update_stmt->bind_param("is", $remaining_seats, $title);
         $update_stmt->execute();
 
-        // Insert booking details into `booked_data` table
+        // Insert booking details into booked_data table
         $insert_sql = "INSERT INTO booked_data (user_id, username, event_name, theater, language, show_time, selected_seats, total_price, duration, location, category, booking_date) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 

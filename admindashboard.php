@@ -124,51 +124,66 @@
           </div>
           <!-- end seling -->
         </div>
-        <!-- end insights -->
-        <div class="recent_order">
-          <h2>Recent Orders</h2>
-          <table>
+        <!-- end insights and starts recent orders part -->
+        <?php
+$servername = "localhost"; // Change if needed
+$username = "root"; // Change to your database username
+$password = ""; // Change to your database password
+$database = "quicktickets"; // Your database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch data from the booked_data table
+$sql = "SELECT booking_id, username, title, selected_seats, total_price, booking_date FROM booked_data ORDER BY booking_date DESC";
+$result = $conn->query($sql);
+?>
+
+<div class="recent_order">
+    <h2>Recent Orders</h2>
+    <div class="table-container">
+        <table>
             <thead>
-              <tr>
-                <th>Product Name</th>
-                <th>Product Number</th>
-                <th>Payments</th>
-                <th>Status</th>
-              </tr>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Username</th>
+                    <th>Title</th>
+                    <th>Seats</th>
+                    <th>Price</th>
+                    <th>Booking Date</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                                <td>{$row['booking_id']}</td>
+                                <td>{$row['username']}</td>
+                                <td>{$row['title']}</td>
+                                <td>{$row['selected_seats']}</td>
+                                <td>{$row['total_price']}</td>
+                                <td>{$row['booking_date']}</td>
+                              </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='6'>No Recent Orders Found</td></tr>";
+                }
+                ?>
             </tbody>
-          </table>
-          <a href="#">Show All</a>
-        </div>
+        </table>
+    </div>
+</div>
+
+<?php
+$conn->close();
+?>
+
         <!--this section is for adding and deletion of categories like movies and events etc-->
         <h2 id="cat">Add Categories</h2>
         <div class="category-form">
@@ -271,51 +286,66 @@
             </div>
           </form>
         </div>
+
         <!--payments section starts from here-->
-        <div class="payments">
-          <h2 id="pay">Payments</h2>
-          <table>
-            <thead>
-              <tr>
+        <?php
+// Database connection
+$servername = "localhost";
+$username = "root"; // Change if you have a different username
+$password = ""; // Change if you have a password
+$database = "quicktickets";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch payment records
+$sql = "SELECT title, username, amount, payment_status, payment_date FROM payments";
+$result = $conn->query($sql);
+?>
+
+<div class="payments">
+    <h2 id="pay">Payments</h2>
+    <table>
+        <thead>
+            <tr>
                 <th>Product Name</th>
-                <th>Product Id</th>
+                <th>Username</th>
                 <th>Amount</th>
                 <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-            </tbody>
-          </table>
-          <a href="#">Show All</a>
-        </div>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($result->num_rows > 0) {
+                // Fetch data dynamically
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($row["title"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["username"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["amount"]) . "</td>";
+                    echo "<td class='" . ($row["payment_status"] == "Pending" ? "warning" : "success") . "'>" . htmlspecialchars($row["payment_status"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["payment_date"]) . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>No payments found</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<?php
+// Close the database connection
+$conn->close();
+?>
+
         <!--payments section ends here-->
       </main>
       <!------------------

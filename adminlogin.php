@@ -126,7 +126,7 @@
         $password = isset($_POST['password']) ? trim($_POST['password']) : '';
 
         if ($username === 'QuickTickets' && $password === 'QuickAdmin') {
-            echo "<script>alert('Login successful! Redirecting...'); window.location.href='admindashboard.html';</script>";
+            echo "<script>alert('Login successful! Redirecting...'); window.location.href='admindashboard.php';</script>";
             exit();
         } else {
             echo "<script>alert('Invalid username or password!');</script>";

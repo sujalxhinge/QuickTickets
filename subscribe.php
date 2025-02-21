@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         echo "<script>
                 alert('Successfully subscribed!');
-                window.location.href = 'dashboard.html'; // Redirect to dashboard.html
+                window.location.href = 'dashboard.php'; // Redirect to dashboard.html
               </script>";
         exit;
     } else {
