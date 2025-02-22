@@ -388,133 +388,77 @@ categories adding sections starts from here
 */
 /* General Form Styling */
 
+/* Form Container */
 main .category-form {
-    margin-top: 2rem;
-    background: var(--clr-white);
-    width: calc(200% + 100px); /* Increased width on the right side */
-    max-width: 960px; /* Adjusted max width */
-    border-radius: var(--card-border-radius);
-    padding: 2rem;
-    padding-right: 4rem; /* Increased padding on the right side */
-    text-align: center;
-    box-shadow: var(--box-shadow);
-    transition: all 0.3s ease;
-    color: var(--clr-dark);
-    margin: auto; /* Center align */
-    margin-left: -4px; /* Shift the form slightly to the left */
-  }
-  
+  margin-top: 2rem;
+  background: var(--clr-white);
+  width: calc(100% + 50px); 
+  max-width: 960px; 
+  border-radius: var(--card-border-radius);
+  padding: 2rem;
+  padding-right: 4rem;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: all 0.3s ease;
+  color: var(--clr-dark);
+  margin: auto; 
+}
 
 main .category-form:hover {
-  box-shadow: none;
+  transform: scale(1.02);
 }
 
 /* Form Heading */
-main h2 {
+.form-heading {
   color: var(--clr-dark);
-  margin-bottom: 0.8rem;
-  font-size: 1.8rem; /* Increased heading size */
-}
-
-/* Form Layout */
-.category-form {
-  max-width: 900px; /* Increased form box width */
-  margin: auto;
-  background: white;
-  padding: 30px; /* Increased padding */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Better shadow */
-  border-radius: 10px;
-}
-
-/* Labels */
-label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-  font-size: 1rem;
-  text-align: left;
-}
-
-/* Form Group - Two Columns */
-.form-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-  gap: 20px; /* Space between elements */
+  font-size: 20px;
+  margin-bottom: 1rem;
+  margin-top: 8px;
+  text-align: center;
 }
 
 /* Input Fields */
-.form-group select,
-.form-group input {
-  width: 50%; /* Ensuring side-by-side alignment */
+.form-group input, 
+.form-group select {
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-/* Full-width input for fields needing more space */
-.full-width {
-  width: 180%;
+/* Input Focus */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0px 0px 10px rgba(0, 128, 255, 0.3);
 }
 
-/* Button Styling */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
+/* Buttons */
 button {
   padding: 12px 24px;
   border: none;
   cursor: pointer;
   font-size: 1rem;
   border-radius: 6px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.add-btn {
-  background: green;
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* Button Hover Effects */
+button:hover {
+  transform: scale(1.05);
 }
 
-.add-btn:hover {
-  background: rgb(0, 0, 0);
-}
-
-.update-btn {
-  background: blue;
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.update-btn:hover {
-  background: rgb(0, 0, 0);
-}
-
-.delete-btn {
-  background: red;
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.delete-btn:hover {
-  background: rgb(0, 0, 0);
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .form-group {
-    flex-direction: column; /* Stack inputs on smaller screens */
+      flex-direction: column;
   }
 
-  .form-group select,
-  .form-group input {
-    width: 100%; /* Full width on small screens */
+  .form-group input,
+  .form-group select {
+      width: 100%;
   }
 }
 
@@ -523,69 +467,57 @@ button {
 
 /* Payments Section */
 main .payments {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 main .payments h2 {
-    color: var(--clr-dark);
-    margin-bottom: 0.8rem;
+  color: var(--clr-dark);
+  margin-bottom: 0.8rem;
 }
 
 /* Scrollable Table Container */
 main .table-container {
-    max-height: 300px; /* Set a fixed height for scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
+  max-height: 300px; /* Set a fixed height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 /* Table Styles */
 main .payments table {
-    background: var(--clr-white);
-    width: 100%; /* Ensure it fits inside the container */
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
-    text-align: center;
-    box-shadow: var(--box-shadow);
-    transition: all .3s ease;
-    color: var(--clr-dark);
+  background: var(--clr-white);
+  width: 100%; /* Ensure it fits inside the container */
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: all .3s ease;
+  color: var(--clr-dark);
 }
 
 /* Hover Effect */
 main .payments table:hover {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 /* Table Header Styling */
 main .payments table thead {
-    position: sticky;
-    top: 0; /* Keeps the header fixed */
-    background: var(--clr-white);
-    z-index: 10;
+  position: sticky;
+  top: 0; /* Keeps the header fixed */
+  background: var(--clr-white);
+  z-index: 10;
 }
 
 /* Table Data Styling */
 main table tbody td {
-    height: 3.8rem;
-    border-bottom: 1px solid var(--clr-white);
-    color: var(--clr-dark-variant);
+  height: 3.8rem;
+  border-bottom: 1px solid var(--clr-white);
+  color: var(--clr-dark-variant);
 }
 
 /* Remove Border from Last Row */
 main table tbody tr:last-child td {
-    border: none;
-}
-
-/* Scrollbar Customization (Optional) */
-main .table-container::-webkit-scrollbar {
-    width: 8px;
-}
-main .table-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-main .table-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  border: none;
 }
 
 /*payments content ends here*/

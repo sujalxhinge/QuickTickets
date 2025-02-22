@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="admindashboard.css" />
+    <link rel="stylesheet" href="admindash.css" />
     <link rel="icon" href="images icons/link.png" type="image/icon type" />
   </head>
   <body>
@@ -124,228 +124,219 @@
           </div>
           <!-- end seling -->
         </div>
-        <!-- end insights and starts recent orders part -->
-        <?php
-$servername = "localhost"; // Change if needed
-$username = "root"; // Change to your database username
-$password = ""; // Change to your database password
-$database = "quicktickets"; // Your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Fetch data from the booked_data table
-$sql = "SELECT booking_id, username, title, selected_seats, total_price, booking_date FROM booked_data ORDER BY booking_date DESC";
-$result = $conn->query($sql);
-?>
-
-<div class="recent_order">
-    <h2>Recent Orders</h2>
-    <div class="table-container">
-        <table>
+        <!-- end insights -->
+        <div class="recent_order">
+          <h2>Recent Orders</h2>
+          <table>
             <thead>
-                <tr>
-                    <th>Booking ID</th>
-                    <th>Username</th>
-                    <th>Title</th>
-                    <th>Seats</th>
-                    <th>Price</th>
-                    <th>Booking Date</th>
-                </tr>
+              <tr>
+                <th>Product Name</th>
+                <th>Product Number</th>
+                <th>Payments</th>
+                <th>Status</th>
+              </tr>
             </thead>
             <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
-                                <td>{$row['booking_id']}</td>
-                                <td>{$row['username']}</td>
-                                <td>{$row['title']}</td>
-                                <td>{$row['selected_seats']}</td>
-                                <td>{$row['total_price']}</td>
-                                <td>{$row['booking_date']}</td>
-                              </tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='6'>No Recent Orders Found</td></tr>";
-                }
-                ?>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
             </tbody>
-        </table>
-    </div>
-</div>
-
-<?php
-$conn->close();
-?>
-
-        <!--this section is for adding and deletion of categories like movies and events etc-->
-        <h2 id="cat">Add Categories</h2>
-        <div class="category-form">
-          <form
-            action="adddata.php"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <div class="form-group">
-              <select name="category" required>
-                <option value="Movies">Movie</option>
-                <option value="Events">Event</option>
-                <option value="Sports">Sports</option>
-                <option value="Concerts">Concerts</option>
-                <option value="Shows">Shows</option>
-                <option value="Standup-Comedy">Standup Comedy</option>
-              </select>
-              <input
-                type="text"
-                name="title"
-                placeholder="Enter Title"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <input
-                type="text"
-                name="duration"
-                placeholder="Duration (e.g., 2h 30m)"
-                required
-              />
-              <input
-                type="text"
-                name="language"
-                placeholder="Language"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <input type="number" name="price" placeholder="Price" required />
-              <input
-                type="text"
-                name="rating"
-                placeholder="Rating (e.g., 4.5)"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <input
-                type="text"
-                name="location"
-                placeholder="Location"
-                required
-              />
-              <input
-                type="text"
-                name="theater"
-                placeholder="Theater Name"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <input
-                type="text"
-                name="time"
-                placeholder="Time (e.g., 7:30 PM)"
-                required
-              />
-              <input type="file" name="image" accept="image/*" required />
-            </div>
-            <div class="form-group">
-              <input type="date" name="date" required />
-              <input
-                type="number"
-                name="total_seats"
-                placeholder="Total Seats"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="hidden"
-                name="id"
-                placeholder="Enter ID (for update/delete)"
-              />
-            </div>
-
-            <div class="buttons">
-              <button type="submit" name="add" class="add-btn">Add</button>
-              <button type="submit" name="update" class="update-btn">
-                Update
-              </button>
-              <button type="submit" name="delete" class="delete-btn">
-                Delete
-              </button>
-            </div>
-          </form>
+          </table>
+          <a href="#">Show All</a>
         </div>
+        <!--this section is for adding and deletion of categories like movies and events etc-->
+  <!-- Admin Dashboard Forms -->
+<main>
+    <h2 id="cat" class="form-heading">Add Categories</h2>
+    <form action="admin_handler.php" method="POST" class="category-form" id="category-form">
+        <input type="hidden" name="action" value="add_category">
+        <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
+            <input type="text" name="category_name" placeholder="Enter Category Name" required class="full-width">
+        </div>
+        <div class="buttons">
+            <button type="submit" class="add-btn">Add Category</button>
+        </div>
+    </form>
+
+    <h2 class="form-heading">Add Venues</h2>
+<form action="admin_handler.php" method="POST" class="category-form" id="venue-form">
+    <input type="hidden" name="action" value="add_venue">
+    <div class="form-group">
+        <input type="text" name="venue_name" placeholder="Enter Venue Name" required class="full-width">
+        <input type="text" name="location" placeholder="Enter Location" required class="full-width">
+    </div>
+    <div class="buttons">
+        <button type="submit" class="add-btn">Add Venue</button>
+    </div>
+</form>
+
+
+    <h2 class="form-heading">Add Theaters</h2>
+<form action="admin_handler.php" method="POST" class="category-form" id="theater-form">
+    <input type="hidden" name="action" value="add_theater">
+    <div class="form-group">
+        <input type="text" name="theater_name" placeholder="Enter Theater Name" required class="full-width">
+        <input type="number" name="venue_id" placeholder="Enter Venue ID" required class="full-width">
+        <input type="text" name="location" placeholder="Enter Location" required class="full-width">
+    </div>
+    <div class="buttons">
+        <button type="submit" class="add-btn">Add Theater</button>
+    </div>
+</form>
+
+
+    <h2 class="form-heading">Add Movies</h2>
+    <form action="admin_handler.php" method="POST" enctype="multipart/form-data" class="category-form" id="movie-form">
+        <input type="hidden" name="action" value="add_movie">
+        <div class="form-group">
+            <input type="text" name="title" placeholder="Movie Title" required>
+            <input type="text" name="duration" placeholder="Duration (e.g., 2h 30m)" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="language" placeholder="Language" required>
+            <input type="number" name="price" placeholder="Price" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="rating" placeholder="Rating (e.g., 4.5)" required>
+            <input type="file" name="image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <input type="number" name="category_id" placeholder="Category ID" required>
+        </div>
+        <div class="buttons">
+            <button type="submit" class="add-btn">Add Movie</button>
+        </div>
+    </form>
+
+    <h2 class="form-heading">Add Events</h2>
+    <form action="admin_handler.php" method="POST" enctype="multipart/form-data" class="category-form" id="event-form">
+        <input type="hidden" name="action" value="add_event">
+        <div class="form-group">
+            <input type="text" name="title" placeholder="Event Title" required>
+            <input type="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <input type="time" name="time" required>
+            <input type="text" name="location" placeholder="Location" required>
+        </div>
+        <div class="form-group">
+            <input type="number" name="price" placeholder="Price" required>
+            <input type="text" name="rating" placeholder="Rating (e.g., 4.5)" required>
+        </div>
+        <div class="form-group">
+            <input type="file" name="image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <input type="number" name="category_id" placeholder="Category ID" required>
+        </div>
+        <div class="buttons">
+            <button type="submit" class="add-btn">Add Event</button>
+        </div>
+    </form>
+
+    <h2 class="form-heading">Add Showtimes</h2>
+    <form action="admin_handler.php" method="POST" class="category-form" id="showtime-form">
+        <input type="hidden" name="action" value="add_showtime">
+        <div class="form-group">
+            <input type="number" name="movie_id" placeholder="Movie ID" required>
+            <input type="number" name="venue_id" placeholder="Venue ID" required>
+        </div>
+        <div class="form-group">
+            <input type="date" name="date" required>
+            <input type="time" name="time" required>
+        </div>
+        <div class="form-group">
+            <input type="number" name="total_seats" placeholder="Total Seats" required>
+        </div>
+        <div class="buttons">
+            <button type="submit" class="add-btn">Add Showtime</button>
+        </div>
+    </form>
+
+    <h2 class="form-heading">Update Seat Availability</h2>
+    <form action="admin_handler.php" method="POST" class="category-form" id="update-seats-form">
+        <input type="hidden" name="action" value="update_seats">
+        <div class="form-group">
+            <input type="number" name="showtime_id" placeholder="Showtime ID" required>
+            <input type="number" name="available_seats" placeholder="Available Seats" required>
+        </div>
+        <div class="buttons">
+            <button type="submit" class="update-btn">Update Seats</button>
+        </div>
+    </form>
+</main>
+
 
         <!--payments section starts from here-->
-        <?php
-// Database connection
-$servername = "localhost";
-$username = "root"; // Change if you have a different username
-$password = ""; // Change if you have a password
-$database = "quicktickets";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Fetch payment records
-$sql = "SELECT title, username, amount, payment_status, payment_date FROM payments";
-$result = $conn->query($sql);
-?>
-
-<div class="payments">
-    <h2 id="pay">Payments</h2>
-    <table>
-        <thead>
-            <tr>
+        <div class="payments">
+          <h2 id="pay">Payments</h2>
+          <table>
+            <thead>
+              <tr>
                 <th>Product Name</th>
-                <th>Username</th>
+                <th>Product Id</th>
                 <th>Amount</th>
                 <th>Status</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            if ($result->num_rows > 0) {
-                // Fetch data dynamically
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row["title"]) . "</td>";
-                    echo "<td>" . htmlspecialchars($row["username"]) . "</td>";
-                    echo "<td>" . htmlspecialchars($row["amount"]) . "</td>";
-                    echo "<td class='" . ($row["payment_status"] == "Pending" ? "warning" : "success") . "'>" . htmlspecialchars($row["payment_status"]) . "</td>";
-                    echo "<td>" . htmlspecialchars($row["payment_date"]) . "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5'>No payments found</td></tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-</div>
-
-<?php
-// Close the database connection
-$conn->close();
-?>
-
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
+              <tr>
+                <td>Mini USB</td>
+                <td>4563</td>
+                <td>Due</td>
+                <td class="warning">Pending</td>
+                <td class="primary">Details</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="#">Show All</a>
+        </div>
         <!--payments section ends here-->
       </main>
       <!------------------

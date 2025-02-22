@@ -52,7 +52,7 @@
                 "color": "#3399cc"
             },
             "handler": function (response){
-                window.location.href="https://www.stpcomputereducation.com";
+                window.location.href="dashboard.php";
        }
         };
         var rzp = new Razorpay(options);
