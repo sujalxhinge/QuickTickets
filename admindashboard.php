@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="admindash.css" />
+    <link rel="stylesheet" href="admindash.css"/>
     <link rel="icon" href="images icons/link.png" type="image/icon type" />
   </head>
   <body>
@@ -260,23 +260,57 @@
     </form>
 
     <h2 class="form-heading">Add Showtimes</h2>
-    <form action="admin_handler.php" method="POST" class="category-form" id="showtime-form">
-        <input type="hidden" name="action" value="add_showtime">
-        <div class="form-group">
-            <input type="number" name="movie_id" placeholder="Movie ID" required>
-            <input type="number" name="venue_id" placeholder="Venue ID" required>
-        </div>
-        <div class="form-group">
-            <input type="date" name="date" required>
-            <input type="time" name="time" required>
-        </div>
-        <div class="form-group">
-            <input type="number" name="total_seats" placeholder="Total Seats" required>
-        </div>
-        <div class="buttons">
-            <button type="submit" class="add-btn">Add Showtime</button>
-        </div>
-    </form>
+<form action="admin_handler.php" method="POST" class="category-form" id="showtime-form">
+    <input type="hidden" name="action" value="add_showtime">
+    
+    <div class="form-group">
+        <label for="type">Select Type:</label>
+        <select id="type" name="type" required onchange="toggleInputFields()">
+            <option value="">-- Select Type --</option>
+            <option value="movie">Movie</option>
+            <option value="event">Event</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <input type="number" id="movie_id" name="movie_id" placeholder="Movie ID" style="display: none;">
+        <input type="number" id="event_id" name="event_id" placeholder="Event ID" style="display: none;">
+        
+        <!-- Theater ID (For Movies) -->
+        <input type="number" id="theater_id" name="theater_id" placeholder="Theater ID" style="display: none;">
+
+        <!-- Venue ID (For Events) -->
+        <input type="number" id="venue_id" name="venue_id" placeholder="Venue ID" style="display: none;">
+    </div>
+    
+    <div class="form-group">
+        <input type="date" name="date" required>
+        <input type="time" name="time" required>
+    </div>
+    
+    <div class="form-group">
+        <input type="number" name="total_seats" placeholder="Total Seats" required>
+    </div>
+    
+    <div class="buttons">
+        <button type="submit" class="add-btn">Add Showtime</button>
+    </div>
+</form>
+
+<script>
+function toggleInputFields() {
+    var type = document.getElementById("type").value;
+    
+    document.getElementById("movie_id").style.display = (type === "movie") ? "block" : "none";
+    document.getElementById("event_id").style.display = (type === "event") ? "block" : "none";
+    
+    // Show theater_id for movies, venue_id for events
+    document.getElementById("theater_id").style.display = (type === "movie") ? "block" : "none";
+    document.getElementById("venue_id").style.display = (type === "event") ? "block" : "none";
+}
+</script>
+
+
 
     <h2 class="form-heading">Update Seat Availability</h2>
     <form action="admin_handler.php" method="POST" class="category-form" id="update-seats-form">

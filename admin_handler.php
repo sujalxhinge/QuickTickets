@@ -105,21 +105,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
             break;
 
-        case 'add_showtime':
-            $movie_id = $_POST['movie_id'];
-            $venue_id = $_POST['venue_id'];
-            $date = $_POST['date'];
-            $time = $_POST['time'];
-            $total_seats = $_POST['total_seats'];
-            $available_seats = $total_seats;
-
-            $stmt = $conn->prepare("INSERT INTO showtimes (movie_id, venue_id, date, time, total_seats, available_seats) 
-                                    VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iissii", $movie_id, $venue_id, $date, $time, $total_seats, $available_seats);
-            if ($stmt->execute()) echo "Showtime added!";
-            $stmt->close();
-            exit;
-            break;
+            case 'add_showtime':
+                $date = $_POST['date'];
+                $time = $_POST['time'];
+                $total_seats = $_POST['total_seats'];
+                $available_seats = $total_seats;
+            
+                // Check if movie_id or event_id is provided
+                $movie_id = isset($_POST['movie_id']) && !empty($_POST['movie_id']) ? $_POST['movie_id'] : NULL;
+                $event_id = isset($_POST['event_id']) && !empty($_POST['event_id']) ? $_POST['event_id'] : NULL;
+            
+                if ($movie_id && $event_id) {
+                    die("Error: You cannot add both Movie ID and Event ID at the same time.");
+                }
+                if (!$movie_id && !$event_id) {
+                    die("Error: You must provide either a Movie ID or an Event ID.");
+                }
+            
+                // Handle theater_id for movies and venue_id for events
+                $theater_id = isset($_POST['theater_id']) && !empty($_POST['theater_id']) ? $_POST['theater_id'] : NULL;
+                $venue_id = isset($_POST['venue_id']) && !empty($_POST['venue_id']) ? $_POST['venue_id'] : NULL;
+            
+                if ($movie_id && !$theater_id) {
+                    die("Error: You must provide a Theater ID for movies.");
+                }
+                if ($event_id && !$venue_id) {
+                    die("Error: You must provide a Venue ID for events.");
+                }
+            
+                // Insert into showtimes table
+                $stmt = $conn->prepare("INSERT INTO showtimes (movie_id, event_id, theater_id, venue_id, date, time, total_seats, available_seats) 
+                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("iiiiissi", $movie_id, $event_id, $theater_id, $venue_id, $date, $time, $total_seats, $available_seats);
+            
+                if ($stmt->execute()) {
+                    echo "Showtime added successfully!";
+            
+                    // ✅ Update total seats in events if event_id is provided
+                    if ($event_id) {
+                        $updateStmt = $conn->prepare("UPDATE events SET total_seats = total_seats + ? WHERE event_id = ?");
+                        $updateStmt->bind_param("ii", $total_seats, $event_id);
+                        $updateStmt->execute();
+                        $updateStmt->close();
+                    }
+                } else {
+                    echo "Error: " . $stmt->error;
+                }
+            
+                $stmt->close();
+                exit;
+                break;
+            
+            
+    
 
         case 'update_seats':
             $showtime_id = $_POST['showtime_id'];

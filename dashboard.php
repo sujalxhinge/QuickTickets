@@ -150,53 +150,60 @@
         <img class="featured-title" src="img/f-t-1.png" alt="" />
     </div>
     
-    <?php
+   <?php
 // Database connection
 $conn = new mysqli("localhost", "root", "", "quicktickets");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch movies
-$sql = "SELECT * FROM movies";
-$result = $conn->query($sql);
+// Define categories to fetch
+$categories = ['movies', 'events', 'shows', 'concerts', 'sports', 'standup_comedy'];
+
+foreach ($categories as $category) {
+    echo "<h1 id='$category' class='event-list-title' style='margin-left:20px;margin-top:5px;'>" . ucfirst($category) . "</h1>";
+    echo "<div class='event-list-wrapper'><div class='event-list'>";
+
+    // Fetch data from the respective table
+    $sql = "SELECT * FROM $category";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="event-list-item">';
+            echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
+            echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
+            
+            // Create query string with all necessary details
+            $query_string = http_build_query([
+                "category" => $category,
+                "title" => $row["title"],
+                "duration" => $row["duration"],
+                "language" => $row["language"],
+                "price" => $row["price"],
+                "rating" => $row["rating"],
+                "location" => $row["location"],
+                "theater" => $row["theater"],
+                "time" => $row["time"],
+                "image" => $row["image"],
+                "date" => $row["date"],
+                "total_seats" => $row["total_seats"]
+            ]);
+
+            echo "<a href='checkout.php?$query_string'>
+                    <button class='event-list-item-button'>Book Ticket</button>
+                  </a>";
+            echo '</div>';
+        }
+    } else {
+        echo "<p>No " . ucfirst($category) . " available.</p>";
+    }
+    echo "</div></div>";
+}
+
+$conn->close();
 ?>
 
-<h1 id="movies" class="event-list-title" style="margin-left:20px;margin-top:5px;">Movies</h1>
-<div class="event-list-wrapper">
-    <div class="event-list">
-        <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<div class="event-list-item">';
-                echo '<img class="event-list-item-img" src="' . htmlspecialchars($row["image"]) . '" alt="' . htmlspecialchars($row["title"]) . '">';
-                echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                
-                // Create a query string with all movie details
-                $query_string = http_build_query([
-                    "title" => $row["title"],
-                    "duration" => $row["duration"],
-                    "language" => $row["language"],
-                    "price" => $row["price"],
-                    "rating" => $row["rating"],
-                    "location" => $row["location"],
-                    "theater" => $row["theater"],
-                    "time" => $row["time"],
-                    "image" => $row["image"],
-                    "date" => $row["date"],
-                    "total_seats" => $row["total_seats"]
-                ]);
-
-                echo "<a href='checkout.php?$query_string'>
-                        <button class='event-list-item-button'>Book Ticket</button>
-                      </a>";
-                echo '</div>';
-            }
-        } else {
-            echo "<p>No movies available.</p>";
-        }
-        $conn->close();
-        ?>
     </div>
     <i class="fas fa-chevron-right arrow"></i>
 </div>

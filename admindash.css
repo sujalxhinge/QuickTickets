@@ -158,7 +158,7 @@ b{
   background: var(--clr-white);
   display: flex;
   flex-direction: column;
-  height: 281vh;
+  height: 585vh;
   position: relative;
   top: 1rem;
   border-radius:20px;
@@ -217,6 +217,7 @@ b{
  main{
   margin-top: 1.4rem;
   width: auto;
+  
  }
  main input {
   background-color: transparent;
@@ -389,22 +390,24 @@ categories adding sections starts from here
 /* General Form Styling */
 
 /* Form Container */
+/* General Form Styling */
 main .category-form {
   margin-top: 2rem;
   background: var(--clr-white);
-  width: calc(100% + 50px); 
-  max-width: 960px; 
+  width: 100%; /* Set to full width */
+  max-width: 1200px; /* Increased max width */
   border-radius: var(--card-border-radius);
   padding: 2rem;
-  padding-right: 4rem;
+  padding-right: 2rem; /* Adjusted padding */
   text-align: center;
   box-shadow: var(--box-shadow);
   transition: all 0.3s ease;
   color: var(--clr-dark);
-  margin: auto; 
+  margin: auto; /* Center horizontally */
+  margin-left: 7rem; /* Adjust this value as needed */
 }
 
-main .category-form:hover {
+.category-form:hover {
   transform: scale(1.02);
 }
 
@@ -414,17 +417,32 @@ main .category-form:hover {
   font-size: 20px;
   margin-bottom: 1rem;
   text-align: center;
+  margin-top: 8px;
+  margin-left: 212px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 /* Input Fields */
 .form-group input, 
 .form-group select {
-  width: 100%;
+  width: calc(50% - 10px);
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
   transition: all 0.3s ease;
+}
+
+.form-group input.full-width {
+  width: 100%;
 }
 
 /* Input Focus */
@@ -435,24 +453,34 @@ main .category-form:hover {
 }
 
 /* Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 button {
   padding: 12px 24px;
   border: none;
   cursor: pointer;
   font-size: 1rem;
   border-radius: 6px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
+  background: green;
+  color: white;
 }
 
-/* Button Hover Effects */
 button:hover {
   transform: scale(1.05);
+  background: red;
+  color: black;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
   .form-group {
       flex-direction: column;
+      align-items: center;
   }
 
   .form-group input,
@@ -485,7 +513,7 @@ main .table-container {
 /* Table Styles */
 main .payments table {
   background: var(--clr-white);
-  width: 100%; /* Ensure it fits inside the container */
+  width: 128%; /* Ensure it fits inside the container */
   border-radius: var(--card-border-radius);
   padding: var(--card-padding);
   text-align: center;
