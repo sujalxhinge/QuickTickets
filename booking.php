@@ -88,7 +88,7 @@ $theaterResult = $conn->query($theaterQuery);
             echo "<option value='{$show['showtime_id']}'>Date: $date - Time: $time</option>";
         }
     } else {
-        echo "<option value='' disabled>No showtimes available</option>";
+        echo "<option value='' disabled>No showtimes available here</option>";
     }
     ?>
 </select>
