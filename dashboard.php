@@ -182,9 +182,9 @@ $result = $conn->query($sql);
                 echo '<div class="event-list-item">';
                 echo '<img class="event-list-item-img" src="' . $imagePath . '" alt="' . htmlspecialchars($row["title"]) . '">';
                 echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                echo "<a href='checkout.php?title={$safeTitle}'>
-                        <button class='event-list-item-button'>Book Ticket</button>
-                      </a>";
+                echo "<a href='booking.php?movie_id=" . (int)$row["movie_id"] . "'>
+                <button class='event-list-item-button'>Book Ticket</button>
+              </a>";        
                 echo '</div>';
             }
         } else {
@@ -244,9 +244,10 @@ $result = $conn->query($sql);
                 echo '<div class="event-list-item">';
                 echo '<img class="event-list-item-img" src="' . $imagePath . '" alt="' . htmlspecialchars($row["title"]) . '">';
                 echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                        <button class='event-list-item-button'>Book Ticket</button>
-                      </a>";
+                echo "<a href='booking.php?event_id=" . (int)$row["event_id"] . "'>
+                <button class='event-list-item-button'>Book Ticket</button>
+              </a>";
+        
                 echo '</div>';
             }
         } else {
@@ -305,9 +306,10 @@ $result = $conn->query($sql);
                 echo '<div class="event-list-item">';
                 echo '<img class="event-list-item-img" src="' . $imagePath . '" alt="' . htmlspecialchars($row["title"]) . '">';
                 echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                        <button class='event-list-item-button'>Book Ticket</button>
-                      </a>";
+                echo "<a href='booking.php?event_id=" . (int)$row["event_id"] . "'>
+                <button class='event-list-item-button'>Book Ticket</button>
+              </a>";
+        
                 echo '</div>';
             }
         } else {
@@ -369,9 +371,10 @@ $result = $conn->query($sql);
                 echo '<div class="event-list-item">';
                 echo '<img class="event-list-item-img" src="' . $imagePath . '" alt="' . htmlspecialchars($row["title"]) . '">';
                 echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                        <button class='event-list-item-button'>Book Ticket</button>
-                      </a>";
+                echo "<a href='booking.php?event_id=" . (int)$row["event_id"] . "'>
+                <button class='event-list-item-button'>Book Ticket</button>
+              </a>";
+        
                 echo '</div>';
             }
         } else {
@@ -433,9 +436,10 @@ $result = $conn->query($sql);
                 echo '<div class="event-list-item">';
                 echo '<img class="event-list-item-img" src="' . $imagePath . '" alt="' . htmlspecialchars($row["title"]) . '">';
                 echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                        <button class='event-list-item-button'>Book Ticket</button>
-                      </a>";
+                echo "<a href='booking.php?event_id=" . (int)$row["event_id"] . "'>
+                <button class='event-list-item-button'>Book Ticket</button>
+              </a>";
+        
                 echo '</div>';
             }
         } else {
@@ -447,8 +451,7 @@ $result = $conn->query($sql);
         <i class="fas fa-chevron-right arrow"></i>
     </div>
 </div>
-        </div>
-      </div>
+        
       <!--this section of standupcomedy ends here -->
 
       <!--this section is for Concerts-->
@@ -480,7 +483,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch only events with category_id = 3
+// Fetch only events with category_id = 2
 $sql = "SELECT * FROM events WHERE category_id = 3";
 $result = $conn->query($sql);
 ?>
@@ -497,9 +500,10 @@ $result = $conn->query($sql);
                 echo '<div class="event-list-item">';
                 echo '<img class="event-list-item-img" src="' . $imagePath . '" alt="' . htmlspecialchars($row["title"]) . '">';
                 echo '<span class="event-list-item-title">' . htmlspecialchars($row["title"]) . '</span>';
-                echo "<a href='checkout.php?title=" . urlencode($row["title"]) . "'>
-                        <button class='event-list-item-button'>Book Ticket</button>
-                      </a>";
+                echo "<a href='booking.php?event_id=" . (int)$row["event_id"] . "'>
+                <button class='event-list-item-button'>Book Ticket</button>
+              </a>";
+        
                 echo '</div>';
             }
         } else {
