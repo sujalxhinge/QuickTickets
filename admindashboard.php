@@ -279,7 +279,7 @@
         <!-- Theater ID (For Movies) -->
         <input type="number" id="theater_id" name="theater_id" placeholder="Theater ID" style="display: none;">
 
-        <!-- Venue ID (For Events) -->
+        <!-- Venue ID (For Movies & Events) -->
         <input type="number" id="venue_id" name="venue_id" placeholder="Venue ID" style="display: none;">
     </div>
     
@@ -304,13 +304,13 @@ function toggleInputFields() {
     document.getElementById("movie_id").style.display = (type === "movie") ? "block" : "none";
     document.getElementById("event_id").style.display = (type === "event") ? "block" : "none";
     
-    // Show theater_id for movies, venue_id for events
+    // Show theater_id for movies
     document.getElementById("theater_id").style.display = (type === "movie") ? "block" : "none";
-    document.getElementById("venue_id").style.display = (type === "event") ? "block" : "none";
+
+    // Show venue_id for both movies and events (if required)
+    document.getElementById("venue_id").style.display = (type !== "") ? "block" : "none";
 }
 </script>
-
-
 
     <h2 class="form-heading">Update Seat Availability</h2>
     <form action="admin_handler.php" method="POST" class="category-form" id="update-seats-form">
