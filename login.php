@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify password
         if (password_verify($password, $row['password'])) {
             // Store user data in session
-            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
 
             // Redirect to dashboard

@@ -1,25 +1,28 @@
 <?php
 session_start(); // Start session for storing booking info
-
+include 'dbconnection.php';
 // Database Connection
 $conn = new mysqli("localhost", "root", "", "quicktickets");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+// Start session to store booking details
 
 // Check if form is submitted properly
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["selectedSeats"])) {
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["selected_seats"])) {
     
-    $showtime_id = $_POST["showtime"];
-    $venue_id = $_POST["venue"];
-    $theater_id = $_POST["theater"];
-    $selectedSeats = explode(",", $_POST["selectedSeats"]); // Convert seat string into array
+    // Ensure database connection
+
+    $showtime_id = $_GET["showtime_id"];
+    $venue_id = $_GET["venue_id"];
+    $theater_id = $_GET["theater_id"];
+    $selectedSeats = explode(",", $_GET["selected_seats"]); // Convert seat string into array
 
     if (empty($selectedSeats)) {
         die("Error: No seats selected.");
     }
 
-    // Fetch the movie_id or event_id from showtimes
+    // Fetch movie_id or event_id from showtimes
     $query = "SELECT movie_id, event_id FROM showtimes WHERE showtime_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $showtime_id);
@@ -32,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["selectedSeats"])) {
         die("Error: Invalid showtime selected.");
     }
 
-    // Determine the correct price based on whether it's a movie or an event
+    // Determine the correct price based on type (Movie/Event)
     if ($showtimeData['movie_id']) {
         $query = "SELECT price FROM movies WHERE movie_id = ?";
         $id = $showtimeData['movie_id'];
@@ -94,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["selectedSeats"])) {
     $_SESSION['total_price'] = $totalPrice;
     $_SESSION['selected_seats'] = $seatString;
 
-    // Redirect to Payment Page (Razorpay or any payment gateway)
+    // Redirect to Payment Page
     header("Location: payment.php");
     exit();
 } else {

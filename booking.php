@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-// Database connection
+include 'dbconnection.php';
 $conn = new mysqli("localhost", "root", "", "quicktickets");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Validate movie_id or event_id
 if (isset($_GET['movie_id'])) {
     $id = (int)$_GET['movie_id'];
     $type = "movie";
@@ -17,33 +16,28 @@ if (isset($_GET['movie_id'])) {
     $type = "event";
     $sql = "SELECT * FROM events WHERE event_id = ?";
 } else {
-    die("Invalid request. Please select a movie or event properly.");
+    die("Invalid request.");
 }
 
-// Fetch movie/event details
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
-
 if ($result->num_rows === 0) {
-    die("Invalid request. No movie or event found.");
+    die("No movie or event found.");
 }
 $row = $result->fetch_assoc();
 
-// Fetch available showtimes
 $showtimeQuery = "SELECT showtime_id, show_date, show_time FROM showtimes WHERE " . ($type == "movie" ? "movie_id" : "event_id") . " = ?";
 $showtimeStmt = $conn->prepare($showtimeQuery);
 $showtimeStmt->bind_param("i", $id);
 $showtimeStmt->execute();
 $showtimeResult = $showtimeStmt->get_result();
 
-// Fetch venues & theaters
 $venueQuery = "SELECT * FROM venues";
 $venueResult = $conn->query($venueQuery);
 $theaterQuery = "SELECT * FROM theaters";
 $theaterResult = $conn->query($theaterQuery);
-
 ?>
 
 <!DOCTYPE html>
@@ -56,65 +50,57 @@ $theaterResult = $conn->query($theaterQuery);
 <body>
     <h1><?php echo htmlspecialchars($row["title"]); ?></h1>
     <img src="uploads/<?php echo htmlspecialchars($row["image"] ?? "default.jpg"); ?>" width="200">
-
     <h2>Details</h2>
-    <?php if ($type == "movie") { ?>
-        <p><strong>Duration:</strong> <?php echo htmlspecialchars($row["duration"]); ?> minutes</p>
-        <p><strong>Language:</strong> <?php echo htmlspecialchars($row["language"]); ?></p>
-        <p><strong>Release Date:</strong> <?php echo htmlspecialchars($row["release_date"]); ?></p>
-        <p><strong>Price:</strong> ₹<?php echo htmlspecialchars($row["price"]); ?></p>
-        <p><strong>Rating:</strong> <?php echo htmlspecialchars($row["rating"]); ?>/10</p>
-    <?php } else { ?>
-        <p><strong>Date:</strong> <?php echo htmlspecialchars($row["date"]); ?></p>
-        <p><strong>Time:</strong> <?php echo htmlspecialchars($row["time"]); ?></p>
-        <p><strong>Location:</strong> <?php echo htmlspecialchars($row["location"]); ?></p>
-        <p><strong>Price:</strong> ₹<?php echo htmlspecialchars($row["price"]); ?></p>
-        <p><strong>Rating:</strong> <?php echo htmlspecialchars($row["rating"]); ?>/10</p>
-    <?php } ?>
-
-    <form action="seat_selection.php" method="GET">
+    <p><strong>Price:</strong> ₹<?php echo htmlspecialchars($row["price"]); ?></p>
+    
+    <form action="payment.php" method="GET">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <input type="hidden" name="type" value="<?php echo $type; ?>">
+        <input type="hidden" name="price" value="<?php echo $row['price']; ?>">
 
-        <label for="showtime">Select Showtime:</label>
-<select name="showtime" required>
-    <?php 
-    if ($showtimeResult->num_rows > 0) {
-        while ($show = $showtimeResult->fetch_assoc()) {
-            // Use dummy time if show_date or show_time is missing
-            $date = !empty($show['show_date']) ? $show['show_date'] : "TBA";
-            $time = !empty($show['show_time']) ? $show['show_time'] : "To Be Announced";
-            
-            echo "<option value='{$show['showtime_id']}'>Date: $date - Time: $time</option>";
-        }
-    } else {
-        echo "<option value='' disabled>No showtimes available here</option>";
-    }
-    ?>
-</select>
-
-
-        <label for="venue">Select Venue:</label>
-        <select name="venue" required>
-            <?php while ($venue = $venueResult->fetch_assoc()) {
-                echo "<option value='{$venue['venue_id']}'>{$venue['venue_name']} - {$venue['location']}</option>";
+        
+        <label>Select Showtime:</label>
+        <select name="showtime" required>
+            <?php while ($show = $showtimeResult->fetch_assoc()) {
+                echo "<option value='{$show['showtime_id']}'>Date: {$show['show_date']} - Time: {$show['show_time']}</option>";
             } ?>
         </select>
-
-        <label for="theater">Select Theater:</label>
+        
+        <label>Select Venue:</label>
+        <select name="venue" required>
+            <?php while ($venue = $venueResult->fetch_assoc()) {
+                echo "<option value='{$venue['venue_id']}'>{$venue['venue_name']}</option>";
+            } ?>
+        </select>
+        
+        <label>Select Theater:</label>
         <select name="theater" required>
             <?php while ($theater = $theaterResult->fetch_assoc()) {
                 echo "<option value='{$theater['theater_id']}'>{$theater['theater_name']}</option>";
             } ?>
         </select>
-
-        <button type="submit">Select Seats</button>
+        
+        <label>Select Seats:</label>
+        <div id="seatContainer">
+            <?php for ($i = 1; $i <= 100; $i++) {
+                echo "<input type='checkbox' name='seats[]' value='$i' class='seat'> Seat $i ";
+            } ?>
+        </div>
+        
+        <p>Total Price: <span id="totalPrice">0</span></p>
+        <button type="submit">Proceed to Payment</button>
     </form>
 </body>
 </html>
 
-<?php
-$stmt->close();
-$showtimeStmt->close();
-$conn->close();
-?>
+<script>
+    document.querySelectorAll('.seat').forEach(seat => {
+        seat.addEventListener('change', function() {
+            let total = 0;
+            document.querySelectorAll('.seat:checked').forEach(selected => {
+                total += <?php echo $row['price']; ?>;
+            });
+            document.getElementById('totalPrice').textContent = total;
+        });
+    });
+</script>
