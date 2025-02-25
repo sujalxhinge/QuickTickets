@@ -146,7 +146,7 @@ $theaterResult = $conn->query($theaterQuery);
         <!-- <p>Total Price: <span id="totalPrice">0</span></p>
         <button type="submit">Proceed to Payment</button> -->
         <div class="price-container">
-        <p>Total Price: <span id="totalPrice">0</span></p>
+        <p>Total Price: $<span id="totalPrice">0</span></p>
         <!-- <button type="submit">Proceed to Payment</button> -->
         
 <button type="submit" class="pay-btn">
