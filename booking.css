@@ -1,0 +1,370 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+.poppins-bold {
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+.details-container {
+    display: flex;
+    flex-direction: column; /* Stack elements in a column */
+    align-items: center; /* Center everything */
+    gap: 15px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    max-width: 750px;
+    margin: 25px auto;
+    box-shadow: 0px 4px 10px rgba(1, 23, 10, 0.5);
+    text-align: center;
+}
+
+/* Title */
+.details-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: "Poppins", serif;
+    color: #333;
+    margin-bottom: -11px;
+    margin-top: -11px;
+}
+
+/* Center Image */
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.image-container img {
+    width: 220px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Grid layout for details */
+.details-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two-column grid */
+    gap: 10px 20px; /* Row and column spacing */
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+    margin-left: 86px;
+}
+
+/* Ensure strong labels are bold */
+.details-content p {
+    font-size: 16px;
+    font-family: "Poppins", serif;
+    color: #444;
+    margin: 5px 0;
+}
+
+.details-content p strong {
+    color: #000;
+}
+
+/* Full-width headings */
+.details-content h2 {
+    grid-column: span 2;
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .details-content {
+        grid-template-columns: 1fr; /* Stack items in a single column */
+        text-align: center;
+    }
+
+    .image-container img {
+        width: 180px; /* Smaller image for small screens */
+    }
+
+    .details-content p {
+        font-size: 14px;
+    }
+}
+#select-con {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between elements */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    margin-top: 36px;
+}
+
+.select-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 76px;
+}
+
+.select-item label {
+    font-weight: bold;
+}
+
+select {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Make it responsive for smaller screens */
+@media (max-width: 768px) {
+    #select-con {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+.seat-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Space between label and seats */
+    color: #333;
+}
+#seatContainer {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* 10 columns */
+    gap: 1px; /* Spacing between seats */
+    max-width: 70%; /* Adjust width */
+    margin: 0 auto; /* Center horizontally */
+    justify-content: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 25px;
+}
+
+.seat {
+    display: none; /* Hide default checkbox */
+   
+}
+
+/* Default available seat style */
+.seat + label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px; /* Seat size */
+    height: 35px;
+    background-color: white; /* Default seat */
+    border: 2px solid rgb(210, 163, 20); /* Green border */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: green;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin:20px;
+}
+
+/* Change seat color when selected */
+.seat:checked + label {
+    background-color: #fe6e01; /* Green when selected */
+    color: white;
+}
+
+/* Hover effect for available seats */
+.seat:not(:disabled) + label:hover {
+    background-color: #ccc; /* Light gray hover effect */
+}
+
+/* Booked (unavailable) seats */
+.seat:disabled + label {
+    background-color: #ddd !important; /* Gray for booked seats */
+    color: #aaa;
+    border: 2px solid #bbb;
+    cursor: not-allowed;
+}
+
+/* Optionally, if you want to mark some seats as VIP or premium */
+.vip-seat + label {
+    background-color: orange;
+    color: white;
+    border: 2px solid orange;
+}
+/* Price & Button Container */
+/* Price & Button Container */
+.price-container {
+    display: flex;
+    justify-content: space-between; /* Spacing between text and button */
+    align-items: center;
+    width: 100%;
+    max-width: 500px; /* Matches seat container width */
+    margin: 20px auto; /* Centering */
+    margin-left: 362px;
+    margin-top:55px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+/* Total Price Text */
+#totalPrice {
+    font-size: 17px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif; /* Stylish font */
+    color: #011806; /* Green color */
+}
+
+/* Proceed to Payment Button */
+button[type="submit"] {
+    background-color: black; /* Default black */
+    color: white;
+    font-size: 15px;
+    font-weight: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: #000000; /* Green on hover */
+    color: white;
+}
+/* From Uiverse.io by fthisilak */ 
+.pay-btn {
+    position: relative;
+    padding: 12px 24px;
+    font-size: 16px;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .icon-container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    color: #22c55e;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .default-icon {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Hover animations */
+  .pay-btn:hover .icon {
+    animation: none;
+  }
+  
+  .pay-btn:hover .wallet-icon {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .pay-btn:hover .card-icon {
+    animation: iconRotate 2.5s infinite;
+    animation-delay: 0s;
+  }
+  
+  .pay-btn:hover .payment-icon {
+    animation: iconRotate 2.5s infinite;
+    animation-delay: 0.5s;
+  }
+  
+  .pay-btn:hover .dollar-icon {
+    animation: iconRotate 2.5s infinite;
+    animation-delay: 1s;
+  }
+  
+  .pay-btn:hover .check-icon {
+    animation: iconRotate 2.5s infinite;
+    animation-delay: 1.5s;
+  }
+  
+  /* Active state - show only checkmark */
+  .pay-btn:active .icon {
+    animation: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .pay-btn:active .check-icon {
+    animation: checkmarkAppear 0.6s ease forwards;
+    visibility: visible;
+  }
+  
+  .btn-text {
+    font-weight: 600;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+  
+  @keyframes iconRotate {
+    0% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.5);
+    }
+    5% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+    15% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+    20% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px) scale(0.5);
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px) scale(0.5);
+    }
+  }
+  
+  @keyframes checkmarkAppear {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) rotate(-45deg);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2) rotate(0deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  
