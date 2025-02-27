@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="admindashboard.css"/>
+    <link rel="stylesheet" href="admindash.css"/>
     <link rel="icon" href="images icons/link.png" type="image/icon type" />
 <!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -32,17 +32,17 @@
             <span class="material-symbols-sharp">grid_view </span>
             <h3>Dashbord</h3>
           </a>
-          <a href="#" class="active">
+          <a href="#users" class="active">
             <span class="material-symbols-sharp">person_outline </span>
-            <h3>custumers</h3>
+            <h3>Users Reports</h3>
           </a>
-          <a href="#pay">
+          <a href="#recent_events">
             <span class="material-symbols-sharp">receipt_long </span>
-            <h3>Payments</h3>
+            <h3>Events Reports</h3>
           </a>
-          <a href="#">
+          <a href="#book">
             <span class="material-symbols-sharp">report_gmailerrorred </span>
-            <h3>Reports</h3>
+            <h3>Bookings Reports</h3>
           </a>
 
           <a href="#cat">
@@ -158,50 +158,80 @@ $percent_revenue = min($percent_revenue, 100);
 <?php $conn->close(); ?>
 
         <!-- end insights -->
-        <div class="recent_order">
-          <h2>Recent Orders</h2>
-          <table>
+        <?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "quicktickets";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch the latest 20 records
+$sql = "SELECT 
+            b.booking_id, 
+            b.selected_seats, 
+            b.total_price, 
+            b.booking_date,
+            e.title AS event_name,
+            m.title AS movie_name
+        FROM bookings b
+        LEFT JOIN events e ON b.showtime_id = e.event_id
+        LEFT JOIN movies m ON b.showtime_id = m.movie_id
+        ORDER BY b.booking_date DESC
+        LIMIT 20"; // Restrict to 20 records
+
+$result = $conn->query($sql);
+?>
+
+<div class="recent_order">
+    <h2 id="book">Recent Bookings</h2>
+    <div class="table_container">
+        <table>
             <thead>
-              <tr>
-                <th>Product Name</th>
-                <th>Product Number</th>
-                <th>Payments</th>
-                <th>Status</th>
-              </tr>
+                <tr>
+                    <th>Movie/Event</th>
+                    <th>Booking ID</th>
+                    <th>Seats</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        // Determine if it's a movie or an event
+                        $title = !empty($row["movie_name"]) ? $row["movie_name"] : $row["event_name"];
+
+                        echo "<tr>
+                            <td>" . $title . "</td>
+                            <td>" . $row["booking_id"] . "</td>
+                            <td>" . $row["selected_seats"] . "</td>
+                            <td>₹" . $row["total_price"] . "</td>
+                            <td>" . date("d M Y", strtotime($row["booking_date"])) . "</td>
+                        </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No recent bookings found</td></tr>";
+                }
+                ?>
             </tbody>
-          </table>
-        
-        </div>
+        </table>
+    </div>
+</div>
+
+<?php
+// Close connection
+$conn->close();
+?>
+
+
         <!--this section is for adding and deletion of categories like movies and events etc-->
   <!-- Admin Dashboard Forms -->
 <main>
@@ -360,51 +390,139 @@ function toggleInputFields() {
 
 
         <!--payments section starts from here-->
-        <div class="payments">
-          <h2 id="pay">Payments</h2>
-          <table>
+        <?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "quicktickets";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch the latest 20 event bookings with event details
+$sql = "SELECT 
+            b.selected_seats, 
+            b.total_price, 
+            e.title AS event_name,
+            e.location,
+            e.price,
+            e.available_seats,
+            e.rating
+        FROM bookings b
+        INNER JOIN events e ON b.showtime_id = e.event_id
+        ORDER BY b.booking_date DESC
+        LIMIT 20"; // Restrict to 20 records
+
+$result = $conn->query($sql);
+?>
+
+<div class="recent_order">
+    <h2 id="recent_events">Recent Events</h2>
+    <div class="table_container">
+        <table>
             <thead>
-              <tr>
-                <th>Product Name</th>
-                <th>Product Id</th>
-                <th>Amount</th>
-                <th>Status</th>
-              </tr>
+                <tr>
+                    <th>Event</th>
+                    <th>Location</th>
+                    <th>Price (₹)</th>
+                    <th>Available Seats</th>
+                    <th>Rating</th>
+                    <th>Seats</th>
+                    <th>Amount (₹)</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
-              <tr>
-                <td>Mini USB</td>
-                <td>4563</td>
-                <td>Due</td>
-                <td class="warning">Pending</td>
-                <td class="primary">Details</td>
-              </tr>
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                            <td>" . $row["event_name"] . "</td>
+                            <td>" . $row["location"] . "</td>
+                            <td>" . $row["price"] . "</td>
+                            <td>" . $row["available_seats"] . "</td>
+                            <td>" . $row["rating"] . "⭐</td>
+                            <td>" . $row["selected_seats"] . "</td>
+                            <td>₹" . $row["total_price"] . "</td>
+                        </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='7'>No recent event bookings found</td></tr>";
+                }
+                ?>
             </tbody>
-          </table>
-          
-        </div>
-        <!--payments section ends here-->
+        </table>
+    </div>
+</div>
+
+<?php
+// Close connection
+$conn->close();
+?>
+
+        <!--events section ends here-->
+        <!--usersprofile section starts  here-->
+        <?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "quicktickets";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch the latest 20 user profiles
+$sql = "SELECT first_name, last_name, address, phone_number, email FROM usersprofile ORDER BY id DESC LIMIT 20";
+
+$result = $conn->query($sql);
+?>
+
+<div class="recent_order">
+    <h2 id="users">Recent Users</h2>
+    <div class="table_container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                            <td>" . $row["first_name"] . " " . $row["last_name"] . "</td>
+                            <td>" . $row["address"] . "</td>
+                            <td>" . $row["phone_number"] . "</td>
+                            <td>" . $row["email"] . "</td>
+                        </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4'>No recent users found</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php
+// Close connection
+$conn->close();
+?>
+
       </main>
       <!------------------
          end main
