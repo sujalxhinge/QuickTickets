@@ -94,7 +94,7 @@ small{
 }
 .profile-photo img{
   width: 2.5rem;
-  height: 2.5rem;
+  height: 2.8rem;
   overflow: hidden;
   border-radius: 50%;
   margin-top: -7px;
@@ -234,135 +234,114 @@ b{
   padding: 0.5rem 1.6rem;
  }
 
-main .insights {
+main .insights{
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 1.2rem; /* Adjusted gap */
+   grid-template-columns: repeat(3,1fr);
+   gap: 1.6rem;
 }
-
-main .insights > div {
+main .insights>div{
    background-color: var(--clr-white);
    padding: var(--card-padding);
    border-radius: var(--card-border-radius);
-   margin-top: 0.8rem; /* Reduced margin */
+   margin-top: 1rem;
    box-shadow: var(--box-shadow);
-   transition: all 0.3s ease;
-   transform: scale(0.9); /* Reduced overall size */
+   transition: all .3s ease;
 }
 
-main .insights > div:hover {
-   box-shadow: none;
+main .insights > div:hover{
+  box-shadow: none;
 }
-
-main .insights > div span {
+main .insights>div  span{
    background: coral;
-   padding: 0.4rem; /* Reduced padding */
-   border-radius: 50%;
-   color: var(--clr-white);
-   font-size: 1.8rem; /* Reduced font size */
-}
+    padding: 0.5rem;
+     border-radius: 50%;
+     color: var(--clr-white);
+     font-size: 2rem; 
+  }
 
-main .insights > div.expenses span {
+main .insights > div.expenses span{
    background: var(--clr-danger);
 }
-
-main .insights > div.income span {
-   background: var(--clr-success);
+main .insights > div.income span{
+  background: var(--clr-success);
 }
 
-main .insights > div .middle {
+main .insights > div .middle{
    display: flex;
    align-items: center;
    justify-content: space-between;
 }
-
-main .insights > div .middle h1 {
-   font-size: 1.4rem; /* Slightly reduced font size */
+main .insights > div .middle h1{
+  font-size: 1.6rem;
 }
 
-main h1 {
-   color: var(--clr-dark);
+main h1{
+  color: var(--clr-dark);
 }
-
-main .insights h1,
-main .insights h3,
-main .insights p {
-   color: var(--clr-dark);
+main .insights h1{
+  color: var(--clr-dark);
 }
-
-main .insights .progress {
-   position: relative;
-   height: 50px; /* Reduced height */
-   width: 50px;  /* Reduced width */
-   border-radius: 50px;
+main .insights h3{
+  color: var(--clr-dark);
 }
-
-main .insights svg {
-   height: 100px; /* Reduced size */
-   width: 100px;
-   position: absolute;
-   top:-10px;
+main .insights p{
+  color: var(--clr-dark);
 }
-
-main .insights svg circle {
-   fill: none;
-   stroke: var(--clr-primary);
-   transform: rotate(270, 80, 80);
-   stroke-width: 4; /* Adjusted stroke width */
-}
-
-main .insights .sales svg circle {
-   stroke-dashoffset: 0;
-   stroke-dasharray: 120; /* Adjusted dash */
-}
-
-main .insights .expenses svg circle {
-   stroke-dashoffset: 10;
-   stroke-dasharray: 120;
-}
-
-main .insights .income svg circle {
-   stroke: var(--clr-success);
-}
-
-main .insights .progress .number {
-   position: absolute;
-   top: 16%;
-   left: 24%;
-   height: 100%;
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-body {
-  --sb-track-color: #ffffff;
-  --sb-thumb-color: #6baf6e;
-  --sb-size: 15px;
-}
-
-body::-webkit-scrollbar {
-  width: var(--sb-size)
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 18px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 18px;
+main .insights h3{
+  
+    color: var(--clr-dark);
+  
   
 }
 
-@supports not selector(::-webkit-scrollbar) {
-  body {
-    scrollbar-color: var(--sb-thumb-color)
-                     var(--sb-track-color);
-  }
+main .insights .progress{
+  position: relative;
+  height: 68px;
+  width: 68px;
+  border-radius: 50px;
 }
+
+main .insights svg{
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  top: 0;
+}
+
+main .insights svg circle{
+  fill: none;
+  stroke: var(--clr-primary);
+   transform: rotate(270,80,80);
+   stroke-width: 5;
+}
+main .insights .sales svg circle{
+   stroke-dashoffset: 0;
+   stroke-dasharray: 150;
+}
+
+main .insights .expenses svg circle{
+  stroke-dashoffset: 10;
+  stroke-dasharray: 150;
+}
+main .insights .sales svg circle{
+  stroke-dashoffset: 0;
+  stroke-dasharray: 150;
+}
+main .insights .income svg circle{
+  stroke: var(--clr-success);
+}
+
+main .insights .progress .number{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* recent order */
 
 main .recent_order{

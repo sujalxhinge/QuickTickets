@@ -9,8 +9,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="admindash.css"/>
+    <link rel="stylesheet" href="admindashboard.css"/>
     <link rel="icon" href="images icons/link.png" type="image/icon type" />
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   </head>
   <body>
     <div class="container">
@@ -68,62 +71,92 @@
           <input type="date" />
         </div>
 
-        <div class="insights">
-          <!-- start seling -->
-          <div class="sales">
-            <span class="material-symbols-sharp">trending_up</span>
-            <div class="middle">
-              <div class="left">
-                <h3>Total Sales</h3>
-                <h1>$25,024</h1>
-              </div>
-              <div class="progress">
-                <svg>
-                  <circle r="30" cy="40" cx="40"></circle>
-                </svg>
-                <div class="number"><p>80%</p></div>
-              </div>
+        <?php
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quicktickets");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch sales data
+$last_24_hours_sales = $conn->query("SELECT SUM(total_price) AS total FROM bookings WHERE booking_date >= NOW() - INTERVAL 1 DAY")->fetch_assoc()['total'] ?? 0;
+$last_month_sales = $conn->query("SELECT SUM(total_price) AS total FROM bookings WHERE booking_date >= DATE_SUB(NOW(), INTERVAL 1 MONTH)")->fetch_assoc()['total'] ?? 0;
+$total_revenue = $conn->query("SELECT SUM(total_price) AS total FROM bookings")->fetch_assoc()['total'] ?? 0;
+
+// Define target values (adjust these based on business goals)
+$target_24_hours = 50000; // Example: Target $50,000 sales per day
+$target_month = 500000; // Example: Target $500,000 per month
+$target_revenue = 5000000; // Example: Target $5,000,000 total revenue
+
+// Calculate percentages
+$percent_24h = ($last_24_hours_sales / $target_24_hours) * 100;
+$percent_month = ($last_month_sales / $target_month) * 100;
+$percent_revenue = ($total_revenue / $target_revenue) * 100;
+
+// Ensure percentages don't exceed 100%
+$percent_24h = min($percent_24h, 100);
+$percent_month = min($percent_month, 100);
+$percent_revenue = min($percent_revenue, 100);
+?>
+
+<div class="insights">
+    <!-- Last 24 Hours Sales -->
+    <div class="sales">
+        <span class="material-symbols-sharp">trending_up</span>
+        <div class="middle">
+            <div class="left">
+                <h3>24 Hours Sales</h3>
+                <h1>₹<?php echo number_format($last_24_hours_sales, 2); ?></h1>
             </div>
-            <small>Last 24 Hours</small>
-          </div>
-          <!-- end seling -->
-          <!-- start expenses -->
-          <div class="expenses">
-            <span class="material-symbols-sharp">local_mall</span>
-            <div class="middle">
-              <div class="left">
-                <h3>Total Sales</h3>
-                <h1>$25,024</h1>
-              </div>
-              <div class="progress">
+            <div class="progress">
                 <svg>
-                  <circle r="30" cy="40" cx="40"></circle>
+                    <circle r="30" cy="40" cx="40"></circle>
                 </svg>
-                <div class="number"><p>80%</p></div>
-              </div>
+                <div class="number"><p><?php echo round($percent_24h, 2); ?>%</p></div>
             </div>
-            <small>Last 24 Hours</small>
-          </div>
-          <!-- end seling -->
-          <!-- start seling -->
-          <div class="income">
-            <span class="material-symbols-sharp">stacked_line_chart</span>
-            <div class="middle">
-              <div class="left">
-                <h3>Total Sales</h3>
-                <h1>$25,024</h1>
-              </div>
-              <div class="progress">
-                <svg>
-                  <circle r="30" cy="40" cx="40"></circle>
-                </svg>
-                <div class="number"><p>80%</p></div>
-              </div>
-            </div>
-            <small>Last 24 Hours</small>
-          </div>
-          <!-- end seling -->
         </div>
+        <small>Last 24 Hours</small>
+    </div>
+
+    <!-- Last Month Sales -->
+    <div class="expenses">
+        <span class="material-symbols-sharp">local_mall</span>
+        <div class="middle">
+            <div class="left">
+                <h3>Last Month Sales</h3>
+                <h1>₹<?php echo number_format($last_month_sales, 2); ?></h1>
+            </div>
+            <div class="progress">
+                <svg>
+                    <circle r="30" cy="40" cx="40"></circle>
+                </svg>
+                <div class="number"><p><?php echo round($percent_month, 2); ?>%</p></div>
+            </div>
+        </div>
+        <small>Last Month</small>
+    </div>
+
+    <!-- Total Revenue -->
+    <div class="income">
+        <span class="material-symbols-sharp">stacked_line_chart</span>
+        <div class="middle">
+            <div class="left">
+                <h3>Total Revenue</h3>
+                <h1>₹<?php echo number_format($total_revenue, 2); ?></h1>
+            </div>
+            <div class="progress">
+                <svg>
+                    <circle r="30" cy="40" cx="40"></circle>
+                </svg>
+                <div class="number"><p><?php echo round($percent_revenue, 2); ?>%</p></div>
+            </div>
+        </div>
+        <small>Total Revenue</small>
+    </div>
+</div>
+
+<?php $conn->close(); ?>
+
         <!-- end insights -->
         <div class="recent_order">
           <h2>Recent Orders</h2>
@@ -167,7 +200,7 @@
               </tr>
             </tbody>
           </table>
-          <a href="#">Show All</a>
+        
         </div>
         <!--this section is for adding and deletion of categories like movies and events etc-->
   <!-- Admin Dashboard Forms -->
@@ -369,7 +402,7 @@ function toggleInputFields() {
               </tr>
             </tbody>
           </table>
-          <a href="#">Show All</a>
+          
         </div>
         <!--payments section ends here-->
       </main>

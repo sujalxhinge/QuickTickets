@@ -17,51 +17,102 @@ $seatNumbers = "H16, H17";
 $showDate = "Mon, 10 Aug, 2015";
 $showTime = "4:15 PM";
 
-// HTML content with Bootstrap & custom styling
-$html = '
-<!DOCTYPE html>
+// HTML content with proper structure
+$html = '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickTickets</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>QuickTickets - Movie Ticket</title>
     <style>
-        body { font-family: Helvetica, Arial, sans-serif; }
-        .ticket-container { border: 3px solid #dc3545; border-radius: 15px; padding: 20px; width: 600px; margin: auto; }
-        .header { display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-size: 24px; font-weight: bold; color: #dc3545; }
-        .not-ticket { font-size: 12px; color: #dc3545; text-align: right; }
-        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .ticket-box { border: 2px solid #ccc; padding: 10px; border-radius: 10px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, Arial, sans-serif;
+             
+        }
+
+        body {
+  
+    display: flex;
+    align-items: center;   /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    height: 100vh; /* Full height of the viewport */
+    margin: 170px; /* Remove any default margin */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3), 
+                        0px 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticket {
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3), 
+                        0px 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+        .ticket::before, .ticket::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background:rgb(255, 255, 255);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .ticket::before {
+            left: -15px;
+        }
+        .ticket::after {
+            right: -15px;
+        }
+        .ticket-header {
+            background:rgb(35, 8, 8);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .ticket-body {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px dashed #d32f2f;
+        }
+        .ticket-body p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .ticket-footer {
+            padding: 10px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
-    <div class="ticket-container">
-        <div class="header">
-            <div class="brand">QuickTickets 🎟️</div>
-            <div class="not-ticket">THIS IS NOT YOUR TICKET.<br>Exchange this at the box office.</div>
+    <div class="ticket">
+        <div class="ticket-header">QuickTickets</div>
+        <div class="ticket-body">
+            <p><strong>Booking ID:</strong> <span class="highlight">' . $bookingID . '</span></p>
+            <p><strong>Movie:</strong> ' . $movieName . '</p>
+            <p><strong>Venue:</strong> ' . $venue . '</p>
+            <p><strong>Seats:</strong> <span class="highlight">' . $seatNumbers . '</span></p>
+            <p><strong>Date:</strong> ' . $showDate . '</p>
+            <p><strong>Time:</strong> ' . $showTime . '</p>
         </div>
-        <hr>
-        <p><strong>📌 BOOKING ID:</strong> ' . $bookingID . '</p>
-        <div class="grid-container">
-            <div class="ticket-box">
-                <strong>🎬 ' . $movieName . '</strong><br>
-                <small>📍 ' . $venue . '</small>
-            </div>
-            <div class="ticket-box">
-                <strong>🎟️ Dress Circle:</strong> ' . $seatNumbers . '
-            </div>
-            <div class="ticket-box">
-                <strong>📅 ' . $showDate . '</strong>
-            </div>
-            <div class="ticket-box">
-                <strong>⏰ ' . $showTime . '</strong>
-            </div>
-        </div>
+        <div class="ticket-footer">Enjoy your movie!</div>
     </div>
 </body>
-</html>';
+</html>
+';
 
 // Load HTML into Dompdf
 $dompdf->loadHtml($html);

@@ -196,7 +196,7 @@ if ($stmt->affected_rows > 0) {
          </div> 
          <div class="actions">
             <a href="receipt.php">
-    <button type="button" class="history">Print Receipt</button>
+    <button type="button" class="history">Print Ticket</button>
 </a>
 <a href="dashboard.php">
     <button type="button" class="track">Go To Home</button>

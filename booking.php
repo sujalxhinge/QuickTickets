@@ -87,7 +87,9 @@ $theaterResult = $conn->query($theaterQuery);
             <p><strong>Duration:</strong> <?php echo htmlspecialchars($row["duration"]); ?> mins</p>
             <p><strong>Rating:</strong> <?php echo htmlspecialchars($row["rating"]); ?>/10</p>
             <p><strong>Language:</strong> <?php echo htmlspecialchars($row["language"]); ?></p>
-            <p><strong>Release Date:</strong> <?php echo htmlspecialchars($row["release_date"]); ?></p>
+            <p><strong>Release Date:</strong> <?php echo htmlspecialchars($row["release_date"]); 
+            ?></p>
+  
         <?php } else { ?>
             <p><strong>Event Date:</strong> <?php echo htmlspecialchars($row["date"]); ?></p>
             <p><strong>Event Time:</strong> <?php echo htmlspecialchars($row["time"]); ?></p>
