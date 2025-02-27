@@ -230,6 +230,17 @@ $result = $conn->query($sql);
 // Close connection
 $conn->close();
 ?>
+<!-- <div style="text-align: right; margin-bottom: 10px;">
+    <a href="generate_report.php" class="btn btn-primary" style="background: #007bff; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px;">
+        Download PDF
+    </a>
+</div> -->
+<a href="generate_report.php" target="_blank" class="download-btn">
+  <button class="button">
+    <span class="one">Download</span>
+    <span class="two">100%</span>
+  </button>
+</a>
 
 
         <!--this section is for adding and deletion of categories like movies and events etc-->
@@ -389,7 +400,7 @@ function toggleInputFields() {
 </main>
 
 
-        <!--payments section starts from here-->
+        <!--Events section starts from here-->
         <?php
 // Database connection
 $servername = "localhost";
@@ -463,6 +474,24 @@ $result = $conn->query($sql);
 // Close connection
 $conn->close();
 ?>
+<!-- Date Filter Form -->
+<form method="GET" action="generate_events_pdf.php">
+  <div style=" margin-left:40%;margin-top:-10px;margin-bottom:10px;">
+        <label>From Date:</label>
+        <input type="date" name="from_date" required>
+        
+        <label>To Date:</label>
+        <input type="date" name="to_date" required>
+              </div>
+        
+        <!-- <button type="submit">Download PDF</button> -->
+        <a href="generate_events_pdf.php" target="_blank" class="download-btn">
+  <button class="button">
+    <span class="one">Download</span>
+    <span class="two">100%</span>
+  </button>
+</a>
+    </form>
 
         <!--events section ends here-->
         <!--usersprofile section starts  here-->
@@ -522,6 +551,13 @@ $result = $conn->query($sql);
 // Close connection
 $conn->close();
 ?>
+<a href="generate_users_pdf.php" target="_blank" class="download-btn">
+  <button class="button">
+    <span class="one">Download</span>
+    <span class="two">100%</span>
+  </button>
+</a>
+
 
       </main>
       <!------------------
